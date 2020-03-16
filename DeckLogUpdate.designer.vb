@@ -52,6 +52,9 @@ Partial Class DeckLogUpdate
         Me.lblNavigator = New System.Windows.Forms.Label()
         Me.txtVessel = New System.Windows.Forms.TextBox()
         Me.lblVessel = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -208,6 +211,9 @@ Partial Class DeckLogUpdate
         'GroupBox1
         '
         Me.GroupBox1.BackColor = System.Drawing.Color.Silver
+        Me.GroupBox1.Controls.Add(Me.TextBox2)
+        Me.GroupBox1.Controls.Add(Me.Label2)
+        Me.GroupBox1.Controls.Add(Me.Label6)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.TextBox1)
         Me.GroupBox1.Controls.Add(Me.lblCompass)
@@ -342,6 +348,36 @@ Partial Class DeckLogUpdate
         Me.lblVessel.TabIndex = 0
         Me.lblVessel.Text = "Vessel:"
         '
+        'Label6
+        '
+        Me.Label6.BackColor = System.Drawing.SystemColors.Window
+        Me.Label6.Cursor = System.Windows.Forms.Cursors.Default
+        Me.Label6.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.Label6.Location = New System.Drawing.Point(456, 52)
+        Me.Label6.Name = "Label6"
+        Me.Label6.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.Label6.Size = New System.Drawing.Size(9, 17)
+        Me.Label6.TabIndex = 172
+        Me.Label6.Text = "°"
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Location = New System.Drawing.Point(575, 52)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(59, 20)
+        Me.TextBox2.TabIndex = 174
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(471, 54)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(100, 15)
+        Me.Label2.TabIndex = 173
+        Me.Label2.Text = "Compass Course:"
+        '
         'DeckLogUpdate
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -391,4 +427,7 @@ Partial Class DeckLogUpdate
     Friend WithEvents lblNavigator As Label
     Friend WithEvents txtVessel As TextBox
     Friend WithEvents lblVessel As Label
+    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents Label2 As Label
+    Public WithEvents Label6 As Label
 End Class
