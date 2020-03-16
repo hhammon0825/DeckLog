@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29905.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "DeckLog", "DeckLog.vbproj", "{AA0C57E5-FE36-4802-AF70-5B915FD000A7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AA0C57E5-FE36-4802-AF70-5B915FD000A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA0C57E5-FE36-4802-AF70-5B915FD000A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA0C57E5-FE36-4802-AF70-5B915FD000A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA0C57E5-FE36-4802-AF70-5B915FD000A7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {28A55412-1B51-4D41-8568-93589181E685}
+	EndGlobalSection
+EndGlobal
