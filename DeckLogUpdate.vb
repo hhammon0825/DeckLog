@@ -2,11 +2,13 @@
     Public FName As String = "./DeckLog/"
     Public ReadError As Boolean = False
     Public FileLoading As Boolean = False
+    Public InitialLoad As Boolean = False
     Public SLOpenFName As String = ""
     Public tablename As String = "Export"
     Public DataSet1 As DataSet
-    Public HdrStr As String() = {"Vessel", "Navigator", "LocFrom", "LocTo", "DateZoneTime", "Compass", "Var", "Dev", "CTrue", "Speed", "PositionLatLong", "Weather", "Remarks"}
-    Public NullStr As String() = {vbNullString, vbNullString, vbNullString, vbNullString, vbNullString, vbNullString, vbNullString, vbNullString, vbNullString, vbNullString, vbNullString, vbNullString, vbNullString}
+    Public HdrStr As String() = {"Vessel", "Navigator", "LocFrom", "LocTo", "DateZoneTime", "Compass", "Var", "Dev", "CTrue", "Speed", "PositionLatLong", "Loc Type", "Weather", "Remarks"}
+    Public NullStr As String() = {vbNullString, vbNullString, vbNullString, vbNullString, vbNullString, vbNullString, vbNullString, vbNullString, vbNullString, vbNullString, vbNullString, vbNullString, vbNullString, vbNullString}
+    Public UpdtRow As Integer = 0
     Public Structure DLUpdate
         Public Vessel As String
         Public Navigator As String
@@ -19,6 +21,7 @@
         Public CTrue As String
         Public Speed As String
         Public PositionLatLong As String
+        Public LocType As String
         Public Weather As String
         Public Remarks As String
         Public UpdtFlag As String  ' "" or vbnullstring or "C" = cancel / ignore "A" = Add data to decklog "U" = Update data back into decklog  "D" = Delete info from decklog
@@ -26,8 +29,15 @@
     Public UpdtRtn As DLUpdate
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim DefFName As String = "DeckLog" & Now.ToString("yyyyMMddHHmmss")
+        Dim DefFName As String = "DeckLog" & Now.ToString("yyyyMMddHHmmss") & ".csv"
+        InitialLoad = True
         FName &= DefFName
+        cboL.SelectedIndex = 0
+        cboLo.SelectedIndex = 0
+        cboVar.SelectedIndex = 0
+        cboDev.SelectedIndex = 0
+        cboLocType.SelectedIndex = 0
+
         DataSet1 = New DataSet()
         DataSet1.Tables.Add(tablename)
         DataSet1.DataSetName = tablename
@@ -40,6 +50,7 @@
         DataGridView1.Refresh()
         Me.Show()
         Me.Refresh()
+        Exit Sub
     End Sub
 
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
@@ -187,8 +198,14 @@
     End Sub
 
     Private Sub DataGridView1_SelectionChanged(sender As Object, e As EventArgs) Handles DataGridView1.SelectionChanged
-        If FileLoading = True Then Exit Sub
+        If FileLoading = True Then
+            Exit Sub
+        End If
+        If InitialLoad = True Then
+            Exit Sub
+        End If
         Dim n As Integer = DataGridView1.CurrentRow.Index
+        UpdtRow = DataGridView1.CurrentRow.Index
         ' The order of these variable and the integer indexs contained in each MUST match the order of the fields in the data grid
         UpdtRtn.Vessel = DataGridView1.Rows(n).Cells(0).Value
         txtVessel.Text = DataGridView1.Rows(n).Cells(0).Value
@@ -215,7 +232,7 @@
         txtDev.Text = DataGridView1.Rows(n).Cells(7).Value
 
         UpdtRtn.CTrue = DataGridView1.Rows(n).Cells(8).Value
-        txtCompass.Text = DataGridView1.Rows(n).Cells(8).Value
+        txtCTrue.Text = DataGridView1.Rows(n).Cells(8).Value
 
         UpdtRtn.Speed = DataGridView1.Rows(n).Cells(9).Value
         txtSpeed.Text = DataGridView1.Rows(n).Cells(9).Value
@@ -235,12 +252,70 @@
         txtLoMin.Text = LLo.Substring(LoDegPos + 1, (LoMinPos - 1) + (LoDegPos + 1))
         cboLo.Text = LLo.Substring(LoMinPos + 1, 1)
 
-        UpdtRtn.Weather = DataGridView1.Rows(n).Cells(11).Value
-        txtWeather.Text = DataGridView1.Rows(n).Cells(11).Value
+        UpdtRtn.LocType = DataGridView1.Rows(n).Cells(11).Value
+        cboLocType.Text = DataGridView1.Rows(n).Cells(11).Value
 
-        UpdtRtn.Remarks = DataGridView1.Rows(n).Cells(12).Value
-        txtRemarks.Text = DataGridView1.Rows(n).Cells(12).Value
+        UpdtRtn.Weather = DataGridView1.Rows(n).Cells(12).Value
+        txtWeather.Text = DataGridView1.Rows(n).Cells(12).Value
 
+        UpdtRtn.Remarks = DataGridView1.Rows(n).Cells(13).Value
+        txtRemarks.Text = DataGridView1.Rows(n).Cells(13).Value
+
+        Me.Refresh()
+
+        Exit Sub
     End Sub
 
+    Private Sub btnAddNew_Click(sender As Object, e As EventArgs) Handles btnAddNew.Click
+        If EditUpdtFields() = False Then
+            Me.Refresh()
+            Exit Sub
+        End If
+        Dim LLo As String = "L=" & txtLDeg.Text.ToString & Chr(176) & txtLMin.Text.ToString & "'" & cboL.Text.ToString & " Lo=" & txtLoDeg.Text.ToString & Chr(176) & txtLoMin.Text.ToString & cboLo.Text.ToString
+
+        DataSet1.Tables(tablename).Rows.Add(txtVessel.Text.ToString, txtNavigator.Text.ToString, txtFrom.Text.ToString, txtTo.Text.ToString,
+                               DTDateZoneTime.Value.ToString("MM/dd/yyyy HH:mm:ss"), txtCompass.Text.ToString, txtVar.Text.ToString, txtDev.Text.ToString,
+                               txtCTrue.Text.ToString, txtSpeed.Text.ToString, LLo, cboLocType.Text.ToString, txtWeather.Text.ToString, txtRemarks.Text.ToString)
+        DataGridView1.Refresh()
+        Me.Refresh()
+
+        Exit Sub
+    End Sub
+
+    Private Sub btnUpdateExisting_Click(sender As Object, e As EventArgs) Handles btnUpdateExisting.Click
+        If EditUpdtFields() = False Then
+            Me.Refresh()
+            Exit Sub
+        End If
+        Dim LLo As String = "L=" & txtLDeg.Text.ToString & Chr(176) & txtLMin.Text.ToString & "'" & cboL.Text.ToString & " Lo=" & txtLoDeg.Text.ToString & Chr(176) & txtLoMin.Text.ToString & cboLo.Text.ToString
+        DataGridView1.Rows(UpdtRow).Cells(0).Value = txtVessel.Text
+        DataGridView1.Rows(UpdtRow).Cells(1).Value = txtNavigator.Text
+        DataGridView1.Rows(UpdtRow).Cells(2).Value = txtFrom.Text
+        DataGridView1.Rows(UpdtRow).Cells(3).Value = txtTo.Text
+        DataGridView1.Rows(UpdtRow).Cells(4).Value = DTDateZoneTime.Value.ToString("MM/dd/yyyy HH:mm:ss")
+        DataGridView1.Rows(UpdtRow).Cells(5).Value = txtCompass.Text
+        DataGridView1.Rows(UpdtRow).Cells(6).Value = txtVar.Text
+        DataGridView1.Rows(UpdtRow).Cells(7).Value = txtDev.Text
+        DataGridView1.Rows(UpdtRow).Cells(8).Value = txtCTrue.Text
+        DataGridView1.Rows(UpdtRow).Cells(9).Value = txtSpeed.Text
+        DataGridView1.Rows(UpdtRow).Cells(10).Value = LLo
+        DataGridView1.Rows(UpdtRow).Cells(11).Value = cboLocType.Text
+        DataGridView1.Rows(UpdtRow).Cells(12).Value = txtWeather.Text
+        DataGridView1.Rows(UpdtRow).Cells(13).Value = txtRemarks.Text
+
+        DataGridView1.Refresh()
+        Me.Refresh()
+        Exit Sub
+    End Sub
+
+    Private Sub btnDeleteSight_Click(sender As Object, e As EventArgs) Handles btnDeleteSight.Click
+        DataSet1.Tables(tablename).Rows.RemoveAt(UpdtRow)
+        DataGridView1.Refresh()
+        Me.Refresh()
+        Exit Sub
+    End Sub
+    Private Function EditUpdtFields() As Boolean
+        Return True
+        Exit Function
+    End Function
 End Class

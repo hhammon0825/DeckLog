@@ -39,6 +39,31 @@ Partial Class DeckLogUpdate
         Me.btnSaveFile = New System.Windows.Forms.Button()
         Me.btnInfoForm = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btnClearFields = New System.Windows.Forms.Button()
+        Me.btnAddNew = New System.Windows.Forms.Button()
+        Me.btnUpdateExisting = New System.Windows.Forms.Button()
+        Me.btnDeleteSight = New System.Windows.Forms.Button()
+        Me.txtSpeed = New System.Windows.Forms.TextBox()
+        Me.lblSpeed = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.txtCTrue = New System.Windows.Forms.TextBox()
+        Me.lblCTrue = New System.Windows.Forms.Label()
+        Me.txtRemarks = New System.Windows.Forms.TextBox()
+        Me.lblRemarks = New System.Windows.Forms.Label()
+        Me.txtWeather = New System.Windows.Forms.TextBox()
+        Me.lblWeather = New System.Windows.Forms.Label()
+        Me.cboLo = New System.Windows.Forms.ComboBox()
+        Me.cboL = New System.Windows.Forms.ComboBox()
+        Me.txtLDeg = New System.Windows.Forms.TextBox()
+        Me.txtLoMin = New System.Windows.Forms.TextBox()
+        Me.txtLoDeg = New System.Windows.Forms.TextBox()
+        Me.txtLMin = New System.Windows.Forms.TextBox()
+        Me.lblLoMin = New System.Windows.Forms.Label()
+        Me.lblLoDeg = New System.Windows.Forms.Label()
+        Me.lblDRLo = New System.Windows.Forms.Label()
+        Me.lblLMin = New System.Windows.Forms.Label()
+        Me.lblLDeg = New System.Windows.Forms.Label()
+        Me.lblDRL = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.cboDev = New System.Windows.Forms.ComboBox()
@@ -61,27 +86,8 @@ Partial Class DeckLogUpdate
         Me.lblNavigator = New System.Windows.Forms.Label()
         Me.txtVessel = New System.Windows.Forms.TextBox()
         Me.lblVessel = New System.Windows.Forms.Label()
-        Me.cboLo = New System.Windows.Forms.ComboBox()
-        Me.cboL = New System.Windows.Forms.ComboBox()
-        Me.txtLDeg = New System.Windows.Forms.TextBox()
-        Me.txtLoMin = New System.Windows.Forms.TextBox()
-        Me.txtLoDeg = New System.Windows.Forms.TextBox()
-        Me.txtLMin = New System.Windows.Forms.TextBox()
-        Me.lblLoMin = New System.Windows.Forms.Label()
-        Me.lblLoDeg = New System.Windows.Forms.Label()
-        Me.lblDRLo = New System.Windows.Forms.Label()
-        Me.lblLMin = New System.Windows.Forms.Label()
-        Me.lblLDeg = New System.Windows.Forms.Label()
-        Me.lblDRL = New System.Windows.Forms.Label()
-        Me.txtWeather = New System.Windows.Forms.TextBox()
-        Me.lblWeather = New System.Windows.Forms.Label()
-        Me.txtRemarks = New System.Windows.Forms.TextBox()
-        Me.lblRemarks = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.txtCTrue = New System.Windows.Forms.TextBox()
-        Me.lblCTrue = New System.Windows.Forms.Label()
-        Me.txtSpeed = New System.Windows.Forms.TextBox()
-        Me.lblSpeed = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.cboLocType = New System.Windows.Forms.ComboBox()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -238,6 +244,12 @@ Partial Class DeckLogUpdate
         'GroupBox1
         '
         Me.GroupBox1.BackColor = System.Drawing.Color.Silver
+        Me.GroupBox1.Controls.Add(Me.cboLocType)
+        Me.GroupBox1.Controls.Add(Me.Label5)
+        Me.GroupBox1.Controls.Add(Me.btnClearFields)
+        Me.GroupBox1.Controls.Add(Me.btnAddNew)
+        Me.GroupBox1.Controls.Add(Me.btnUpdateExisting)
+        Me.GroupBox1.Controls.Add(Me.btnDeleteSight)
         Me.GroupBox1.Controls.Add(Me.txtSpeed)
         Me.GroupBox1.Controls.Add(Me.lblSpeed)
         Me.GroupBox1.Controls.Add(Me.Label4)
@@ -288,13 +300,314 @@ Partial Class DeckLogUpdate
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Update Fields"
         '
+        'btnClearFields
+        '
+        Me.btnClearFields.BackColor = System.Drawing.Color.Yellow
+        Me.btnClearFields.Font = New System.Drawing.Font("Arial Narrow", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnClearFields.ForeColor = System.Drawing.SystemColors.WindowText
+        Me.btnClearFields.Location = New System.Drawing.Point(1225, 128)
+        Me.btnClearFields.Name = "btnClearFields"
+        Me.btnClearFields.Size = New System.Drawing.Size(110, 23)
+        Me.btnClearFields.TabIndex = 219
+        Me.btnClearFields.Text = "Clear Fields"
+        Me.btnClearFields.UseVisualStyleBackColor = False
+        '
+        'btnAddNew
+        '
+        Me.btnAddNew.BackColor = System.Drawing.Color.Yellow
+        Me.btnAddNew.Font = New System.Drawing.Font("Arial Narrow", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAddNew.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.btnAddNew.Location = New System.Drawing.Point(880, 128)
+        Me.btnAddNew.Name = "btnAddNew"
+        Me.btnAddNew.Size = New System.Drawing.Size(110, 23)
+        Me.btnAddNew.TabIndex = 216
+        Me.btnAddNew.Text = "Add New Log Entry"
+        Me.btnAddNew.UseVisualStyleBackColor = False
+        '
+        'btnUpdateExisting
+        '
+        Me.btnUpdateExisting.BackColor = System.Drawing.Color.Yellow
+        Me.btnUpdateExisting.Font = New System.Drawing.Font("Arial Narrow", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnUpdateExisting.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.btnUpdateExisting.Location = New System.Drawing.Point(996, 128)
+        Me.btnUpdateExisting.Name = "btnUpdateExisting"
+        Me.btnUpdateExisting.Size = New System.Drawing.Size(110, 23)
+        Me.btnUpdateExisting.TabIndex = 217
+        Me.btnUpdateExisting.Text = "Update Log Entry"
+        Me.btnUpdateExisting.UseVisualStyleBackColor = False
+        '
+        'btnDeleteSight
+        '
+        Me.btnDeleteSight.BackColor = System.Drawing.Color.Red
+        Me.btnDeleteSight.Font = New System.Drawing.Font("Arial Narrow", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnDeleteSight.ForeColor = System.Drawing.SystemColors.HighlightText
+        Me.btnDeleteSight.Location = New System.Drawing.Point(1109, 128)
+        Me.btnDeleteSight.Name = "btnDeleteSight"
+        Me.btnDeleteSight.Size = New System.Drawing.Size(110, 23)
+        Me.btnDeleteSight.TabIndex = 218
+        Me.btnDeleteSight.Text = "Delete Log Entry"
+        Me.btnDeleteSight.UseVisualStyleBackColor = False
+        '
+        'txtSpeed
+        '
+        Me.txtSpeed.Location = New System.Drawing.Point(782, 53)
+        Me.txtSpeed.MaxLength = 3
+        Me.txtSpeed.Name = "txtSpeed"
+        Me.txtSpeed.Size = New System.Drawing.Size(59, 20)
+        Me.txtSpeed.TabIndex = 215
+        '
+        'lblSpeed
+        '
+        Me.lblSpeed.AutoSize = True
+        Me.lblSpeed.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSpeed.Location = New System.Drawing.Point(734, 55)
+        Me.lblSpeed.Name = "lblSpeed"
+        Me.lblSpeed.Size = New System.Drawing.Size(43, 15)
+        Me.lblSpeed.TabIndex = 214
+        Me.lblSpeed.Text = "Speed:"
+        '
+        'Label4
+        '
+        Me.Label4.BackColor = System.Drawing.SystemColors.Window
+        Me.Label4.Cursor = System.Windows.Forms.Cursors.Default
+        Me.Label4.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.Label4.Location = New System.Drawing.Point(719, 55)
+        Me.Label4.Name = "Label4"
+        Me.Label4.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.Label4.Size = New System.Drawing.Size(9, 17)
+        Me.Label4.TabIndex = 213
+        Me.Label4.Text = "°"
+        '
+        'txtCTrue
+        '
+        Me.txtCTrue.Location = New System.Drawing.Point(659, 53)
+        Me.txtCTrue.MaxLength = 3
+        Me.txtCTrue.Name = "txtCTrue"
+        Me.txtCTrue.Size = New System.Drawing.Size(59, 20)
+        Me.txtCTrue.TabIndex = 212
+        '
+        'lblCTrue
+        '
+        Me.lblCTrue.AutoSize = True
+        Me.lblCTrue.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCTrue.Location = New System.Drawing.Point(622, 55)
+        Me.lblCTrue.Name = "lblCTrue"
+        Me.lblCTrue.Size = New System.Drawing.Size(35, 15)
+        Me.lblCTrue.TabIndex = 211
+        Me.lblCTrue.Text = "True:"
+        '
+        'txtRemarks
+        '
+        Me.txtRemarks.Location = New System.Drawing.Point(684, 82)
+        Me.txtRemarks.Multiline = True
+        Me.txtRemarks.Name = "txtRemarks"
+        Me.txtRemarks.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.txtRemarks.Size = New System.Drawing.Size(650, 41)
+        Me.txtRemarks.TabIndex = 210
+        '
+        'lblRemarks
+        '
+        Me.lblRemarks.AutoSize = True
+        Me.lblRemarks.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblRemarks.Location = New System.Drawing.Point(623, 84)
+        Me.lblRemarks.Name = "lblRemarks"
+        Me.lblRemarks.Size = New System.Drawing.Size(55, 15)
+        Me.lblRemarks.TabIndex = 209
+        Me.lblRemarks.Text = "Remarks:"
+        '
+        'txtWeather
+        '
+        Me.txtWeather.Location = New System.Drawing.Point(83, 80)
+        Me.txtWeather.Multiline = True
+        Me.txtWeather.Name = "txtWeather"
+        Me.txtWeather.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.txtWeather.Size = New System.Drawing.Size(535, 43)
+        Me.txtWeather.TabIndex = 208
+        '
+        'lblWeather
+        '
+        Me.lblWeather.AutoSize = True
+        Me.lblWeather.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblWeather.Location = New System.Drawing.Point(21, 79)
+        Me.lblWeather.Name = "lblWeather"
+        Me.lblWeather.Size = New System.Drawing.Size(55, 15)
+        Me.lblWeather.TabIndex = 207
+        Me.lblWeather.Text = "Weather:"
+        '
+        'cboLo
+        '
+        Me.cboLo.BackColor = System.Drawing.SystemColors.Window
+        Me.cboLo.Cursor = System.Windows.Forms.Cursors.Default
+        Me.cboLo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboLo.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cboLo.ForeColor = System.Drawing.SystemColors.WindowText
+        Me.cboLo.Items.AddRange(New Object() {"W", "E"})
+        Me.cboLo.Location = New System.Drawing.Point(1171, 52)
+        Me.cboLo.Name = "cboLo"
+        Me.cboLo.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.cboLo.Size = New System.Drawing.Size(41, 24)
+        Me.cboLo.TabIndex = 200
+        '
+        'cboL
+        '
+        Me.cboL.BackColor = System.Drawing.SystemColors.Window
+        Me.cboL.Cursor = System.Windows.Forms.Cursors.Default
+        Me.cboL.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboL.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cboL.ForeColor = System.Drawing.SystemColors.WindowText
+        Me.cboL.Items.AddRange(New Object() {"N", "S"})
+        Me.cboL.Location = New System.Drawing.Point(973, 52)
+        Me.cboL.Name = "cboL"
+        Me.cboL.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.cboL.Size = New System.Drawing.Size(41, 24)
+        Me.cboL.TabIndex = 197
+        '
+        'txtLDeg
+        '
+        Me.txtLDeg.AcceptsReturn = True
+        Me.txtLDeg.BackColor = System.Drawing.SystemColors.Window
+        Me.txtLDeg.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtLDeg.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtLDeg.ForeColor = System.Drawing.SystemColors.WindowText
+        Me.txtLDeg.HideSelection = False
+        Me.txtLDeg.Location = New System.Drawing.Point(901, 52)
+        Me.txtLDeg.MaxLength = 2
+        Me.txtLDeg.Name = "txtLDeg"
+        Me.txtLDeg.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.txtLDeg.Size = New System.Drawing.Size(25, 22)
+        Me.txtLDeg.TabIndex = 195
+        '
+        'txtLoMin
+        '
+        Me.txtLoMin.AcceptsReturn = True
+        Me.txtLoMin.BackColor = System.Drawing.SystemColors.Window
+        Me.txtLoMin.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtLoMin.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtLoMin.ForeColor = System.Drawing.SystemColors.WindowText
+        Me.txtLoMin.HideSelection = False
+        Me.txtLoMin.Location = New System.Drawing.Point(1127, 53)
+        Me.txtLoMin.MaxLength = 4
+        Me.txtLoMin.Name = "txtLoMin"
+        Me.txtLoMin.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.txtLoMin.Size = New System.Drawing.Size(33, 22)
+        Me.txtLoMin.TabIndex = 199
+        '
+        'txtLoDeg
+        '
+        Me.txtLoDeg.AcceptsReturn = True
+        Me.txtLoDeg.BackColor = System.Drawing.SystemColors.Window
+        Me.txtLoDeg.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtLoDeg.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtLoDeg.ForeColor = System.Drawing.SystemColors.WindowText
+        Me.txtLoDeg.HideSelection = False
+        Me.txtLoDeg.Location = New System.Drawing.Point(1085, 53)
+        Me.txtLoDeg.MaxLength = 3
+        Me.txtLoDeg.Name = "txtLoDeg"
+        Me.txtLoDeg.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.txtLoDeg.Size = New System.Drawing.Size(33, 22)
+        Me.txtLoDeg.TabIndex = 198
+        '
+        'txtLMin
+        '
+        Me.txtLMin.AcceptsReturn = True
+        Me.txtLMin.BackColor = System.Drawing.SystemColors.Window
+        Me.txtLMin.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtLMin.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtLMin.ForeColor = System.Drawing.SystemColors.WindowText
+        Me.txtLMin.HideSelection = False
+        Me.txtLMin.Location = New System.Drawing.Point(933, 52)
+        Me.txtLMin.MaxLength = 4
+        Me.txtLMin.Name = "txtLMin"
+        Me.txtLMin.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.txtLMin.Size = New System.Drawing.Size(33, 22)
+        Me.txtLMin.TabIndex = 196
+        '
+        'lblLoMin
+        '
+        Me.lblLoMin.BackColor = System.Drawing.SystemColors.Window
+        Me.lblLoMin.Cursor = System.Windows.Forms.Cursors.Default
+        Me.lblLoMin.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblLoMin.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.lblLoMin.Location = New System.Drawing.Point(1160, 54)
+        Me.lblLoMin.Name = "lblLoMin"
+        Me.lblLoMin.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.lblLoMin.Size = New System.Drawing.Size(9, 17)
+        Me.lblLoMin.TabIndex = 206
+        Me.lblLoMin.Text = "'"
+        '
+        'lblLoDeg
+        '
+        Me.lblLoDeg.BackColor = System.Drawing.SystemColors.Window
+        Me.lblLoDeg.Cursor = System.Windows.Forms.Cursors.Default
+        Me.lblLoDeg.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblLoDeg.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.lblLoDeg.Location = New System.Drawing.Point(1119, 54)
+        Me.lblLoDeg.Name = "lblLoDeg"
+        Me.lblLoDeg.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.lblLoDeg.Size = New System.Drawing.Size(9, 17)
+        Me.lblLoDeg.TabIndex = 205
+        Me.lblLoDeg.Text = "°"
+        '
+        'lblDRLo
+        '
+        Me.lblDRLo.BackColor = System.Drawing.Color.Silver
+        Me.lblDRLo.Cursor = System.Windows.Forms.Cursors.Default
+        Me.lblDRLo.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDRLo.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.lblDRLo.Location = New System.Drawing.Point(1017, 56)
+        Me.lblDRLo.Name = "lblDRLo"
+        Me.lblDRLo.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.lblDRLo.Size = New System.Drawing.Size(66, 18)
+        Me.lblDRLo.TabIndex = 204
+        Me.lblDRLo.Text = "Longitude:"
+        '
+        'lblLMin
+        '
+        Me.lblLMin.BackColor = System.Drawing.SystemColors.Window
+        Me.lblLMin.Cursor = System.Windows.Forms.Cursors.Default
+        Me.lblLMin.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblLMin.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.lblLMin.Location = New System.Drawing.Point(966, 54)
+        Me.lblLMin.Name = "lblLMin"
+        Me.lblLMin.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.lblLMin.Size = New System.Drawing.Size(9, 17)
+        Me.lblLMin.TabIndex = 203
+        Me.lblLMin.Text = "'"
+        '
+        'lblLDeg
+        '
+        Me.lblLDeg.BackColor = System.Drawing.SystemColors.Window
+        Me.lblLDeg.Cursor = System.Windows.Forms.Cursors.Default
+        Me.lblLDeg.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblLDeg.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.lblLDeg.Location = New System.Drawing.Point(926, 54)
+        Me.lblLDeg.Name = "lblLDeg"
+        Me.lblLDeg.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.lblLDeg.Size = New System.Drawing.Size(9, 17)
+        Me.lblLDeg.TabIndex = 202
+        Me.lblLDeg.Text = "°"
+        '
+        'lblDRL
+        '
+        Me.lblDRL.BackColor = System.Drawing.Color.Silver
+        Me.lblDRL.Cursor = System.Windows.Forms.Cursors.Default
+        Me.lblDRL.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDRL.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.lblDRL.Location = New System.Drawing.Point(847, 56)
+        Me.lblDRL.Name = "lblDRL"
+        Me.lblDRL.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.lblDRL.Size = New System.Drawing.Size(56, 20)
+        Me.lblDRL.TabIndex = 201
+        Me.lblDRL.Text = "Latitude:"
+        '
         'Label3
         '
         Me.Label3.BackColor = System.Drawing.SystemColors.Window
         Me.Label3.Cursor = System.Windows.Forms.Cursors.Default
         Me.Label3.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label3.Location = New System.Drawing.Point(653, 55)
+        Me.Label3.Location = New System.Drawing.Point(574, 55)
         Me.Label3.Name = "Label3"
         Me.Label3.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.Label3.Size = New System.Drawing.Size(9, 17)
@@ -307,7 +620,7 @@ Partial Class DeckLogUpdate
         Me.Label2.Cursor = System.Windows.Forms.Cursors.Default
         Me.Label2.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label2.Location = New System.Drawing.Point(514, 55)
+        Me.Label2.Location = New System.Drawing.Point(467, 55)
         Me.Label2.Name = "Label2"
         Me.Label2.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.Label2.Size = New System.Drawing.Size(9, 17)
@@ -318,14 +631,14 @@ Partial Class DeckLogUpdate
         '
         Me.cboDev.FormattingEnabled = True
         Me.cboDev.Items.AddRange(New Object() {"W", "E"})
-        Me.cboDev.Location = New System.Drawing.Point(664, 52)
+        Me.cboDev.Location = New System.Drawing.Point(585, 52)
         Me.cboDev.Name = "cboDev"
         Me.cboDev.Size = New System.Drawing.Size(35, 21)
         Me.cboDev.TabIndex = 178
         '
         'txtDev
         '
-        Me.txtDev.Location = New System.Drawing.Point(626, 53)
+        Me.txtDev.Location = New System.Drawing.Point(547, 53)
         Me.txtDev.MaxLength = 2
         Me.txtDev.Name = "txtDev"
         Me.txtDev.Size = New System.Drawing.Size(25, 20)
@@ -335,24 +648,24 @@ Partial Class DeckLogUpdate
         '
         Me.lblDev.AutoSize = True
         Me.lblDev.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDev.Location = New System.Drawing.Point(562, 55)
+        Me.lblDev.Location = New System.Drawing.Point(517, 55)
         Me.lblDev.Name = "lblDev"
-        Me.lblDev.Size = New System.Drawing.Size(62, 15)
+        Me.lblDev.Size = New System.Drawing.Size(32, 15)
         Me.lblDev.TabIndex = 176
-        Me.lblDev.Text = "Deviation:"
+        Me.lblDev.Text = "Dev:"
         '
         'cboVar
         '
         Me.cboVar.FormattingEnabled = True
         Me.cboVar.Items.AddRange(New Object() {"W", "E"})
-        Me.cboVar.Location = New System.Drawing.Point(523, 52)
+        Me.cboVar.Location = New System.Drawing.Point(476, 52)
         Me.cboVar.Name = "cboVar"
         Me.cboVar.Size = New System.Drawing.Size(35, 21)
         Me.cboVar.TabIndex = 175
         '
         'txtVar
         '
-        Me.txtVar.Location = New System.Drawing.Point(488, 53)
+        Me.txtVar.Location = New System.Drawing.Point(441, 53)
         Me.txtVar.MaxLength = 2
         Me.txtVar.Name = "txtVar"
         Me.txtVar.Size = New System.Drawing.Size(25, 20)
@@ -362,11 +675,11 @@ Partial Class DeckLogUpdate
         '
         Me.lblVariation.AutoSize = True
         Me.lblVariation.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblVariation.Location = New System.Drawing.Point(427, 55)
+        Me.lblVariation.Location = New System.Drawing.Point(413, 55)
         Me.lblVariation.Name = "lblVariation"
-        Me.lblVariation.Size = New System.Drawing.Size(57, 15)
+        Me.lblVariation.Size = New System.Drawing.Size(27, 15)
         Me.lblVariation.TabIndex = 173
-        Me.lblVariation.Text = "Variation:"
+        Me.lblVariation.Text = "Var:"
         '
         'Label6
         '
@@ -374,7 +687,7 @@ Partial Class DeckLogUpdate
         Me.Label6.Cursor = System.Windows.Forms.Cursors.Default
         Me.Label6.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label6.Location = New System.Drawing.Point(412, 53)
+        Me.Label6.Location = New System.Drawing.Point(398, 54)
         Me.Label6.Name = "Label6"
         Me.Label6.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.Label6.Size = New System.Drawing.Size(9, 17)
@@ -385,14 +698,14 @@ Partial Class DeckLogUpdate
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(417, 53)
+        Me.Label1.Location = New System.Drawing.Point(403, 54)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(0, 15)
         Me.Label1.TabIndex = 12
         '
         'txtCompass
         '
-        Me.txtCompass.Location = New System.Drawing.Point(352, 51)
+        Me.txtCompass.Location = New System.Drawing.Point(338, 52)
         Me.txtCompass.MaxLength = 3
         Me.txtCompass.Name = "txtCompass"
         Me.txtCompass.Size = New System.Drawing.Size(59, 20)
@@ -402,11 +715,11 @@ Partial Class DeckLogUpdate
         '
         Me.lblCompass.AutoSize = True
         Me.lblCompass.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCompass.Location = New System.Drawing.Point(278, 53)
+        Me.lblCompass.Location = New System.Drawing.Point(278, 54)
         Me.lblCompass.Name = "lblCompass"
-        Me.lblCompass.Size = New System.Drawing.Size(73, 15)
+        Me.lblCompass.Size = New System.Drawing.Size(59, 15)
         Me.lblCompass.TabIndex = 10
-        Me.lblCompass.Text = "Course PSC:"
+        Me.lblCompass.Text = "Compass:"
         '
         'DTDateZoneTime
         '
@@ -496,258 +809,27 @@ Partial Class DeckLogUpdate
         Me.lblVessel.TabIndex = 0
         Me.lblVessel.Text = "Vessel:"
         '
-        'cboLo
+        'Label5
         '
-        Me.cboLo.BackColor = System.Drawing.SystemColors.Window
-        Me.cboLo.Cursor = System.Windows.Forms.Cursors.Default
-        Me.cboLo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboLo.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cboLo.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.cboLo.Items.AddRange(New Object() {"W", "E"})
-        Me.cboLo.Location = New System.Drawing.Point(1293, 52)
-        Me.cboLo.Name = "cboLo"
-        Me.cboLo.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.cboLo.Size = New System.Drawing.Size(41, 24)
-        Me.cboLo.TabIndex = 200
+        Me.Label5.BackColor = System.Drawing.Color.Silver
+        Me.Label5.Cursor = System.Windows.Forms.Cursors.Default
+        Me.Label5.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.Label5.Location = New System.Drawing.Point(1218, 56)
+        Me.Label5.Name = "Label5"
+        Me.Label5.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.Label5.Size = New System.Drawing.Size(66, 18)
+        Me.Label5.TabIndex = 220
+        Me.Label5.Text = "L/Lo Type:"
         '
-        'cboL
+        'cboLocType
         '
-        Me.cboL.BackColor = System.Drawing.SystemColors.Window
-        Me.cboL.Cursor = System.Windows.Forms.Cursors.Default
-        Me.cboL.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboL.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cboL.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.cboL.Items.AddRange(New Object() {"N", "S"})
-        Me.cboL.Location = New System.Drawing.Point(1094, 52)
-        Me.cboL.Name = "cboL"
-        Me.cboL.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.cboL.Size = New System.Drawing.Size(41, 24)
-        Me.cboL.TabIndex = 197
-        '
-        'txtLDeg
-        '
-        Me.txtLDeg.AcceptsReturn = True
-        Me.txtLDeg.BackColor = System.Drawing.SystemColors.Window
-        Me.txtLDeg.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.txtLDeg.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtLDeg.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.txtLDeg.HideSelection = False
-        Me.txtLDeg.Location = New System.Drawing.Point(1022, 52)
-        Me.txtLDeg.MaxLength = 2
-        Me.txtLDeg.Name = "txtLDeg"
-        Me.txtLDeg.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.txtLDeg.Size = New System.Drawing.Size(25, 22)
-        Me.txtLDeg.TabIndex = 195
-        '
-        'txtLoMin
-        '
-        Me.txtLoMin.AcceptsReturn = True
-        Me.txtLoMin.BackColor = System.Drawing.SystemColors.Window
-        Me.txtLoMin.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.txtLoMin.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtLoMin.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.txtLoMin.HideSelection = False
-        Me.txtLoMin.Location = New System.Drawing.Point(1249, 53)
-        Me.txtLoMin.MaxLength = 4
-        Me.txtLoMin.Name = "txtLoMin"
-        Me.txtLoMin.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.txtLoMin.Size = New System.Drawing.Size(33, 22)
-        Me.txtLoMin.TabIndex = 199
-        '
-        'txtLoDeg
-        '
-        Me.txtLoDeg.AcceptsReturn = True
-        Me.txtLoDeg.BackColor = System.Drawing.SystemColors.Window
-        Me.txtLoDeg.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.txtLoDeg.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtLoDeg.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.txtLoDeg.HideSelection = False
-        Me.txtLoDeg.Location = New System.Drawing.Point(1207, 53)
-        Me.txtLoDeg.MaxLength = 3
-        Me.txtLoDeg.Name = "txtLoDeg"
-        Me.txtLoDeg.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.txtLoDeg.Size = New System.Drawing.Size(33, 22)
-        Me.txtLoDeg.TabIndex = 198
-        '
-        'txtLMin
-        '
-        Me.txtLMin.AcceptsReturn = True
-        Me.txtLMin.BackColor = System.Drawing.SystemColors.Window
-        Me.txtLMin.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.txtLMin.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtLMin.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.txtLMin.HideSelection = False
-        Me.txtLMin.Location = New System.Drawing.Point(1054, 52)
-        Me.txtLMin.MaxLength = 4
-        Me.txtLMin.Name = "txtLMin"
-        Me.txtLMin.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.txtLMin.Size = New System.Drawing.Size(33, 22)
-        Me.txtLMin.TabIndex = 196
-        '
-        'lblLoMin
-        '
-        Me.lblLoMin.BackColor = System.Drawing.SystemColors.Window
-        Me.lblLoMin.Cursor = System.Windows.Forms.Cursors.Default
-        Me.lblLoMin.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblLoMin.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblLoMin.Location = New System.Drawing.Point(1282, 54)
-        Me.lblLoMin.Name = "lblLoMin"
-        Me.lblLoMin.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.lblLoMin.Size = New System.Drawing.Size(9, 17)
-        Me.lblLoMin.TabIndex = 206
-        Me.lblLoMin.Text = "'"
-        '
-        'lblLoDeg
-        '
-        Me.lblLoDeg.BackColor = System.Drawing.SystemColors.Window
-        Me.lblLoDeg.Cursor = System.Windows.Forms.Cursors.Default
-        Me.lblLoDeg.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblLoDeg.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblLoDeg.Location = New System.Drawing.Point(1241, 54)
-        Me.lblLoDeg.Name = "lblLoDeg"
-        Me.lblLoDeg.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.lblLoDeg.Size = New System.Drawing.Size(9, 17)
-        Me.lblLoDeg.TabIndex = 205
-        Me.lblLoDeg.Text = "°"
-        '
-        'lblDRLo
-        '
-        Me.lblDRLo.BackColor = System.Drawing.Color.Silver
-        Me.lblDRLo.Cursor = System.Windows.Forms.Cursors.Default
-        Me.lblDRLo.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDRLo.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblDRLo.Location = New System.Drawing.Point(1145, 56)
-        Me.lblDRLo.Name = "lblDRLo"
-        Me.lblDRLo.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.lblDRLo.Size = New System.Drawing.Size(60, 16)
-        Me.lblDRLo.TabIndex = 204
-        Me.lblDRLo.Text = "DR Long"
-        '
-        'lblLMin
-        '
-        Me.lblLMin.BackColor = System.Drawing.SystemColors.Window
-        Me.lblLMin.Cursor = System.Windows.Forms.Cursors.Default
-        Me.lblLMin.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblLMin.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblLMin.Location = New System.Drawing.Point(1087, 54)
-        Me.lblLMin.Name = "lblLMin"
-        Me.lblLMin.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.lblLMin.Size = New System.Drawing.Size(9, 17)
-        Me.lblLMin.TabIndex = 203
-        Me.lblLMin.Text = "'"
-        '
-        'lblLDeg
-        '
-        Me.lblLDeg.BackColor = System.Drawing.SystemColors.Window
-        Me.lblLDeg.Cursor = System.Windows.Forms.Cursors.Default
-        Me.lblLDeg.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblLDeg.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblLDeg.Location = New System.Drawing.Point(1047, 54)
-        Me.lblLDeg.Name = "lblLDeg"
-        Me.lblLDeg.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.lblLDeg.Size = New System.Drawing.Size(9, 17)
-        Me.lblLDeg.TabIndex = 202
-        Me.lblLDeg.Text = "°"
-        '
-        'lblDRL
-        '
-        Me.lblDRL.BackColor = System.Drawing.Color.Silver
-        Me.lblDRL.Cursor = System.Windows.Forms.Cursors.Default
-        Me.lblDRL.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDRL.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblDRL.Location = New System.Drawing.Point(970, 56)
-        Me.lblDRL.Name = "lblDRL"
-        Me.lblDRL.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.lblDRL.Size = New System.Drawing.Size(50, 16)
-        Me.lblDRL.TabIndex = 201
-        Me.lblDRL.Text = "DR Lat"
-        '
-        'txtWeather
-        '
-        Me.txtWeather.Location = New System.Drawing.Point(83, 80)
-        Me.txtWeather.Multiline = True
-        Me.txtWeather.Name = "txtWeather"
-        Me.txtWeather.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.txtWeather.Size = New System.Drawing.Size(535, 43)
-        Me.txtWeather.TabIndex = 208
-        '
-        'lblWeather
-        '
-        Me.lblWeather.AutoSize = True
-        Me.lblWeather.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblWeather.Location = New System.Drawing.Point(21, 79)
-        Me.lblWeather.Name = "lblWeather"
-        Me.lblWeather.Size = New System.Drawing.Size(55, 15)
-        Me.lblWeather.TabIndex = 207
-        Me.lblWeather.Text = "Weather:"
-        '
-        'txtRemarks
-        '
-        Me.txtRemarks.Location = New System.Drawing.Point(684, 82)
-        Me.txtRemarks.Multiline = True
-        Me.txtRemarks.Name = "txtRemarks"
-        Me.txtRemarks.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.txtRemarks.Size = New System.Drawing.Size(650, 41)
-        Me.txtRemarks.TabIndex = 210
-        '
-        'lblRemarks
-        '
-        Me.lblRemarks.AutoSize = True
-        Me.lblRemarks.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblRemarks.Location = New System.Drawing.Point(623, 84)
-        Me.lblRemarks.Name = "lblRemarks"
-        Me.lblRemarks.Size = New System.Drawing.Size(55, 15)
-        Me.lblRemarks.TabIndex = 209
-        Me.lblRemarks.Text = "Remarks:"
-        '
-        'Label4
-        '
-        Me.Label4.BackColor = System.Drawing.SystemColors.Window
-        Me.Label4.Cursor = System.Windows.Forms.Cursors.Default
-        Me.Label4.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label4.Location = New System.Drawing.Point(837, 55)
-        Me.Label4.Name = "Label4"
-        Me.Label4.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Label4.Size = New System.Drawing.Size(9, 17)
-        Me.Label4.TabIndex = 213
-        Me.Label4.Text = "°"
-        '
-        'txtCTrue
-        '
-        Me.txtCTrue.Location = New System.Drawing.Point(777, 53)
-        Me.txtCTrue.MaxLength = 3
-        Me.txtCTrue.Name = "txtCTrue"
-        Me.txtCTrue.Size = New System.Drawing.Size(59, 20)
-        Me.txtCTrue.TabIndex = 212
-        '
-        'lblCTrue
-        '
-        Me.lblCTrue.AutoSize = True
-        Me.lblCTrue.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCTrue.Location = New System.Drawing.Point(701, 55)
-        Me.lblCTrue.Name = "lblCTrue"
-        Me.lblCTrue.Size = New System.Drawing.Size(76, 15)
-        Me.lblCTrue.TabIndex = 211
-        Me.lblCTrue.Text = "Course True:"
-        '
-        'txtSpeed
-        '
-        Me.txtSpeed.Location = New System.Drawing.Point(900, 53)
-        Me.txtSpeed.MaxLength = 3
-        Me.txtSpeed.Name = "txtSpeed"
-        Me.txtSpeed.Size = New System.Drawing.Size(59, 20)
-        Me.txtSpeed.TabIndex = 215
-        '
-        'lblSpeed
-        '
-        Me.lblSpeed.AutoSize = True
-        Me.lblSpeed.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblSpeed.Location = New System.Drawing.Point(852, 55)
-        Me.lblSpeed.Name = "lblSpeed"
-        Me.lblSpeed.Size = New System.Drawing.Size(43, 15)
-        Me.lblSpeed.TabIndex = 214
-        Me.lblSpeed.Text = "Speed:"
+        Me.cboLocType.FormattingEnabled = True
+        Me.cboLocType.Items.AddRange(New Object() {"DR", "GPS", "Fix"})
+        Me.cboLocType.Location = New System.Drawing.Point(1278, 54)
+        Me.cboLocType.Name = "cboLocType"
+        Me.cboLocType.Size = New System.Drawing.Size(59, 21)
+        Me.cboLocType.TabIndex = 221
         '
         'DeckLogUpdate
         '
@@ -828,4 +910,10 @@ Partial Class DeckLogUpdate
     Public WithEvents lblLMin As Label
     Public WithEvents lblLDeg As Label
     Public WithEvents lblDRL As Label
+    Friend WithEvents btnClearFields As Button
+    Friend WithEvents btnAddNew As Button
+    Friend WithEvents btnUpdateExisting As Button
+    Friend WithEvents btnDeleteSight As Button
+    Friend WithEvents cboLocType As ComboBox
+    Public WithEvents Label5 As Label
 End Class
