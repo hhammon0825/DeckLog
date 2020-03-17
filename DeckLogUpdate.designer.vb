@@ -39,6 +39,8 @@ Partial Class DeckLogUpdate
         Me.btnSaveFile = New System.Windows.Forms.Button()
         Me.btnInfoForm = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.cboLocType = New System.Windows.Forms.ComboBox()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.btnClearFields = New System.Windows.Forms.Button()
         Me.btnAddNew = New System.Windows.Forms.Button()
         Me.btnUpdateExisting = New System.Windows.Forms.Button()
@@ -86,8 +88,6 @@ Partial Class DeckLogUpdate
         Me.lblNavigator = New System.Windows.Forms.Label()
         Me.txtVessel = New System.Windows.Forms.TextBox()
         Me.lblVessel = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.cboLocType = New System.Windows.Forms.ComboBox()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -300,6 +300,28 @@ Partial Class DeckLogUpdate
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Update Fields"
         '
+        'cboLocType
+        '
+        Me.cboLocType.FormattingEnabled = True
+        Me.cboLocType.Items.AddRange(New Object() {"DR", "GPS", "Fix"})
+        Me.cboLocType.Location = New System.Drawing.Point(1278, 54)
+        Me.cboLocType.Name = "cboLocType"
+        Me.cboLocType.Size = New System.Drawing.Size(59, 21)
+        Me.cboLocType.TabIndex = 221
+        '
+        'Label5
+        '
+        Me.Label5.BackColor = System.Drawing.Color.Silver
+        Me.Label5.Cursor = System.Windows.Forms.Cursors.Default
+        Me.Label5.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.Label5.Location = New System.Drawing.Point(1218, 56)
+        Me.Label5.Name = "Label5"
+        Me.Label5.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.Label5.Size = New System.Drawing.Size(66, 18)
+        Me.Label5.TabIndex = 220
+        Me.Label5.Text = "L/Lo Type:"
+        '
         'btnClearFields
         '
         Me.btnClearFields.BackColor = System.Drawing.Color.Yellow
@@ -351,7 +373,7 @@ Partial Class DeckLogUpdate
         'txtSpeed
         '
         Me.txtSpeed.Location = New System.Drawing.Point(782, 53)
-        Me.txtSpeed.MaxLength = 3
+        Me.txtSpeed.MaxLength = 4
         Me.txtSpeed.Name = "txtSpeed"
         Me.txtSpeed.Size = New System.Drawing.Size(59, 20)
         Me.txtSpeed.TabIndex = 215
@@ -381,9 +403,11 @@ Partial Class DeckLogUpdate
         '
         'txtCTrue
         '
+        Me.txtCTrue.Enabled = False
         Me.txtCTrue.Location = New System.Drawing.Point(659, 53)
         Me.txtCTrue.MaxLength = 3
         Me.txtCTrue.Name = "txtCTrue"
+        Me.txtCTrue.ReadOnly = True
         Me.txtCTrue.Size = New System.Drawing.Size(59, 20)
         Me.txtCTrue.TabIndex = 212
         '
@@ -808,28 +832,6 @@ Partial Class DeckLogUpdate
         Me.lblVessel.Size = New System.Drawing.Size(44, 15)
         Me.lblVessel.TabIndex = 0
         Me.lblVessel.Text = "Vessel:"
-        '
-        'Label5
-        '
-        Me.Label5.BackColor = System.Drawing.Color.Silver
-        Me.Label5.Cursor = System.Windows.Forms.Cursors.Default
-        Me.Label5.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label5.Location = New System.Drawing.Point(1218, 56)
-        Me.Label5.Name = "Label5"
-        Me.Label5.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Label5.Size = New System.Drawing.Size(66, 18)
-        Me.Label5.TabIndex = 220
-        Me.Label5.Text = "L/Lo Type:"
-        '
-        'cboLocType
-        '
-        Me.cboLocType.FormattingEnabled = True
-        Me.cboLocType.Items.AddRange(New Object() {"DR", "GPS", "Fix"})
-        Me.cboLocType.Location = New System.Drawing.Point(1278, 54)
-        Me.cboLocType.Name = "cboLocType"
-        Me.cboLocType.Size = New System.Drawing.Size(59, 21)
-        Me.cboLocType.TabIndex = 221
         '
         'DeckLogUpdate
         '
