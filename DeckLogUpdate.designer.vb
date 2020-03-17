@@ -39,10 +39,19 @@ Partial Class DeckLogUpdate
         Me.btnSaveFile = New System.Windows.Forms.Button()
         Me.btnInfoForm = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.cboDev = New System.Windows.Forms.ComboBox()
+        Me.txtDev = New System.Windows.Forms.TextBox()
+        Me.lblDev = New System.Windows.Forms.Label()
+        Me.cboVar = New System.Windows.Forms.ComboBox()
+        Me.txtVar = New System.Windows.Forms.TextBox()
+        Me.lblVariation = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtCompass = New System.Windows.Forms.TextBox()
         Me.lblCompass = New System.Windows.Forms.Label()
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.DTDateZoneTime = New System.Windows.Forms.DateTimePicker()
         Me.lblZoneDT = New System.Windows.Forms.Label()
         Me.txtTo = New System.Windows.Forms.TextBox()
         Me.lblTo = New System.Windows.Forms.Label()
@@ -52,9 +61,27 @@ Partial Class DeckLogUpdate
         Me.lblNavigator = New System.Windows.Forms.Label()
         Me.txtVessel = New System.Windows.Forms.TextBox()
         Me.lblVessel = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.cboLo = New System.Windows.Forms.ComboBox()
+        Me.cboL = New System.Windows.Forms.ComboBox()
+        Me.txtLDeg = New System.Windows.Forms.TextBox()
+        Me.txtLoMin = New System.Windows.Forms.TextBox()
+        Me.txtLoDeg = New System.Windows.Forms.TextBox()
+        Me.txtLMin = New System.Windows.Forms.TextBox()
+        Me.lblLoMin = New System.Windows.Forms.Label()
+        Me.lblLoDeg = New System.Windows.Forms.Label()
+        Me.lblDRLo = New System.Windows.Forms.Label()
+        Me.lblLMin = New System.Windows.Forms.Label()
+        Me.lblLDeg = New System.Windows.Forms.Label()
+        Me.lblDRL = New System.Windows.Forms.Label()
+        Me.txtWeather = New System.Windows.Forms.TextBox()
+        Me.lblWeather = New System.Windows.Forms.Label()
+        Me.txtRemarks = New System.Windows.Forms.TextBox()
+        Me.lblRemarks = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.txtCTrue = New System.Windows.Forms.TextBox()
+        Me.lblCTrue = New System.Windows.Forms.Label()
+        Me.txtSpeed = New System.Windows.Forms.TextBox()
+        Me.lblSpeed = New System.Windows.Forms.Label()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -211,13 +238,40 @@ Partial Class DeckLogUpdate
         'GroupBox1
         '
         Me.GroupBox1.BackColor = System.Drawing.Color.Silver
-        Me.GroupBox1.Controls.Add(Me.TextBox2)
+        Me.GroupBox1.Controls.Add(Me.txtSpeed)
+        Me.GroupBox1.Controls.Add(Me.lblSpeed)
+        Me.GroupBox1.Controls.Add(Me.Label4)
+        Me.GroupBox1.Controls.Add(Me.txtCTrue)
+        Me.GroupBox1.Controls.Add(Me.lblCTrue)
+        Me.GroupBox1.Controls.Add(Me.txtRemarks)
+        Me.GroupBox1.Controls.Add(Me.lblRemarks)
+        Me.GroupBox1.Controls.Add(Me.txtWeather)
+        Me.GroupBox1.Controls.Add(Me.lblWeather)
+        Me.GroupBox1.Controls.Add(Me.cboLo)
+        Me.GroupBox1.Controls.Add(Me.cboL)
+        Me.GroupBox1.Controls.Add(Me.txtLDeg)
+        Me.GroupBox1.Controls.Add(Me.txtLoMin)
+        Me.GroupBox1.Controls.Add(Me.txtLoDeg)
+        Me.GroupBox1.Controls.Add(Me.txtLMin)
+        Me.GroupBox1.Controls.Add(Me.lblLoMin)
+        Me.GroupBox1.Controls.Add(Me.lblLoDeg)
+        Me.GroupBox1.Controls.Add(Me.lblDRLo)
+        Me.GroupBox1.Controls.Add(Me.lblLMin)
+        Me.GroupBox1.Controls.Add(Me.lblLDeg)
+        Me.GroupBox1.Controls.Add(Me.lblDRL)
+        Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label2)
+        Me.GroupBox1.Controls.Add(Me.cboDev)
+        Me.GroupBox1.Controls.Add(Me.txtDev)
+        Me.GroupBox1.Controls.Add(Me.lblDev)
+        Me.GroupBox1.Controls.Add(Me.cboVar)
+        Me.GroupBox1.Controls.Add(Me.txtVar)
+        Me.GroupBox1.Controls.Add(Me.lblVariation)
         Me.GroupBox1.Controls.Add(Me.Label6)
         Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Controls.Add(Me.TextBox1)
+        Me.GroupBox1.Controls.Add(Me.txtCompass)
         Me.GroupBox1.Controls.Add(Me.lblCompass)
-        Me.GroupBox1.Controls.Add(Me.DateTimePicker1)
+        Me.GroupBox1.Controls.Add(Me.DTDateZoneTime)
         Me.GroupBox1.Controls.Add(Me.lblZoneDT)
         Me.GroupBox1.Controls.Add(Me.txtTo)
         Me.GroupBox1.Controls.Add(Me.lblTo)
@@ -234,41 +288,135 @@ Partial Class DeckLogUpdate
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Update Fields"
         '
+        'Label3
+        '
+        Me.Label3.BackColor = System.Drawing.SystemColors.Window
+        Me.Label3.Cursor = System.Windows.Forms.Cursors.Default
+        Me.Label3.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.Label3.Location = New System.Drawing.Point(653, 55)
+        Me.Label3.Name = "Label3"
+        Me.Label3.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.Label3.Size = New System.Drawing.Size(9, 17)
+        Me.Label3.TabIndex = 180
+        Me.Label3.Text = "°"
+        '
+        'Label2
+        '
+        Me.Label2.BackColor = System.Drawing.SystemColors.Window
+        Me.Label2.Cursor = System.Windows.Forms.Cursors.Default
+        Me.Label2.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.Label2.Location = New System.Drawing.Point(514, 55)
+        Me.Label2.Name = "Label2"
+        Me.Label2.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.Label2.Size = New System.Drawing.Size(9, 17)
+        Me.Label2.TabIndex = 179
+        Me.Label2.Text = "°"
+        '
+        'cboDev
+        '
+        Me.cboDev.FormattingEnabled = True
+        Me.cboDev.Items.AddRange(New Object() {"W", "E"})
+        Me.cboDev.Location = New System.Drawing.Point(664, 52)
+        Me.cboDev.Name = "cboDev"
+        Me.cboDev.Size = New System.Drawing.Size(35, 21)
+        Me.cboDev.TabIndex = 178
+        '
+        'txtDev
+        '
+        Me.txtDev.Location = New System.Drawing.Point(626, 53)
+        Me.txtDev.MaxLength = 2
+        Me.txtDev.Name = "txtDev"
+        Me.txtDev.Size = New System.Drawing.Size(25, 20)
+        Me.txtDev.TabIndex = 177
+        '
+        'lblDev
+        '
+        Me.lblDev.AutoSize = True
+        Me.lblDev.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDev.Location = New System.Drawing.Point(562, 55)
+        Me.lblDev.Name = "lblDev"
+        Me.lblDev.Size = New System.Drawing.Size(62, 15)
+        Me.lblDev.TabIndex = 176
+        Me.lblDev.Text = "Deviation:"
+        '
+        'cboVar
+        '
+        Me.cboVar.FormattingEnabled = True
+        Me.cboVar.Items.AddRange(New Object() {"W", "E"})
+        Me.cboVar.Location = New System.Drawing.Point(523, 52)
+        Me.cboVar.Name = "cboVar"
+        Me.cboVar.Size = New System.Drawing.Size(35, 21)
+        Me.cboVar.TabIndex = 175
+        '
+        'txtVar
+        '
+        Me.txtVar.Location = New System.Drawing.Point(488, 53)
+        Me.txtVar.MaxLength = 2
+        Me.txtVar.Name = "txtVar"
+        Me.txtVar.Size = New System.Drawing.Size(25, 20)
+        Me.txtVar.TabIndex = 174
+        '
+        'lblVariation
+        '
+        Me.lblVariation.AutoSize = True
+        Me.lblVariation.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblVariation.Location = New System.Drawing.Point(427, 55)
+        Me.lblVariation.Name = "lblVariation"
+        Me.lblVariation.Size = New System.Drawing.Size(57, 15)
+        Me.lblVariation.TabIndex = 173
+        Me.lblVariation.Text = "Variation:"
+        '
+        'Label6
+        '
+        Me.Label6.BackColor = System.Drawing.SystemColors.Window
+        Me.Label6.Cursor = System.Windows.Forms.Cursors.Default
+        Me.Label6.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.Label6.Location = New System.Drawing.Point(412, 53)
+        Me.Label6.Name = "Label6"
+        Me.Label6.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.Label6.Size = New System.Drawing.Size(9, 17)
+        Me.Label6.TabIndex = 172
+        Me.Label6.Text = "°"
+        '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(461, 52)
+        Me.Label1.Location = New System.Drawing.Point(417, 53)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(0, 15)
         Me.Label1.TabIndex = 12
         '
-        'TextBox1
+        'txtCompass
         '
-        Me.TextBox1.Location = New System.Drawing.Point(396, 50)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(59, 20)
-        Me.TextBox1.TabIndex = 11
+        Me.txtCompass.Location = New System.Drawing.Point(352, 51)
+        Me.txtCompass.MaxLength = 3
+        Me.txtCompass.Name = "txtCompass"
+        Me.txtCompass.Size = New System.Drawing.Size(59, 20)
+        Me.txtCompass.TabIndex = 11
         '
         'lblCompass
         '
         Me.lblCompass.AutoSize = True
         Me.lblCompass.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCompass.Location = New System.Drawing.Point(292, 52)
+        Me.lblCompass.Location = New System.Drawing.Point(278, 53)
         Me.lblCompass.Name = "lblCompass"
-        Me.lblCompass.Size = New System.Drawing.Size(100, 15)
+        Me.lblCompass.Size = New System.Drawing.Size(73, 15)
         Me.lblCompass.TabIndex = 10
-        Me.lblCompass.Text = "Compass Course:"
+        Me.lblCompass.Text = "Course PSC:"
         '
-        'DateTimePicker1
+        'DTDateZoneTime
         '
-        Me.DateTimePicker1.CustomFormat = "MM/dd/yyyy HH:mm:ss"
-        Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DateTimePicker1.Location = New System.Drawing.Point(128, 50)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.ShowUpDown = True
-        Me.DateTimePicker1.Size = New System.Drawing.Size(144, 20)
-        Me.DateTimePicker1.TabIndex = 9
+        Me.DTDateZoneTime.CustomFormat = "MM/dd/yyyy HH:mm:ss"
+        Me.DTDateZoneTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.DTDateZoneTime.Location = New System.Drawing.Point(128, 50)
+        Me.DTDateZoneTime.Name = "DTDateZoneTime"
+        Me.DTDateZoneTime.ShowUpDown = True
+        Me.DTDateZoneTime.Size = New System.Drawing.Size(144, 20)
+        Me.DTDateZoneTime.TabIndex = 9
         '
         'lblZoneDT
         '
@@ -282,7 +430,7 @@ Partial Class DeckLogUpdate
         '
         'txtTo
         '
-        Me.txtTo.Location = New System.Drawing.Point(696, 18)
+        Me.txtTo.Location = New System.Drawing.Point(712, 20)
         Me.txtTo.Name = "txtTo"
         Me.txtTo.Size = New System.Drawing.Size(160, 20)
         Me.txtTo.TabIndex = 7
@@ -291,7 +439,7 @@ Partial Class DeckLogUpdate
         '
         Me.lblTo.AutoSize = True
         Me.lblTo.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTo.Location = New System.Drawing.Point(667, 20)
+        Me.lblTo.Location = New System.Drawing.Point(683, 22)
         Me.lblTo.Name = "lblTo"
         Me.lblTo.Size = New System.Drawing.Size(24, 15)
         Me.lblTo.TabIndex = 6
@@ -299,7 +447,7 @@ Partial Class DeckLogUpdate
         '
         'txtFrom
         '
-        Me.txtFrom.Location = New System.Drawing.Point(502, 18)
+        Me.txtFrom.Location = New System.Drawing.Point(518, 20)
         Me.txtFrom.Name = "txtFrom"
         Me.txtFrom.Size = New System.Drawing.Size(160, 20)
         Me.txtFrom.TabIndex = 5
@@ -308,7 +456,7 @@ Partial Class DeckLogUpdate
         '
         Me.lblFrom.AutoSize = True
         Me.lblFrom.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFrom.Location = New System.Drawing.Point(461, 20)
+        Me.lblFrom.Location = New System.Drawing.Point(477, 22)
         Me.lblFrom.Name = "lblFrom"
         Me.lblFrom.Size = New System.Drawing.Size(37, 15)
         Me.lblFrom.TabIndex = 4
@@ -316,7 +464,7 @@ Partial Class DeckLogUpdate
         '
         'txtNavigator
         '
-        Me.txtNavigator.Location = New System.Drawing.Point(295, 18)
+        Me.txtNavigator.Location = New System.Drawing.Point(311, 20)
         Me.txtNavigator.Name = "txtNavigator"
         Me.txtNavigator.Size = New System.Drawing.Size(160, 20)
         Me.txtNavigator.TabIndex = 3
@@ -325,7 +473,7 @@ Partial Class DeckLogUpdate
         '
         Me.lblNavigator.AutoSize = True
         Me.lblNavigator.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNavigator.Location = New System.Drawing.Point(229, 20)
+        Me.lblNavigator.Location = New System.Drawing.Point(245, 22)
         Me.lblNavigator.Name = "lblNavigator"
         Me.lblNavigator.Size = New System.Drawing.Size(63, 15)
         Me.lblNavigator.TabIndex = 2
@@ -333,7 +481,7 @@ Partial Class DeckLogUpdate
         '
         'txtVessel
         '
-        Me.txtVessel.Location = New System.Drawing.Point(62, 18)
+        Me.txtVessel.Location = New System.Drawing.Point(78, 20)
         Me.txtVessel.Name = "txtVessel"
         Me.txtVessel.Size = New System.Drawing.Size(160, 20)
         Me.txtVessel.TabIndex = 1
@@ -342,41 +490,264 @@ Partial Class DeckLogUpdate
         '
         Me.lblVessel.AutoSize = True
         Me.lblVessel.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblVessel.Location = New System.Drawing.Point(11, 20)
+        Me.lblVessel.Location = New System.Drawing.Point(27, 22)
         Me.lblVessel.Name = "lblVessel"
         Me.lblVessel.Size = New System.Drawing.Size(44, 15)
         Me.lblVessel.TabIndex = 0
         Me.lblVessel.Text = "Vessel:"
         '
-        'Label6
+        'cboLo
         '
-        Me.Label6.BackColor = System.Drawing.SystemColors.Window
-        Me.Label6.Cursor = System.Windows.Forms.Cursors.Default
-        Me.Label6.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label6.Location = New System.Drawing.Point(456, 52)
-        Me.Label6.Name = "Label6"
-        Me.Label6.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Label6.Size = New System.Drawing.Size(9, 17)
-        Me.Label6.TabIndex = 172
-        Me.Label6.Text = "°"
+        Me.cboLo.BackColor = System.Drawing.SystemColors.Window
+        Me.cboLo.Cursor = System.Windows.Forms.Cursors.Default
+        Me.cboLo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboLo.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cboLo.ForeColor = System.Drawing.SystemColors.WindowText
+        Me.cboLo.Items.AddRange(New Object() {"W", "E"})
+        Me.cboLo.Location = New System.Drawing.Point(1293, 52)
+        Me.cboLo.Name = "cboLo"
+        Me.cboLo.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.cboLo.Size = New System.Drawing.Size(41, 24)
+        Me.cboLo.TabIndex = 200
         '
-        'TextBox2
+        'cboL
         '
-        Me.TextBox2.Location = New System.Drawing.Point(575, 52)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(59, 20)
-        Me.TextBox2.TabIndex = 174
+        Me.cboL.BackColor = System.Drawing.SystemColors.Window
+        Me.cboL.Cursor = System.Windows.Forms.Cursors.Default
+        Me.cboL.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboL.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cboL.ForeColor = System.Drawing.SystemColors.WindowText
+        Me.cboL.Items.AddRange(New Object() {"N", "S"})
+        Me.cboL.Location = New System.Drawing.Point(1094, 52)
+        Me.cboL.Name = "cboL"
+        Me.cboL.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.cboL.Size = New System.Drawing.Size(41, 24)
+        Me.cboL.TabIndex = 197
         '
-        'Label2
+        'txtLDeg
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(471, 54)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(100, 15)
-        Me.Label2.TabIndex = 173
-        Me.Label2.Text = "Compass Course:"
+        Me.txtLDeg.AcceptsReturn = True
+        Me.txtLDeg.BackColor = System.Drawing.SystemColors.Window
+        Me.txtLDeg.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtLDeg.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtLDeg.ForeColor = System.Drawing.SystemColors.WindowText
+        Me.txtLDeg.HideSelection = False
+        Me.txtLDeg.Location = New System.Drawing.Point(1022, 52)
+        Me.txtLDeg.MaxLength = 2
+        Me.txtLDeg.Name = "txtLDeg"
+        Me.txtLDeg.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.txtLDeg.Size = New System.Drawing.Size(25, 22)
+        Me.txtLDeg.TabIndex = 195
+        '
+        'txtLoMin
+        '
+        Me.txtLoMin.AcceptsReturn = True
+        Me.txtLoMin.BackColor = System.Drawing.SystemColors.Window
+        Me.txtLoMin.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtLoMin.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtLoMin.ForeColor = System.Drawing.SystemColors.WindowText
+        Me.txtLoMin.HideSelection = False
+        Me.txtLoMin.Location = New System.Drawing.Point(1249, 53)
+        Me.txtLoMin.MaxLength = 4
+        Me.txtLoMin.Name = "txtLoMin"
+        Me.txtLoMin.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.txtLoMin.Size = New System.Drawing.Size(33, 22)
+        Me.txtLoMin.TabIndex = 199
+        '
+        'txtLoDeg
+        '
+        Me.txtLoDeg.AcceptsReturn = True
+        Me.txtLoDeg.BackColor = System.Drawing.SystemColors.Window
+        Me.txtLoDeg.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtLoDeg.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtLoDeg.ForeColor = System.Drawing.SystemColors.WindowText
+        Me.txtLoDeg.HideSelection = False
+        Me.txtLoDeg.Location = New System.Drawing.Point(1207, 53)
+        Me.txtLoDeg.MaxLength = 3
+        Me.txtLoDeg.Name = "txtLoDeg"
+        Me.txtLoDeg.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.txtLoDeg.Size = New System.Drawing.Size(33, 22)
+        Me.txtLoDeg.TabIndex = 198
+        '
+        'txtLMin
+        '
+        Me.txtLMin.AcceptsReturn = True
+        Me.txtLMin.BackColor = System.Drawing.SystemColors.Window
+        Me.txtLMin.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtLMin.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtLMin.ForeColor = System.Drawing.SystemColors.WindowText
+        Me.txtLMin.HideSelection = False
+        Me.txtLMin.Location = New System.Drawing.Point(1054, 52)
+        Me.txtLMin.MaxLength = 4
+        Me.txtLMin.Name = "txtLMin"
+        Me.txtLMin.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.txtLMin.Size = New System.Drawing.Size(33, 22)
+        Me.txtLMin.TabIndex = 196
+        '
+        'lblLoMin
+        '
+        Me.lblLoMin.BackColor = System.Drawing.SystemColors.Window
+        Me.lblLoMin.Cursor = System.Windows.Forms.Cursors.Default
+        Me.lblLoMin.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblLoMin.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.lblLoMin.Location = New System.Drawing.Point(1282, 54)
+        Me.lblLoMin.Name = "lblLoMin"
+        Me.lblLoMin.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.lblLoMin.Size = New System.Drawing.Size(9, 17)
+        Me.lblLoMin.TabIndex = 206
+        Me.lblLoMin.Text = "'"
+        '
+        'lblLoDeg
+        '
+        Me.lblLoDeg.BackColor = System.Drawing.SystemColors.Window
+        Me.lblLoDeg.Cursor = System.Windows.Forms.Cursors.Default
+        Me.lblLoDeg.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblLoDeg.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.lblLoDeg.Location = New System.Drawing.Point(1241, 54)
+        Me.lblLoDeg.Name = "lblLoDeg"
+        Me.lblLoDeg.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.lblLoDeg.Size = New System.Drawing.Size(9, 17)
+        Me.lblLoDeg.TabIndex = 205
+        Me.lblLoDeg.Text = "°"
+        '
+        'lblDRLo
+        '
+        Me.lblDRLo.BackColor = System.Drawing.Color.Silver
+        Me.lblDRLo.Cursor = System.Windows.Forms.Cursors.Default
+        Me.lblDRLo.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDRLo.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.lblDRLo.Location = New System.Drawing.Point(1145, 56)
+        Me.lblDRLo.Name = "lblDRLo"
+        Me.lblDRLo.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.lblDRLo.Size = New System.Drawing.Size(60, 16)
+        Me.lblDRLo.TabIndex = 204
+        Me.lblDRLo.Text = "DR Long"
+        '
+        'lblLMin
+        '
+        Me.lblLMin.BackColor = System.Drawing.SystemColors.Window
+        Me.lblLMin.Cursor = System.Windows.Forms.Cursors.Default
+        Me.lblLMin.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblLMin.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.lblLMin.Location = New System.Drawing.Point(1087, 54)
+        Me.lblLMin.Name = "lblLMin"
+        Me.lblLMin.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.lblLMin.Size = New System.Drawing.Size(9, 17)
+        Me.lblLMin.TabIndex = 203
+        Me.lblLMin.Text = "'"
+        '
+        'lblLDeg
+        '
+        Me.lblLDeg.BackColor = System.Drawing.SystemColors.Window
+        Me.lblLDeg.Cursor = System.Windows.Forms.Cursors.Default
+        Me.lblLDeg.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblLDeg.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.lblLDeg.Location = New System.Drawing.Point(1047, 54)
+        Me.lblLDeg.Name = "lblLDeg"
+        Me.lblLDeg.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.lblLDeg.Size = New System.Drawing.Size(9, 17)
+        Me.lblLDeg.TabIndex = 202
+        Me.lblLDeg.Text = "°"
+        '
+        'lblDRL
+        '
+        Me.lblDRL.BackColor = System.Drawing.Color.Silver
+        Me.lblDRL.Cursor = System.Windows.Forms.Cursors.Default
+        Me.lblDRL.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDRL.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.lblDRL.Location = New System.Drawing.Point(970, 56)
+        Me.lblDRL.Name = "lblDRL"
+        Me.lblDRL.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.lblDRL.Size = New System.Drawing.Size(50, 16)
+        Me.lblDRL.TabIndex = 201
+        Me.lblDRL.Text = "DR Lat"
+        '
+        'txtWeather
+        '
+        Me.txtWeather.Location = New System.Drawing.Point(83, 80)
+        Me.txtWeather.Multiline = True
+        Me.txtWeather.Name = "txtWeather"
+        Me.txtWeather.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.txtWeather.Size = New System.Drawing.Size(535, 43)
+        Me.txtWeather.TabIndex = 208
+        '
+        'lblWeather
+        '
+        Me.lblWeather.AutoSize = True
+        Me.lblWeather.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblWeather.Location = New System.Drawing.Point(21, 79)
+        Me.lblWeather.Name = "lblWeather"
+        Me.lblWeather.Size = New System.Drawing.Size(55, 15)
+        Me.lblWeather.TabIndex = 207
+        Me.lblWeather.Text = "Weather:"
+        '
+        'txtRemarks
+        '
+        Me.txtRemarks.Location = New System.Drawing.Point(684, 82)
+        Me.txtRemarks.Multiline = True
+        Me.txtRemarks.Name = "txtRemarks"
+        Me.txtRemarks.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.txtRemarks.Size = New System.Drawing.Size(650, 41)
+        Me.txtRemarks.TabIndex = 210
+        '
+        'lblRemarks
+        '
+        Me.lblRemarks.AutoSize = True
+        Me.lblRemarks.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblRemarks.Location = New System.Drawing.Point(623, 84)
+        Me.lblRemarks.Name = "lblRemarks"
+        Me.lblRemarks.Size = New System.Drawing.Size(55, 15)
+        Me.lblRemarks.TabIndex = 209
+        Me.lblRemarks.Text = "Remarks:"
+        '
+        'Label4
+        '
+        Me.Label4.BackColor = System.Drawing.SystemColors.Window
+        Me.Label4.Cursor = System.Windows.Forms.Cursors.Default
+        Me.Label4.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.Label4.Location = New System.Drawing.Point(837, 55)
+        Me.Label4.Name = "Label4"
+        Me.Label4.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.Label4.Size = New System.Drawing.Size(9, 17)
+        Me.Label4.TabIndex = 213
+        Me.Label4.Text = "°"
+        '
+        'txtCTrue
+        '
+        Me.txtCTrue.Location = New System.Drawing.Point(777, 53)
+        Me.txtCTrue.MaxLength = 3
+        Me.txtCTrue.Name = "txtCTrue"
+        Me.txtCTrue.Size = New System.Drawing.Size(59, 20)
+        Me.txtCTrue.TabIndex = 212
+        '
+        'lblCTrue
+        '
+        Me.lblCTrue.AutoSize = True
+        Me.lblCTrue.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCTrue.Location = New System.Drawing.Point(701, 55)
+        Me.lblCTrue.Name = "lblCTrue"
+        Me.lblCTrue.Size = New System.Drawing.Size(76, 15)
+        Me.lblCTrue.TabIndex = 211
+        Me.lblCTrue.Text = "Course True:"
+        '
+        'txtSpeed
+        '
+        Me.txtSpeed.Location = New System.Drawing.Point(900, 53)
+        Me.txtSpeed.MaxLength = 3
+        Me.txtSpeed.Name = "txtSpeed"
+        Me.txtSpeed.Size = New System.Drawing.Size(59, 20)
+        Me.txtSpeed.TabIndex = 215
+        '
+        'lblSpeed
+        '
+        Me.lblSpeed.AutoSize = True
+        Me.lblSpeed.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSpeed.Location = New System.Drawing.Point(852, 55)
+        Me.lblSpeed.Name = "lblSpeed"
+        Me.lblSpeed.Size = New System.Drawing.Size(43, 15)
+        Me.lblSpeed.TabIndex = 214
+        Me.lblSpeed.Text = "Speed:"
         '
         'DeckLogUpdate
         '
@@ -415,9 +786,9 @@ Partial Class DeckLogUpdate
     Friend WithEvents btnInfoForm As Button
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txtCompass As TextBox
     Friend WithEvents lblCompass As Label
-    Friend WithEvents DateTimePicker1 As DateTimePicker
+    Friend WithEvents DTDateZoneTime As DateTimePicker
     Friend WithEvents lblZoneDT As Label
     Friend WithEvents txtTo As TextBox
     Friend WithEvents lblTo As Label
@@ -427,7 +798,34 @@ Partial Class DeckLogUpdate
     Friend WithEvents lblNavigator As Label
     Friend WithEvents txtVessel As TextBox
     Friend WithEvents lblVessel As Label
-    Friend WithEvents TextBox2 As TextBox
-    Friend WithEvents Label2 As Label
+    Friend WithEvents txtVar As TextBox
+    Friend WithEvents lblVariation As Label
     Public WithEvents Label6 As Label
+    Friend WithEvents cboDev As ComboBox
+    Friend WithEvents txtDev As TextBox
+    Friend WithEvents lblDev As Label
+    Friend WithEvents cboVar As ComboBox
+    Public WithEvents Label3 As Label
+    Public WithEvents Label2 As Label
+    Friend WithEvents txtSpeed As TextBox
+    Friend WithEvents lblSpeed As Label
+    Public WithEvents Label4 As Label
+    Friend WithEvents txtCTrue As TextBox
+    Friend WithEvents lblCTrue As Label
+    Friend WithEvents txtRemarks As TextBox
+    Friend WithEvents lblRemarks As Label
+    Friend WithEvents txtWeather As TextBox
+    Friend WithEvents lblWeather As Label
+    Public WithEvents cboLo As ComboBox
+    Public WithEvents cboL As ComboBox
+    Public WithEvents txtLDeg As TextBox
+    Public WithEvents txtLoMin As TextBox
+    Public WithEvents txtLoDeg As TextBox
+    Public WithEvents txtLMin As TextBox
+    Public WithEvents lblLoMin As Label
+    Public WithEvents lblLoDeg As Label
+    Public WithEvents lblDRLo As Label
+    Public WithEvents lblLMin As Label
+    Public WithEvents lblLDeg As Label
+    Public WithEvents lblDRL As Label
 End Class

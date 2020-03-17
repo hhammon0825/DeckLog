@@ -191,19 +191,55 @@
         Dim n As Integer = DataGridView1.CurrentRow.Index
         ' The order of these variable and the integer indexs contained in each MUST match the order of the fields in the data grid
         UpdtRtn.Vessel = DataGridView1.Rows(n).Cells(0).Value
+        txtVessel.Text = DataGridView1.Rows(n).Cells(0).Value
+
         UpdtRtn.Navigator = DataGridView1.Rows(n).Cells(1).Value
+        txtNavigator.Text = DataGridView1.Rows(n).Cells(1).Value
+
         UpdtRtn.LocFrom = DataGridView1.Rows(n).Cells(2).Value
+        txtFrom.Text = DataGridView1.Rows(n).Cells(2).Value
+
         UpdtRtn.LocTo = DataGridView1.Rows(n).Cells(3).Value
+        txtTo.Text = DataGridView1.Rows(n).Cells(3).Value
+
         UpdtRtn.DateZoneTime = DataGridView1.Rows(n).Cells(4).Value
+        DTDateZoneTime.Value = Convert.ToDateTime(DataGridView1.Rows(n).Cells(4).Value)
+
         UpdtRtn.Compass = DataGridView1.Rows(n).Cells(5).Value
+        txtCompass.Text = DataGridView1.Rows(n).Cells(5).Value
+
         UpdtRtn.Var = DataGridView1.Rows(n).Cells(6).Value
+        txtVar.Text = DataGridView1.Rows(n).Cells(6).Value
+
         UpdtRtn.Dev = DataGridView1.Rows(n).Cells(7).Value
+        txtDev.Text = DataGridView1.Rows(n).Cells(7).Value
+
         UpdtRtn.CTrue = DataGridView1.Rows(n).Cells(8).Value
+        txtCompass.Text = DataGridView1.Rows(n).Cells(8).Value
+
         UpdtRtn.Speed = DataGridView1.Rows(n).Cells(9).Value
+        txtSpeed.Text = DataGridView1.Rows(n).Cells(9).Value
+
         UpdtRtn.PositionLatLong = DataGridView1.Rows(n).Cells(10).Value
+        Dim LLo As String = DataGridView1.Rows(n).Cells(10).Value
+        Dim LPos As Integer = LLo.IndexOf("=")
+        Dim LDegPos As Integer = LLo.IndexOf(Chr(176))
+        Dim LMinPos As Integer = LLo.IndexOf("'")
+        Dim LoPos As Integer = LLo.LastIndexOf("=")
+        Dim LoDegPos As Integer = LLo.LastIndexOf(Chr(176))
+        Dim LoMinPos As Integer = LLo.LastIndexOf("'")
+        txtLDeg.Text = LLo.Substring(LPos + 1, (LDegPos - 1) - (LPos + 1))
+        txtLMin.Text = LLo.Substring(LDegPos + 1, (LMinPos - 1) + (LDegPos + 1))
+        cboL.Text = LLo.Substring(LMinPos + 1, 1)
+        txtLoDeg.Text = LLo.Substring(LoPos + 1, (LoDegPos - 1) - (LoPos + 1))
+        txtLoMin.Text = LLo.Substring(LoDegPos + 1, (LoMinPos - 1) + (LoDegPos + 1))
+        cboLo.Text = LLo.Substring(LoMinPos + 1, 1)
+
         UpdtRtn.Weather = DataGridView1.Rows(n).Cells(11).Value
+        txtWeather.Text = DataGridView1.Rows(n).Cells(11).Value
+
         UpdtRtn.Remarks = DataGridView1.Rows(n).Cells(12).Value
-        UpdtRtn.UpdtFlag = vbNullString
+        txtRemarks.Text = DataGridView1.Rows(n).Cells(12).Value
 
     End Sub
 
