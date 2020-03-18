@@ -28,6 +28,22 @@ Partial Class DeckLogUpdate
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.DataSet2 = New System.Data.DataSet()
+        Me.DataTable1 = New System.Data.DataTable()
+        Me.DataColumn1 = New System.Data.DataColumn()
+        Me.DataColumn2 = New System.Data.DataColumn()
+        Me.DataColumn3 = New System.Data.DataColumn()
+        Me.DataColumn4 = New System.Data.DataColumn()
+        Me.DataColumn5 = New System.Data.DataColumn()
+        Me.DataColumn6 = New System.Data.DataColumn()
+        Me.DataColumn7 = New System.Data.DataColumn()
+        Me.DataColumn8 = New System.Data.DataColumn()
+        Me.DataColumn9 = New System.Data.DataColumn()
+        Me.DataColumn10 = New System.Data.DataColumn()
+        Me.DataColumn11 = New System.Data.DataColumn()
+        Me.DataColumn12 = New System.Data.DataColumn()
+        Me.DataColumn13 = New System.Data.DataColumn()
+        Me.DataColumn14 = New System.Data.DataColumn()
         Me.btnExit = New System.Windows.Forms.Button()
         Me.btnExitNoSave = New System.Windows.Forms.Button()
         Me.CommonNameDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -88,7 +104,23 @@ Partial Class DeckLogUpdate
         Me.lblNavigator = New System.Windows.Forms.Label()
         Me.txtVessel = New System.Windows.Forms.TextBox()
         Me.lblVessel = New System.Windows.Forms.Label()
+        Me.VesselDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NavigatorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FromDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ToDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ZoneDateTimeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CompassDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VarDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DevDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TrueDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SpeedDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LocLatLongDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LocTypeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.WeatherDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.RemarksDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataSet2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataTable1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -98,19 +130,24 @@ Partial Class DeckLogUpdate
         DataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Arial Unicode MS", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        Me.DataGridView1.AutoGenerateColumns = False
         Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.DataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption
+        Me.DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.DataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = System.Drawing.Color.Yellow
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.InfoText
         DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Gold
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.VesselDataGridViewTextBoxColumn, Me.NavigatorDataGridViewTextBoxColumn, Me.FromDataGridViewTextBoxColumn, Me.ToDataGridViewTextBoxColumn, Me.ZoneDateTimeDataGridViewTextBoxColumn, Me.CompassDataGridViewTextBoxColumn, Me.VarDataGridViewTextBoxColumn, Me.DevDataGridViewTextBoxColumn, Me.TrueDataGridViewTextBoxColumn, Me.SpeedDataGridViewTextBoxColumn, Me.LocLatLongDataGridViewTextBoxColumn, Me.LocTypeDataGridViewTextBoxColumn, Me.WeatherDataGridViewTextBoxColumn, Me.RemarksDataGridViewTextBoxColumn})
+        Me.DataGridView1.DataMember = "Table1"
+        Me.DataGridView1.DataSource = Me.DataSet2
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle3.Font = New System.Drawing.Font("Arial Unicode MS", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -142,8 +179,75 @@ Partial Class DeckLogUpdate
         Me.DataGridView1.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.SystemColors.InfoText
         Me.DataGridView1.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Blue
         Me.DataGridView1.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White
+        Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(1365, 613)
         Me.DataGridView1.TabIndex = 0
+        '
+        'DataSet2
+        '
+        Me.DataSet2.DataSetName = "DeckLogDataSet"
+        Me.DataSet2.Tables.AddRange(New System.Data.DataTable() {Me.DataTable1})
+        '
+        'DataTable1
+        '
+        Me.DataTable1.Columns.AddRange(New System.Data.DataColumn() {Me.DataColumn1, Me.DataColumn2, Me.DataColumn3, Me.DataColumn4, Me.DataColumn5, Me.DataColumn6, Me.DataColumn7, Me.DataColumn8, Me.DataColumn9, Me.DataColumn10, Me.DataColumn11, Me.DataColumn12, Me.DataColumn13, Me.DataColumn14})
+        Me.DataTable1.TableName = "Table1"
+        '
+        'DataColumn1
+        '
+        Me.DataColumn1.ColumnName = "Vessel"
+        '
+        'DataColumn2
+        '
+        Me.DataColumn2.ColumnName = "Navigator"
+        '
+        'DataColumn3
+        '
+        Me.DataColumn3.ColumnName = "From"
+        '
+        'DataColumn4
+        '
+        Me.DataColumn4.ColumnName = "To"
+        '
+        'DataColumn5
+        '
+        Me.DataColumn5.ColumnName = "ZoneDateTime"
+        '
+        'DataColumn6
+        '
+        Me.DataColumn6.ColumnName = "Compass"
+        '
+        'DataColumn7
+        '
+        Me.DataColumn7.ColumnName = "Var"
+        '
+        'DataColumn8
+        '
+        Me.DataColumn8.ColumnName = "Dev"
+        '
+        'DataColumn9
+        '
+        Me.DataColumn9.ColumnName = "True"
+        '
+        'DataColumn10
+        '
+        Me.DataColumn10.ColumnName = "Speed"
+        '
+        'DataColumn11
+        '
+        Me.DataColumn11.ColumnName = "Loc Lat Long"
+        '
+        'DataColumn12
+        '
+        Me.DataColumn12.ColumnName = "LocType"
+        '
+        'DataColumn13
+        '
+        Me.DataColumn13.ColumnName = "Weather"
+        '
+        'DataColumn14
+        '
+        Me.DataColumn14.ColumnName = "Remarks"
         '
         'btnExit
         '
@@ -833,6 +937,131 @@ Partial Class DeckLogUpdate
         Me.lblVessel.TabIndex = 0
         Me.lblVessel.Text = "Vessel:"
         '
+        'VesselDataGridViewTextBoxColumn
+        '
+        Me.VesselDataGridViewTextBoxColumn.DataPropertyName = "Vessel"
+        Me.VesselDataGridViewTextBoxColumn.HeaderText = "Vessel"
+        Me.VesselDataGridViewTextBoxColumn.Name = "VesselDataGridViewTextBoxColumn"
+        Me.VesselDataGridViewTextBoxColumn.ReadOnly = True
+        Me.VesselDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.VesselDataGridViewTextBoxColumn.Width = 49
+        '
+        'NavigatorDataGridViewTextBoxColumn
+        '
+        Me.NavigatorDataGridViewTextBoxColumn.DataPropertyName = "Navigator"
+        Me.NavigatorDataGridViewTextBoxColumn.HeaderText = "Navigator"
+        Me.NavigatorDataGridViewTextBoxColumn.Name = "NavigatorDataGridViewTextBoxColumn"
+        Me.NavigatorDataGridViewTextBoxColumn.ReadOnly = True
+        Me.NavigatorDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.NavigatorDataGridViewTextBoxColumn.Width = 66
+        '
+        'FromDataGridViewTextBoxColumn
+        '
+        Me.FromDataGridViewTextBoxColumn.DataPropertyName = "From"
+        Me.FromDataGridViewTextBoxColumn.HeaderText = "From"
+        Me.FromDataGridViewTextBoxColumn.Name = "FromDataGridViewTextBoxColumn"
+        Me.FromDataGridViewTextBoxColumn.ReadOnly = True
+        Me.FromDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.FromDataGridViewTextBoxColumn.Width = 42
+        '
+        'ToDataGridViewTextBoxColumn
+        '
+        Me.ToDataGridViewTextBoxColumn.DataPropertyName = "To"
+        Me.ToDataGridViewTextBoxColumn.HeaderText = "To"
+        Me.ToDataGridViewTextBoxColumn.Name = "ToDataGridViewTextBoxColumn"
+        Me.ToDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ToDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.ToDataGridViewTextBoxColumn.Width = 26
+        '
+        'ZoneDateTimeDataGridViewTextBoxColumn
+        '
+        Me.ZoneDateTimeDataGridViewTextBoxColumn.DataPropertyName = "ZoneDateTime"
+        Me.ZoneDateTimeDataGridViewTextBoxColumn.HeaderText = "ZoneDateTime"
+        Me.ZoneDateTimeDataGridViewTextBoxColumn.Name = "ZoneDateTimeDataGridViewTextBoxColumn"
+        Me.ZoneDateTimeDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ZoneDateTimeDataGridViewTextBoxColumn.Width = 112
+        '
+        'CompassDataGridViewTextBoxColumn
+        '
+        Me.CompassDataGridViewTextBoxColumn.DataPropertyName = "Compass"
+        Me.CompassDataGridViewTextBoxColumn.HeaderText = "Compass"
+        Me.CompassDataGridViewTextBoxColumn.Name = "CompassDataGridViewTextBoxColumn"
+        Me.CompassDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CompassDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.CompassDataGridViewTextBoxColumn.Width = 62
+        '
+        'VarDataGridViewTextBoxColumn
+        '
+        Me.VarDataGridViewTextBoxColumn.DataPropertyName = "Var"
+        Me.VarDataGridViewTextBoxColumn.HeaderText = "Var"
+        Me.VarDataGridViewTextBoxColumn.Name = "VarDataGridViewTextBoxColumn"
+        Me.VarDataGridViewTextBoxColumn.ReadOnly = True
+        Me.VarDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.VarDataGridViewTextBoxColumn.Width = 33
+        '
+        'DevDataGridViewTextBoxColumn
+        '
+        Me.DevDataGridViewTextBoxColumn.DataPropertyName = "Dev"
+        Me.DevDataGridViewTextBoxColumn.HeaderText = "Dev"
+        Me.DevDataGridViewTextBoxColumn.Name = "DevDataGridViewTextBoxColumn"
+        Me.DevDataGridViewTextBoxColumn.ReadOnly = True
+        Me.DevDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.DevDataGridViewTextBoxColumn.Width = 33
+        '
+        'TrueDataGridViewTextBoxColumn
+        '
+        Me.TrueDataGridViewTextBoxColumn.DataPropertyName = "True"
+        Me.TrueDataGridViewTextBoxColumn.HeaderText = "True"
+        Me.TrueDataGridViewTextBoxColumn.Name = "TrueDataGridViewTextBoxColumn"
+        Me.TrueDataGridViewTextBoxColumn.ReadOnly = True
+        Me.TrueDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.TrueDataGridViewTextBoxColumn.Width = 39
+        '
+        'SpeedDataGridViewTextBoxColumn
+        '
+        Me.SpeedDataGridViewTextBoxColumn.DataPropertyName = "Speed"
+        Me.SpeedDataGridViewTextBoxColumn.HeaderText = "Speed"
+        Me.SpeedDataGridViewTextBoxColumn.Name = "SpeedDataGridViewTextBoxColumn"
+        Me.SpeedDataGridViewTextBoxColumn.ReadOnly = True
+        Me.SpeedDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.SpeedDataGridViewTextBoxColumn.Width = 45
+        '
+        'LocLatLongDataGridViewTextBoxColumn
+        '
+        Me.LocLatLongDataGridViewTextBoxColumn.DataPropertyName = "Loc Lat Long"
+        Me.LocLatLongDataGridViewTextBoxColumn.HeaderText = "Loc Lat Long"
+        Me.LocLatLongDataGridViewTextBoxColumn.Name = "LocLatLongDataGridViewTextBoxColumn"
+        Me.LocLatLongDataGridViewTextBoxColumn.ReadOnly = True
+        Me.LocLatLongDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.LocLatLongDataGridViewTextBoxColumn.Width = 85
+        '
+        'LocTypeDataGridViewTextBoxColumn
+        '
+        Me.LocTypeDataGridViewTextBoxColumn.DataPropertyName = "LocType"
+        Me.LocTypeDataGridViewTextBoxColumn.HeaderText = "LocType"
+        Me.LocTypeDataGridViewTextBoxColumn.Name = "LocTypeDataGridViewTextBoxColumn"
+        Me.LocTypeDataGridViewTextBoxColumn.ReadOnly = True
+        Me.LocTypeDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.LocTypeDataGridViewTextBoxColumn.Width = 58
+        '
+        'WeatherDataGridViewTextBoxColumn
+        '
+        Me.WeatherDataGridViewTextBoxColumn.DataPropertyName = "Weather"
+        Me.WeatherDataGridViewTextBoxColumn.HeaderText = "Weather"
+        Me.WeatherDataGridViewTextBoxColumn.Name = "WeatherDataGridViewTextBoxColumn"
+        Me.WeatherDataGridViewTextBoxColumn.ReadOnly = True
+        Me.WeatherDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.WeatherDataGridViewTextBoxColumn.Width = 60
+        '
+        'RemarksDataGridViewTextBoxColumn
+        '
+        Me.RemarksDataGridViewTextBoxColumn.DataPropertyName = "Remarks"
+        Me.RemarksDataGridViewTextBoxColumn.HeaderText = "Remarks"
+        Me.RemarksDataGridViewTextBoxColumn.Name = "RemarksDataGridViewTextBoxColumn"
+        Me.RemarksDataGridViewTextBoxColumn.ReadOnly = True
+        Me.RemarksDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.RemarksDataGridViewTextBoxColumn.Width = 64
+        '
         'DeckLogUpdate
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -850,6 +1079,8 @@ Partial Class DeckLogUpdate
         Me.Name = "DeckLogUpdate"
         Me.Text = "Deck Log Updater"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataSet2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataTable1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
@@ -918,4 +1149,34 @@ Partial Class DeckLogUpdate
     Friend WithEvents btnDeleteSight As Button
     Friend WithEvents cboLocType As ComboBox
     Public WithEvents Label5 As Label
+    Friend WithEvents DataSet2 As DataSet
+    Friend WithEvents DataTable1 As DataTable
+    Friend WithEvents DataColumn1 As DataColumn
+    Friend WithEvents DataColumn2 As DataColumn
+    Friend WithEvents DataColumn3 As DataColumn
+    Friend WithEvents DataColumn4 As DataColumn
+    Friend WithEvents DataColumn5 As DataColumn
+    Friend WithEvents DataColumn6 As DataColumn
+    Friend WithEvents DataColumn7 As DataColumn
+    Friend WithEvents DataColumn8 As DataColumn
+    Friend WithEvents DataColumn9 As DataColumn
+    Friend WithEvents DataColumn10 As DataColumn
+    Friend WithEvents DataColumn11 As DataColumn
+    Friend WithEvents DataColumn12 As DataColumn
+    Friend WithEvents DataColumn13 As DataColumn
+    Friend WithEvents DataColumn14 As DataColumn
+    Friend WithEvents VesselDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents NavigatorDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents FromDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ToDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ZoneDateTimeDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents CompassDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents VarDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents DevDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents TrueDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents SpeedDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents LocLatLongDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents LocTypeDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents WeatherDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents RemarksDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
 End Class

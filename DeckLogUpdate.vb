@@ -5,8 +5,8 @@
     Public InitialLoad As Boolean = False
     Public FileRead As Boolean = False
     Public SLOpenFName As String = ""
-    Public tablename As String = "Export"
-    Public DataSet1 As DataSet
+    Public tablename As String = "Table1"
+    'Public DataSet1 As DataSet
     Public HdrStr As String() = {"Vessel", "Navigator", "LocFrom", "LocTo", "DateZoneTime", "Compass", "Var", "Dev", "CTrue", "Speed", "PositionLatLong", "Loc Type", "Weather", "Remarks"}
     Public NullStr As String() = {vbNullString, vbNullString, vbNullString, vbNullString, vbNullString, vbNullString, vbNullString, vbNullString, vbNullString, vbNullString,
         vbNullString, vbNullString, vbNullString, vbNullString}
@@ -20,8 +20,10 @@
         Public Compass As String
         Public CompassI As Integer
         Public Var As String
+        Public VarEW As String
         Public VarI As Decimal
         Public Dev As String
+        Public DevEW As String
         Public DevI As Decimal
         Public CTrue As String
         Public CTrueI As Integer
@@ -47,16 +49,16 @@
         btnDeleteSight.Visible = False
         btnUpdateExisting.Visible = False
 
-        DataSet1 = New DataSet()
-        DataSet1.Tables.Add(tablename)
-        DataSet1.DataSetName = tablename
-        DataGridView1.DataSource = DataSet1
-        For i As Integer = 0 To UBound(HdrStr)
-            DataSet1.Tables(tablename).Columns.Add(HdrStr(i))
-        Next
-        'DataSet1.Tables(tablename).Rows.Add(NullStr)
-        DataGridView1.DataSource = DataSet1.Tables(0).DefaultView
-        DataGridView1.Refresh()
+        'DataSet1 = New DataSet()
+        'DataSet1.Tables.Add(tablename)
+        'DataSet1.DataSetName = tablename
+        'DataGridView1.DataSource = DataSet1
+        'For i As Integer = 0 To UBound(HdrStr)
+        '    DataSet1.Tables(tablename).Columns.Add(HdrStr(i))
+        'Next
+        DataSet2.Tables(tablename).Rows.Add(NullStr)
+        'DataGridView1.DataSource = DataSet1.Tables(0).DefaultView
+        'DataGridView1.Refresh()
         Me.Show()
         Me.Refresh()
         InitialLoad = False
@@ -106,7 +108,7 @@
         Dim myStream As System.IO.StreamReader = Nothing
         Dim openFileDialog1 As New OpenFileDialog()
         FileLoading = True
-        DataSet1.Tables(tablename).Clear()
+        DataSet2.Tables(tablename).Clear()
 
         'Dim dirstr As String = FileIO.FileSystem.CurrentDirectory
         openFileDialog1.InitialDirectory = "./DeckLog/"
@@ -145,7 +147,7 @@
                             r = r.Trim(vbLf).Trim
                             Dim items1 As String() = r.Split(",")
                             If items1(0) <> vbNullString And items1(0) <> Nothing Then
-                                DataSet1.Tables(tablename).Rows.Add(items1)
+                                DataSet2.Tables(tablename).Rows.Add(items1)
                             End If
 
                         End If
@@ -158,7 +160,7 @@
                 End If
 
                 myStream.Dispose()
-                DataGridView1.DataSource = DataSet1.Tables(0).DefaultView
+                DataGridView1.DataSource = DataSet2.Tables(0).DefaultView
                 DataGridView1.Refresh()
                 FileLoading = False
                 Me.Refresh()
@@ -208,8 +210,9 @@
         If InitialLoad = True Then
             Exit Sub
         End If
-        If DataGridView1.CurrentRow.Index = Nothing Then Exit Sub
+
         Dim n As Integer = DataGridView1.CurrentRow.Index
+        'If DataGridView1.Rows(n).Cells(0).Value = Nothing Then Exit Sub
         UpdtRow = DataGridView1.CurrentRow.Index
         btnDeleteSight.Visible = True
         btnUpdateExisting.Visible = True
@@ -262,7 +265,10 @@
 
         If DataGridView1.Rows(n).Cells(6).Value <> vbNullString Then
             UpdtRtn.Var = DataGridView1.Rows(n).Cells(6).Value
-            txtVar.Text = DataGridView1.Rows(n).Cells(6).Value
+            UpdtRtn.VarEW = UpdtRtn.Var.Last
+            UpdtRtn.Var = UpdtRtn.Var.Substring(0, UpdtRtn.Var.Length - 1)
+            txtVar.Text = UpdtRtn.Var
+            cboVar.Text = UpdtRtn.VarEW
         Else
             UpdtRtn.Var = vbNullString
             txtVar.Text = vbNullString
@@ -270,7 +276,10 @@
 
         If DataGridView1.Rows(n).Cells(7).Value <> vbNullString Then
             UpdtRtn.Dev = DataGridView1.Rows(n).Cells(7).Value
-            txtDev.Text = DataGridView1.Rows(n).Cells(7).Value
+            UpdtRtn.DevEW = UpdtRtn.Dev.Last
+            UpdtRtn.Dev = UpdtRtn.Dev.Substring(0, UpdtRtn.Dev.Length - 1)
+            txtDev.Text = UpdtRtn.Dev
+            cboDev.Text = UpdtRtn.DevEW
         Else
             UpdtRtn.Dev = vbNullString
             txtDev.Text = vbNullString
@@ -298,14 +307,14 @@
             Dim LPos As Integer = LLo.IndexOf("=")
             Dim LDegPos As Integer = LLo.IndexOf(Chr(176))
             Dim LMinPos As Integer = LLo.IndexOf("'")
-            Dim LoPos As Integer = LLo.LastIndexOf("=")
-            Dim LoDegPos As Integer = LLo.LastIndexOf(Chr(176))
-            Dim LoMinPos As Integer = LLo.LastIndexOf("'")
-            txtLDeg.Text = LLo.Substring(LPos + 1, (LDegPos - 1) - (LPos + 1))
-            txtLMin.Text = LLo.Substring(LDegPos + 1, (LMinPos - 1) - (LDegPos + 1))
+            Dim LoPos As Integer = LLo.IndexOf("=", LPos + 1)
+            Dim LoDegPos As Integer = LLo.IndexOf(Chr(176), LDegPos + 1)
+            Dim LoMinPos As Integer = LLo.IndexOf("'", LMinPos + 1)
+            txtLDeg.Text = LLo.Substring(LPos + 1, (LDegPos - 1) - (LPos + 1) + 1)
+            txtLMin.Text = LLo.Substring(LDegPos + 1, (LMinPos - 1) - (LDegPos + 1) + 1)
             cboL.Text = LLo.Substring(LMinPos + 1, 1)
-            txtLoDeg.Text = LLo.Substring(LoPos + 1, (LoDegPos - 1) - (LoPos + 1))
-            txtLoMin.Text = LLo.Substring(LoDegPos + 1, (LoMinPos - 1) - (LoDegPos + 1))
+            txtLoDeg.Text = LLo.Substring(LoPos + 1, (LoDegPos - 1) - (LoPos + 1) + 1)
+            txtLoMin.Text = LLo.Substring(LoDegPos + 1, (LoMinPos - 1) - (LoDegPos + 1) + 1)
             cboLo.Text = LLo.Substring(LoMinPos + 1, 1)
         Else
             UpdtRtn.PositionLatLong = vbNullString
@@ -354,7 +363,7 @@
         Dim LLo As String = "L=" & txtLDeg.Text.ToString & Chr(176) & txtLMin.Text.ToString & "'" & cboL.Text.ToString &
             " Lo=" & txtLoDeg.Text.ToString & Chr(176) & txtLoMin.Text.ToString & "'" & cboLo.Text.ToString
 
-        DataSet1.Tables(tablename).Rows.Add(txtVessel.Text.ToString, txtNavigator.Text.ToString, txtFrom.Text.ToString, txtTo.Text.ToString,
+        DataSet2.Tables(tablename).Rows.Add(txtVessel.Text.ToString, txtNavigator.Text.ToString, txtFrom.Text.ToString, txtTo.Text.ToString,
                                DTDateZoneTime.Value.ToString("MM/dd/yyyy HH:mm:ss"), txtCompass.Text.ToString, txtVar.Text.ToString, txtDev.Text.ToString,
                                txtCTrue.Text.ToString, txtSpeed.Text.ToString, LLo, cboLocType.Text.ToString, txtWeather.Text.ToString, txtRemarks.Text.ToString)
         DataGridView1.Refresh()
@@ -368,15 +377,17 @@
             Me.Refresh()
             Exit Sub
         End If
-        Dim LLo As String = "L=" & txtLDeg.Text.ToString & Chr(176) & txtLMin.Text.ToString & "'" & cboL.Text.ToString & " Lo=" & txtLoDeg.Text.ToString & Chr(176) & txtLoMin.Text.ToString & cboLo.Text.ToString
+        Dim LLo As String = ""
+        LLo = "L=" & UpdtRtn.LDegI.ToString("00") & Chr(176) & UpdtRtn.LMinI.ToString("00.0") &
+            "'" & cboL.Text.ToString & " Lo=" & UpdtRtn.LoDegI.ToString("00") & Chr(176) & UpdtRtn.LoMinI.ToString("00.0") & "'" & cboLo.Text.ToString
         DataGridView1.Rows(UpdtRow).Cells(0).Value = txtVessel.Text
         DataGridView1.Rows(UpdtRow).Cells(1).Value = txtNavigator.Text
         DataGridView1.Rows(UpdtRow).Cells(2).Value = txtFrom.Text
         DataGridView1.Rows(UpdtRow).Cells(3).Value = txtTo.Text
         DataGridView1.Rows(UpdtRow).Cells(4).Value = DTDateZoneTime.Value.ToString("MM/dd/yyyy HH:mm:ss")
         DataGridView1.Rows(UpdtRow).Cells(5).Value = txtCompass.Text
-        DataGridView1.Rows(UpdtRow).Cells(6).Value = txtVar.Text
-        DataGridView1.Rows(UpdtRow).Cells(7).Value = txtDev.Text
+        DataGridView1.Rows(UpdtRow).Cells(6).Value = txtVar.Text & cboVar.Text
+        DataGridView1.Rows(UpdtRow).Cells(7).Value = txtDev.Text & cboDev.Text
         DataGridView1.Rows(UpdtRow).Cells(8).Value = txtCTrue.Text
         DataGridView1.Rows(UpdtRow).Cells(9).Value = txtSpeed.Text
         DataGridView1.Rows(UpdtRow).Cells(10).Value = LLo
@@ -390,7 +401,7 @@
     End Sub
 
     Private Sub btnDeleteSight_Click(sender As Object, e As EventArgs) Handles btnDeleteSight.Click
-        DataSet1.Tables(tablename).Rows.RemoveAt(UpdtRow)
+        DataSet2.Tables(tablename).Rows.RemoveAt(UpdtRow)
         DataGridView1.Refresh()
         Me.Refresh()
         Exit Sub
@@ -560,18 +571,18 @@
             ErrorMsgBox("Longitude Minutes must be entered")
             Return False
         End If
-        If IsNumeric(txtLMin.Text) = False Then
+        If IsNumeric(txtLoMin.Text) = False Then
             ErrorMsgBox("Longitude Minutes be numeric between 0 and 59.9")
             Return False
         End If
         Try
-            UpdtRtn.LMinI = Convert.ToDecimal(txtLMin.Text)
-            If UpdtRtn.LMinI < 0 Or UpdtRtn.LMinI > 59.9 Then
-                ErrorMsgBox("Longitude Course must be numeric between 0 and 59.9")
+            UpdtRtn.LoMinI = Convert.ToDecimal(txtLoMin.Text)
+            If UpdtRtn.LoMinI < 0 Or UpdtRtn.LoMinI > 59.9 Then
+                ErrorMsgBox("Longitude Minutes must be numeric between 0 and 59.9")
                 Return False
             End If
         Catch ex As Exception
-            ErrorMsgBox("Longitude Course must be numeric between 0 and 59.9")
+            ErrorMsgBox("Longitude Minutes must be numeric between 0 and 59.9")
             Return False
         End Try
 
