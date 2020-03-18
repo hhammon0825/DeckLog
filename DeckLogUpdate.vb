@@ -197,7 +197,6 @@
                 DataGridView1.Refresh()
                 FileLoading = False
                 Me.Refresh()
-
             Catch Ex As Exception
                 ErrorMsgBox("Cannot read file from disk. Original error: " & Ex.Message)
             Finally
