@@ -32,16 +32,26 @@
         Public PositionLatLong As String
         Public LDegI As Integer
         Public LMinI As Decimal
+        Public LNS As String
         Public LatDecimal As Decimal
         Public LoDegI As Integer
         Public LoMinI As Decimal
+        Public LoEW As String
         Public LongDecimal As Decimal
         Public LocType As String
         Public Weather As String
         Public Remarks As String
-        Public UpdtFlag As String  ' "" or vbnullstring or "C" = cancel / ignore "A" = Add data to decklog "U" = Update data back into decklog  "D" = Delete info from decklog
+        Public Distance As Decimal
+        Public Elapsed As TimeSpan
+        Public CMG As Integer
+        Public SMG As Decimal
+        Public SetDir As Integer
+        Public Drift As Decimal
+        Public DBRowNum As Integer
     End Structure
     Public UpdtRtn As DLUpdate
+    Public CurrRow As DLUpdate
+    Public PrevRow As DLUpdate
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim DefFName As String = "DeckLog" & Now.ToString("yyyyMMddHHmmss") & ".csv"
@@ -568,6 +578,7 @@
         Try
             UpdtRtn.LMinI = Convert.ToDecimal(txtLMin.Text)
             UpdtRtn.LatDecimal = Convert.ToDecimal(UpdtRtn.LDegI) + UpdtRtn.LMinI / 60
+            UpdtRtn.LNS = cboL.Text
             If UpdtRtn.LMinI < 0 Or UpdtRtn.LMinI > 59.9 Then
                 ErrorMsgBox("LMin Course must be numeric between 0 and 59.9")
                 Return False
@@ -608,6 +619,7 @@
         Try
             UpdtRtn.LoMinI = Convert.ToDecimal(txtLoMin.Text)
             UpdtRtn.LongDecimal = Convert.ToDecimal(UpdtRtn.LoDegI) + UpdtRtn.LoMinI / 60
+            UpdtRtn.LoEW = cboLo.Text
             If UpdtRtn.LoMinI < 0 Or UpdtRtn.LoMinI > 59.9 Then
                 ErrorMsgBox("Longitude Minutes must be numeric between 0 and 59.9")
                 Return False
@@ -658,5 +670,55 @@
     Private Function EditRelationsinDG() As Boolean
 
         Return True
+    End Function
+    Private Sub evaluateDB()
+        Dim DGlimit As Integer = DataGridView1.Rows.Count
+        If DGlimit = 1 Then
+            ErrorMsgBox("Nothing to evaluate - the Data Grid only has one entry")
+        End If
+
+        For i As Integer = 1 To DGlimit - 1
+
+        Next
+
+        Exit Sub
+    End Sub
+    Private Function GetDistance(ByVal Lat1In As Double, ByVal Long1In As Double, ByVal Lat2In As Double, ByVal Long2In As Double) As Double
+        Dim Coord1 As System.Device.Location.GeoCoordinate = New System.Device.Location.GeoCoordinate(Lat1In, Long1In)
+        Dim Coord2 As System.Device.Location.GeoCoordinate = New System.Device.Location.GeoCoordinate(Lat2In, Long2In)
+        Return Coord1.GetDistanceTo(Coord2)
+    End Function
+    Private Function GetHeading(ByVal lat1 As Double, ByVal long1 As Double, ByVal lat2 As Double, ByVal long2 As Double) As Double
+        Dim a As Double = lat1 * Math.PI / 180
+        Dim b As Double = long1 * Math.PI / 180
+        Dim c As Double = lat2 * Math.PI / 180
+        Dim d As Double = long2 * Math.PI / 180
+
+        If (Math.Cos(c) * Math.Sin(d - b) = 0) Then
+            If (c > a) Then
+                Return 0
+            Else
+                Return 180
+            End If
+        Else
+            Dim angle As Double = Math.Atan2(Math.Cos(c) * Math.Sin(d - b), Math.Sin(c) * Math.Cos(a) - Math.Sin(a) * Math.Cos(c) * Math.Cos(d - b))
+            Return (angle * 180 / Math.PI + 360) Mod 360
+        End If
+        Return 0
+    End Function
+    Private Function FindDestLatLong(ByVal LatIn As Double, ByVal LonIn As Double, ByVal Dist As Double, ByVal Course As Double) As System.Device.Location.GeoCoordinate
+        Dim lat1 As Double = LatIn * Math.PI / 180
+        Dim Lon1 As Double = LonIn * Math.PI / 180
+        Dim Theta As Double = Course * Math.PI / 180
+        Dim R As Double = 3440.1  ' this is the radius of the earth in nautical miles
+        Dim d As Double = Dist    ' this is the distance travelled in nautical miles
+        Dim lat2 As Double = Math.Asin(Math.Sin(lat1) * Math.Cos(d / R) + Math.Cos(lat1) * Math.Sin(d / R) * Math.Cos(Theta))
+        Dim lon2 As Double = Lon1 + Math.Atan2((Math.Sin(Theta) * Math.Sin(d / R) * Math.Cos(lat1)), (Math.Cos(d / R) - (Math.Sin(lat1) * Math.Sin(lat2))))
+        Dim RtnGC As System.Device.Location.GeoCoordinate = New System.Device.Location.GeoCoordinate(lat2 * 180 / Math.PI, lon2 * 180 / Math.PI)
+        Return RtnGC
+    End Function
+    Private Function Calc60DSTDistance(ByVal DT1 As DateTime, ByVal DT2 As DateTime, ByVal Speed As Double) As Double
+        Dim TS As TimeSpan = DT2 - DT1
+        Return (Speed * TS.TotalHours)
     End Function
 End Class
