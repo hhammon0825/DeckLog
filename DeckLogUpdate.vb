@@ -32,8 +32,10 @@
         Public PositionLatLong As String
         Public LDegI As Integer
         Public LMinI As Decimal
+        Public LatDecimal As Decimal
         Public LoDegI As Integer
         Public LoMinI As Decimal
+        Public LongDecimal As Decimal
         Public LocType As String
         Public Weather As String
         Public Remarks As String
@@ -70,6 +72,23 @@
         Me.Close()
     End Sub
     Private Sub SaveDataGrid()
+
+        Dim saveFileDialog1 As New SaveFileDialog()
+
+        'Dim dirstr As String = FileIO.FileSystem.CurrentDirectory
+        saveFileDialog1.InitialDirectory = "./DeckLog/"
+        saveFileDialog1.Filter = "txt files (*.txt)|*.txt|csv files (*.csv)|*.csv"
+        saveFileDialog1.Title = "Open Deck Log File"
+        saveFileDialog1.FilterIndex = 2
+        saveFileDialog1.RestoreDirectory = True
+
+        If saveFileDialog1.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
+            If saveFileDialog1.FileName = vbNullString Then
+                Exit Sub
+            End If
+            FName = saveFileDialog1.FileName
+        End If
+
         Dim textstr As New System.Text.StringBuilder()
         Dim FileHdrStr As String = vbNullString
         For i As Integer = 0 To UBound(HdrStr)
@@ -95,7 +114,10 @@
             textstr.AppendLine()
         Next
         IO.File.WriteAllText(FName, textstr.ToString())
-
+        SLOpenFName = FName
+        lblOpenFN.Visible = True
+        txtOpenFN.Visible = True
+        txtOpenFN.Text = SLOpenFName
         Exit Sub
     End Sub
 
@@ -218,6 +240,10 @@
         btnDeleteSight.Visible = True
         btnUpdateExisting.Visible = True
         ' The order of these variable and the integer indexs contained in each MUST match the order of the fields in the data grid
+        ' Cell 0 = Vessel name  Cell 1 = Navigator name  Cell 2 = From location name   Cell 3 = To location name 
+        ' Cell 4 = Zone Date & time String MM/dd/yyyy HH:mm:ss Cell 5 = Compass course string  Cell 6 = Variation string Cell 7 = Deviation string
+        ' Cell 8 = computed True Course string  Cell 9 = Speed string  Cell 10 = Latitude string Cell 11 = Longitude string   Cell 12 = L/Lo loc type 
+        ' Cell 13 = Weather string   Cell 14 = Remarks string
 
         If DataGridView1.Rows(n).Cells(0).Value <> vbNullString Then
             UpdtRtn.Vessel = DataGridView1.Rows(n).Cells(0).Value
@@ -541,6 +567,7 @@
         End If
         Try
             UpdtRtn.LMinI = Convert.ToDecimal(txtLMin.Text)
+            UpdtRtn.LatDecimal = Convert.ToDecimal(UpdtRtn.LDegI) + UpdtRtn.LMinI / 60
             If UpdtRtn.LMinI < 0 Or UpdtRtn.LMinI > 59.9 Then
                 ErrorMsgBox("LMin Course must be numeric between 0 and 59.9")
                 Return False
@@ -580,6 +607,7 @@
         End If
         Try
             UpdtRtn.LoMinI = Convert.ToDecimal(txtLoMin.Text)
+            UpdtRtn.LongDecimal = Convert.ToDecimal(UpdtRtn.LoDegI) + UpdtRtn.LoMinI / 60
             If UpdtRtn.LoMinI < 0 Or UpdtRtn.LoMinI > 59.9 Then
                 ErrorMsgBox("Longitude Minutes must be numeric between 0 and 59.9")
                 Return False
@@ -627,4 +655,8 @@
         DataGridView1.Sort(DataGridView1.Columns(4), System.ComponentModel.ListSortDirection.Ascending)
         Exit Sub
     End Sub
+    Private Function EditRelationsinDG() As Boolean
+
+        Return True
+    End Function
 End Class
