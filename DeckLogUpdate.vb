@@ -161,6 +161,7 @@
 
                 myStream.Dispose()
                 DataGridView1.DataSource = DataSet2.Tables(0).DefaultView
+                SortDataGridonDate()
                 DataGridView1.Refresh()
                 FileLoading = False
                 Me.Refresh()
@@ -364,8 +365,9 @@
             " Lo=" & txtLoDeg.Text.ToString & Chr(176) & txtLoMin.Text.ToString & "'" & cboLo.Text.ToString
 
         DataSet2.Tables(tablename).Rows.Add(txtVessel.Text.ToString, txtNavigator.Text.ToString, txtFrom.Text.ToString, txtTo.Text.ToString,
-                               DTDateZoneTime.Value.ToString("MM/dd/yyyy HH:mm:ss"), txtCompass.Text.ToString, txtVar.Text.ToString, txtDev.Text.ToString,
+                               DTDateZoneTime.Value.ToString("MM/dd/yyyy HH:mm:ss"), txtCompass.Text.ToString, txtVar.Text.ToString & cboVar.Text, txtDev.Text.ToString & cboDev.Text,
                                txtCTrue.Text.ToString, txtSpeed.Text.ToString, LLo, cboLocType.Text.ToString, txtWeather.Text.ToString, txtRemarks.Text.ToString)
+        SortDataGridonDate()
         DataGridView1.Refresh()
         Me.Refresh()
 
@@ -394,7 +396,7 @@
         DataGridView1.Rows(UpdtRow).Cells(11).Value = cboLocType.Text
         DataGridView1.Rows(UpdtRow).Cells(12).Value = txtWeather.Text
         DataGridView1.Rows(UpdtRow).Cells(13).Value = txtRemarks.Text
-
+        SortDataGridonDate()
         DataGridView1.Refresh()
         Me.Refresh()
         Exit Sub
@@ -402,6 +404,7 @@
 
     Private Sub btnDeleteSight_Click(sender As Object, e As EventArgs) Handles btnDeleteSight.Click
         DataSet2.Tables(tablename).Rows.RemoveAt(UpdtRow)
+        SortDataGridonDate()
         DataGridView1.Refresh()
         Me.Refresh()
         Exit Sub
@@ -618,6 +621,10 @@
 
     Private Sub btnClearFields_Click(sender As Object, e As EventArgs) Handles btnClearFields.Click
         ResetScreenFields()
+        Exit Sub
+    End Sub
+    Private Sub SortDataGridonDate()
+        DataGridView1.Sort(DataGridView1.Columns(4), System.ComponentModel.ListSortDirection.Ascending)
         Exit Sub
     End Sub
 End Class
