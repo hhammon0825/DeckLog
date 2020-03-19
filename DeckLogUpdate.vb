@@ -6,10 +6,15 @@
     Public FileRead As Boolean = False
     Public SLOpenFName As String = ""
     Public tablename As String = "Table1"
-    'Public DataSet1 As DataSet
-    Public HdrStr As String() = {"Vessel", "Navigator", "LocFrom", "LocTo", "DateZoneTime", "Compass", "Var", "Dev", "CTrue", "Speed", "PositionLatLong", "Loc Type", "Weather", "Remarks"}
-    Public NullStr As String() = {vbNullString, vbNullString, vbNullString, vbNullString, vbNullString, vbNullString, vbNullString, vbNullString, vbNullString, vbNullString,
+    Public DataSet1 As DataSet
+    Public HdrStr As String() = {"Vessel", "Navigator", "LocFrom", "LocTo", "LocType",
+        "ZoneDateTime", "Compass", "Var", "Dev", "CTrue", "Speed", "PositionLatLong", "Weather", "Remarks",
+        "ElapsedTime", "CalculatedLoc", "CMG", "SMG", "Set", "Drift"}
+    Public NullStr As String() = {vbNullString, vbNullString, vbNullString, vbNullString, vbNullString,
+        vbNullString, vbNullString, vbNullString, vbNullString, vbNullString,
+        vbNullString, vbNullString, vbNullString, vbNullString, vbNullString,
         vbNullString, vbNullString, vbNullString, vbNullString}
+
     Public UpdtRow As Integer = 0
     Public Structure DLUpdate
         Public Vessel As String
@@ -57,20 +62,26 @@
         Dim DefFName As String = "DeckLog" & Now.ToString("yyyyMMddHHmmss") & ".csv"
         InitialLoad = True
         FName &= DefFName
+
+        DataSet1 = New DataSet()
+        DataSet1.Tables.Add(tablename)
+        DataSet1.DataSetName = tablename
+        DataGridView1.DataSource = DataSet1
+        For i As Integer = 0 To UBound(HdrStr)
+            DataSet1.Tables(tablename).Columns.Add(HdrStr(i))
+            DataSet1.Tables(tablename).Columns(i).AllowDBNull = False
+            DataSet1.Tables(tablename).Columns(i).DefaultValue = ""
+        Next
+        DataSet1.Tables(tablename).Rows.Add(NullStr)
+        DataSet1.Tables(tablename).Rows.RemoveAt(0)
+        DataGridView1.DataSource = DataSet1.Tables(0).DefaultView
+        SortDataGridonDate()
+        DataGridView1.Refresh()
+
         ResetScreenFields()
         btnDeleteSight.Visible = False
         btnUpdateExisting.Visible = False
 
-        'DataSet1 = New DataSet()
-        'DataSet1.Tables.Add(tablename)
-        'DataSet1.DataSetName = tablename
-        'DataGridView1.DataSource = DataSet1
-        'For i As Integer = 0 To UBound(HdrStr)
-        '    DataSet1.Tables(tablename).Columns.Add(HdrStr(i))
-        'Next
-        DataSet2.Tables(tablename).Rows.Add(NullStr)
-        'DataGridView1.DataSource = DataSet1.Tables(0).DefaultView
-        'DataGridView1.Refresh()
         Me.Show()
         Me.Refresh()
         InitialLoad = False
@@ -139,8 +150,9 @@
     Private Sub btnOpenCSV_Click(sender As Object, e As EventArgs) Handles btnOpenCSV.Click
         Dim myStream As System.IO.StreamReader = Nothing
         Dim openFileDialog1 As New OpenFileDialog()
+
         FileLoading = True
-        DataSet2.Tables(tablename).Clear()
+        DataSet1.Tables(tablename).Clear()
 
         'Dim dirstr As String = FileIO.FileSystem.CurrentDirectory
         openFileDialog1.InitialDirectory = "./DeckLog/"
@@ -179,7 +191,7 @@
                             r = r.Trim(vbLf).Trim
                             Dim items1 As String() = r.Split(",")
                             If items1(0) <> vbNullString And items1(0) <> Nothing Then
-                                DataSet2.Tables(tablename).Rows.Add(items1)
+                                DataSet1.Tables(tablename).Rows.Add(items1)
                             End If
 
                         End If
@@ -192,7 +204,7 @@
                 End If
 
                 myStream.Dispose()
-                DataGridView1.DataSource = DataSet2.Tables(0).DefaultView
+                DataGridView1.DataSource = DataSet1.Tables(0).DefaultView
                 SortDataGridonDate()
                 DataGridView1.Refresh()
                 FileLoading = False
@@ -240,14 +252,19 @@
             Exit Sub
         End If
         If InitialLoad = True Then
+
             Exit Sub
         End If
 
-        Dim n As Integer = DataGridView1.CurrentRow.Index
-        'If DataGridView1.Rows(n).Cells(0).Value = Nothing Then Exit Sub
+        Dim n As Integer
+        If IsNothing(DataGridView1.CurrentRow.Index) Or DataGridView1.CurrentRow.Index = vbNull Then
+            Exit Sub
+        Else
+            n = DataGridView1.CurrentRow.Index
+        End If
+        If IsNothing(DataGridView1.Rows(n).Cells(0).Value) Then Exit Sub
         UpdtRow = DataGridView1.CurrentRow.Index
-        btnDeleteSight.Visible = True
-        btnUpdateExisting.Visible = True
+
         ' The order of these variable and the integer indexs contained in each MUST match the order of the fields in the data grid
         ' Cell 0 = Vessel name  Cell 1 = Navigator name  Cell 2 = From location name   Cell 3 = To location name 
         ' Cell 4 = Zone Date & time String MM/dd/yyyy HH:mm:ss Cell 5 = Compass course string  Cell 6 = Variation string Cell 7 = Deviation string
@@ -284,23 +301,31 @@
         End If
 
         If DataGridView1.Rows(n).Cells(4).Value <> vbNullString Then
-            UpdtRtn.DateZoneTime = DataGridView1.Rows(n).Cells(4).Value
-            DTDateZoneTime.Value = Convert.ToDateTime(DataGridView1.Rows(n).Cells(4).Value)
+            UpdtRtn.LocType = DataGridView1.Rows(n).Cells(4).Value
+            cboLocType.Text = DataGridView1.Rows(n).Cells(4).Value
+        Else
+            UpdtRtn.LocType = vbNullString
+            cboLocType.Text = vbNullString
+        End If
+
+        If DataGridView1.Rows(n).Cells(5).Value <> vbNullString Then
+            UpdtRtn.DateZoneTime = DataGridView1.Rows(n).Cells(5).Value
+            DTDateZoneTime.Value = Convert.ToDateTime(DataGridView1.Rows(n).Cells(5).Value)
         Else
             UpdtRtn.DateZoneTime = Now.ToString("MM/dd/yyyy HH:mm:ss")
             DTDateZoneTime.Value = Now
         End If
 
-        If DataGridView1.Rows(n).Cells(5).Value <> vbNullString Then
-            UpdtRtn.Compass = DataGridView1.Rows(n).Cells(5).Value
-            txtCompass.Text = DataGridView1.Rows(n).Cells(5).Value
+        If DataGridView1.Rows(n).Cells(6).Value <> vbNullString Then
+            UpdtRtn.Compass = DataGridView1.Rows(n).Cells(6).Value
+            txtCompass.Text = DataGridView1.Rows(n).Cells(6).Value
         Else
             UpdtRtn.Compass = vbNullString
             txtCompass.Text = vbNullString
         End If
 
-        If DataGridView1.Rows(n).Cells(6).Value <> vbNullString Then
-            UpdtRtn.Var = DataGridView1.Rows(n).Cells(6).Value
+        If DataGridView1.Rows(n).Cells(7).Value <> vbNullString Then
+            UpdtRtn.Var = DataGridView1.Rows(n).Cells(7).Value
             UpdtRtn.VarEW = UpdtRtn.Var.Last
             UpdtRtn.Var = UpdtRtn.Var.Substring(0, UpdtRtn.Var.Length - 1)
             txtVar.Text = UpdtRtn.Var
@@ -310,8 +335,8 @@
             txtVar.Text = vbNullString
         End If
 
-        If DataGridView1.Rows(n).Cells(7).Value <> vbNullString Then
-            UpdtRtn.Dev = DataGridView1.Rows(n).Cells(7).Value
+        If DataGridView1.Rows(n).Cells(8).Value <> vbNullString Then
+            UpdtRtn.Dev = DataGridView1.Rows(n).Cells(8).Value
             UpdtRtn.DevEW = UpdtRtn.Dev.Last
             UpdtRtn.Dev = UpdtRtn.Dev.Substring(0, UpdtRtn.Dev.Length - 1)
             txtDev.Text = UpdtRtn.Dev
@@ -321,25 +346,25 @@
             txtDev.Text = vbNullString
         End If
 
-        If DataGridView1.Rows(n).Cells(8).Value <> vbNullString Then
-            UpdtRtn.CTrue = DataGridView1.Rows(n).Cells(8).Value
-            txtCTrue.Text = DataGridView1.Rows(n).Cells(8).Value
+        If DataGridView1.Rows(n).Cells(9).Value <> vbNullString Then
+            UpdtRtn.CTrue = DataGridView1.Rows(n).Cells(9).Value
+            txtCTrue.Text = DataGridView1.Rows(n).Cells(9).Value
         Else
             UpdtRtn.CTrue = vbNullString
             txtCTrue.Text = vbNullString
         End If
 
-        If DataGridView1.Rows(n).Cells(9).Value <> vbNullString Then
-            UpdtRtn.Speed = DataGridView1.Rows(n).Cells(9).Value
-            txtSpeed.Text = DataGridView1.Rows(n).Cells(9).Value
+        If DataGridView1.Rows(n).Cells(10).Value <> vbNullString Then
+            UpdtRtn.Speed = DataGridView1.Rows(n).Cells(10).Value
+            txtSpeed.Text = DataGridView1.Rows(n).Cells(10).Value
         Else
             UpdtRtn.Speed = vbNullString
             txtSpeed.Text = vbNullString
         End If
 
-        If DataGridView1.Rows(n).Cells(10).Value <> vbNullString Then
-            UpdtRtn.PositionLatLong = DataGridView1.Rows(n).Cells(10).Value
-            Dim LLo As String = DataGridView1.Rows(n).Cells(10).Value
+        If DataGridView1.Rows(n).Cells(11).Value <> vbNullString Then
+            UpdtRtn.PositionLatLong = DataGridView1.Rows(n).Cells(11).Value
+            Dim LLo As String = DataGridView1.Rows(n).Cells(11).Value
             Dim LPos As Integer = LLo.IndexOf("=")
             Dim LDegPos As Integer = LLo.IndexOf(Chr(176))
             Dim LMinPos As Integer = LLo.IndexOf("'")
@@ -360,14 +385,6 @@
             txtLoDeg.Clear()
             txtLoMin.Clear()
             cboLo.SelectedIndex = 0
-        End If
-
-        If DataGridView1.Rows(n).Cells(11).Value <> vbNullString Then
-            UpdtRtn.LocType = DataGridView1.Rows(n).Cells(11).Value
-            cboLocType.Text = DataGridView1.Rows(n).Cells(11).Value
-        Else
-            UpdtRtn.LocType = vbNullString
-            cboLocType.Text = vbNullString
         End If
 
         If DataGridView1.Rows(n).Cells(12).Value <> vbNullString Then
@@ -392,6 +409,8 @@
     End Sub
 
     Private Sub btnAddNew_Click(sender As Object, e As EventArgs) Handles btnAddNew.Click
+        btnDeleteSight.Visible = True
+        btnUpdateExisting.Visible = True
         If EditUpdtFields() = False Then
             Me.Refresh()
             Exit Sub
@@ -399,9 +418,10 @@
         Dim LLo As String = "L=" & txtLDeg.Text.ToString & Chr(176) & txtLMin.Text.ToString & "'" & cboL.Text.ToString &
             " Lo=" & txtLoDeg.Text.ToString & Chr(176) & txtLoMin.Text.ToString & "'" & cboLo.Text.ToString
 
-        DataSet2.Tables(tablename).Rows.Add(txtVessel.Text.ToString, txtNavigator.Text.ToString, txtFrom.Text.ToString, txtTo.Text.ToString,
-                               DTDateZoneTime.Value.ToString("MM/dd/yyyy HH:mm:ss"), txtCompass.Text.ToString, txtVar.Text.ToString & cboVar.Text, txtDev.Text.ToString & cboDev.Text,
-                               txtCTrue.Text.ToString, txtSpeed.Text.ToString, LLo, cboLocType.Text.ToString, txtWeather.Text.ToString, txtRemarks.Text.ToString)
+        DataSet1.Tables(tablename).Rows.Add(txtVessel.Text.ToString, txtNavigator.Text.ToString, txtFrom.Text.ToString, txtTo.Text.ToString,
+                               cboLocType.Text.ToString, DTDateZoneTime.Value.ToString("MM/dd/yyyy HH:mm:ss"), txtCompass.Text.ToString,
+                               txtVar.Text.ToString & cboVar.Text, txtDev.Text.ToString & cboDev.Text,
+                               txtCTrue.Text.ToString, txtSpeed.Text.ToString, LLo, txtWeather.Text.ToString, txtRemarks.Text.ToString)
         SortDataGridonDate()
         DataGridView1.Refresh()
         Me.Refresh()
@@ -421,14 +441,14 @@
         DataGridView1.Rows(UpdtRow).Cells(1).Value = txtNavigator.Text
         DataGridView1.Rows(UpdtRow).Cells(2).Value = txtFrom.Text
         DataGridView1.Rows(UpdtRow).Cells(3).Value = txtTo.Text
-        DataGridView1.Rows(UpdtRow).Cells(4).Value = DTDateZoneTime.Value.ToString("MM/dd/yyyy HH:mm:ss")
-        DataGridView1.Rows(UpdtRow).Cells(5).Value = txtCompass.Text
-        DataGridView1.Rows(UpdtRow).Cells(6).Value = txtVar.Text & cboVar.Text
-        DataGridView1.Rows(UpdtRow).Cells(7).Value = txtDev.Text & cboDev.Text
-        DataGridView1.Rows(UpdtRow).Cells(8).Value = txtCTrue.Text
-        DataGridView1.Rows(UpdtRow).Cells(9).Value = txtSpeed.Text
-        DataGridView1.Rows(UpdtRow).Cells(10).Value = LLo
-        DataGridView1.Rows(UpdtRow).Cells(11).Value = cboLocType.Text
+        DataGridView1.Rows(UpdtRow).Cells(4).Value = cboLocType.Text
+        DataGridView1.Rows(UpdtRow).Cells(5).Value = DTDateZoneTime.Value.ToString("MM/dd/yyyy HH:mm:ss")
+        DataGridView1.Rows(UpdtRow).Cells(6).Value = txtCompass.Text
+        DataGridView1.Rows(UpdtRow).Cells(7).Value = txtVar.Text & cboVar.Text
+        DataGridView1.Rows(UpdtRow).Cells(8).Value = txtDev.Text & cboDev.Text
+        DataGridView1.Rows(UpdtRow).Cells(9).Value = txtCTrue.Text
+        DataGridView1.Rows(UpdtRow).Cells(10).Value = txtSpeed.Text
+        DataGridView1.Rows(UpdtRow).Cells(11).Value = LLo
         DataGridView1.Rows(UpdtRow).Cells(12).Value = txtWeather.Text
         DataGridView1.Rows(UpdtRow).Cells(13).Value = txtRemarks.Text
         SortDataGridonDate()
@@ -438,7 +458,7 @@
     End Sub
 
     Private Sub btnDeleteSight_Click(sender As Object, e As EventArgs) Handles btnDeleteSight.Click
-        DataSet2.Tables(tablename).Rows.RemoveAt(UpdtRow)
+        DataSet1.Tables(tablename).Rows.RemoveAt(UpdtRow)
         SortDataGridonDate()
         DataGridView1.Refresh()
         Me.Refresh()
@@ -648,7 +668,7 @@
         txtLoMin.Clear()
         txtWeather.Clear()
         txtRemarks.Clear()
-
+        cboLocType.SelectedIndex = 0
         cboL.SelectedIndex = 0
         cboLo.SelectedIndex = 0
         cboVar.SelectedIndex = 0
@@ -659,11 +679,13 @@
     End Sub
 
     Private Sub btnClearFields_Click(sender As Object, e As EventArgs) Handles btnClearFields.Click
+        btnDeleteSight.Visible = False
+        btnUpdateExisting.Visible = False
         ResetScreenFields()
         Exit Sub
     End Sub
     Private Sub SortDataGridonDate()
-        DataGridView1.Sort(DataGridView1.Columns(4), System.ComponentModel.ListSortDirection.Ascending)
+        DataGridView1.Sort(DataGridView1.Columns(5), System.ComponentModel.ListSortDirection.Ascending)
         Exit Sub
     End Sub
     Private Function EditRelationsinDG() As Boolean
@@ -720,4 +742,17 @@
         Dim TS As TimeSpan = DT2 - DT1
         Return (Speed * TS.TotalHours)
     End Function
+
+    Private Sub btnClearForm_Click(sender As Object, e As EventArgs)
+        ResetScreenFields()
+        DataSet1.Tables(tablename).Clear()
+        DataSet1.Tables(tablename).Rows.Add(NullStr)
+        DataSet1.Tables(tablename).Rows.RemoveAt(0)
+        DataGridView1.DataSource = DataSet1.Tables(0).DefaultView
+        SortDataGridonDate()
+        DataGridView1.Refresh()
+        btnUpdateExisting.Visible = False
+        btnDeleteSight.Visible = False
+        Exit Sub
+    End Sub
 End Class

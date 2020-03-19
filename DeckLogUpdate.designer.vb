@@ -24,42 +24,12 @@ Partial Class DeckLogUpdate
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.VesselDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NavigatorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FromDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ToDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ZoneDateTimeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CompassDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.VarDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DevDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TrueDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SpeedDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LocLatLongDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LocTypeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.WeatherDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.RemarksDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataSet2 = New System.Data.DataSet()
-        Me.DataTable1 = New System.Data.DataTable()
-        Me.DataColumn1 = New System.Data.DataColumn()
-        Me.DataColumn2 = New System.Data.DataColumn()
-        Me.DataColumn3 = New System.Data.DataColumn()
-        Me.DataColumn4 = New System.Data.DataColumn()
-        Me.DataColumn5 = New System.Data.DataColumn()
-        Me.DataColumn6 = New System.Data.DataColumn()
-        Me.DataColumn7 = New System.Data.DataColumn()
-        Me.DataColumn8 = New System.Data.DataColumn()
-        Me.DataColumn9 = New System.Data.DataColumn()
-        Me.DataColumn10 = New System.Data.DataColumn()
-        Me.DataColumn11 = New System.Data.DataColumn()
-        Me.DataColumn12 = New System.Data.DataColumn()
-        Me.DataColumn13 = New System.Data.DataColumn()
-        Me.DataColumn14 = New System.Data.DataColumn()
         Me.btnExit = New System.Windows.Forms.Button()
         Me.btnExitNoSave = New System.Windows.Forms.Button()
         Me.CommonNameDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -122,9 +92,38 @@ Partial Class DeckLogUpdate
         Me.lblVessel = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.VesselDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NavigatorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FromDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ToDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ZoneDateTimeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CompassDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VarDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DevDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TrueDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SpeedDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LocLatLongDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LocTypeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.WeatherDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.RemarksDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ActualLoc = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VesselDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NavigatorDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FromDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ToDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LocTypeDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ZoneDateTimeDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CompassDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VarDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DevDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TrueDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SpeedDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LocLatLongDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.WeatherDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.RemarksDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TimetoDest = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataSet2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataTable1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -135,7 +134,6 @@ Partial Class DeckLogUpdate
         DataGridViewCellStyle8.BackColor = System.Drawing.Color.LightGray
         DataGridViewCellStyle8.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle8
-        Me.DataGridView1.AutoGenerateColumns = False
         Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.DataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption
@@ -150,36 +148,33 @@ Partial Class DeckLogUpdate
         DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle9
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.VesselDataGridViewTextBoxColumn, Me.NavigatorDataGridViewTextBoxColumn, Me.FromDataGridViewTextBoxColumn, Me.ToDataGridViewTextBoxColumn, Me.ZoneDateTimeDataGridViewTextBoxColumn, Me.CompassDataGridViewTextBoxColumn, Me.VarDataGridViewTextBoxColumn, Me.DevDataGridViewTextBoxColumn, Me.TrueDataGridViewTextBoxColumn, Me.SpeedDataGridViewTextBoxColumn, Me.LocLatLongDataGridViewTextBoxColumn, Me.LocTypeDataGridViewTextBoxColumn, Me.WeatherDataGridViewTextBoxColumn, Me.RemarksDataGridViewTextBoxColumn})
-        Me.DataGridView1.DataMember = "Table1"
-        Me.DataGridView1.DataSource = Me.DataSet2
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle12.NullValue = " "
-        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle10.NullValue = " "
+        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle10
         Me.DataGridView1.Location = New System.Drawing.Point(8, 215)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle13.BackColor = System.Drawing.Color.Yellow
-        DataGridViewCellStyle13.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle13
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle14.BackColor = System.Drawing.Color.Yellow
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.InfoText
-        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.Blue
-        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.White
-        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle11.BackColor = System.Drawing.Color.Yellow
+        DataGridViewCellStyle11.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle12.BackColor = System.Drawing.Color.Yellow
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.InfoText
+        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.Blue
+        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White
+        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle12
         Me.DataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Yellow
         Me.DataGridView1.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.SystemColors.InfoText
         Me.DataGridView1.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Blue
@@ -188,213 +183,11 @@ Partial Class DeckLogUpdate
         Me.DataGridView1.Size = New System.Drawing.Size(1365, 613)
         Me.DataGridView1.TabIndex = 0
         '
-        'VesselDataGridViewTextBoxColumn
-        '
-        Me.VesselDataGridViewTextBoxColumn.DataPropertyName = "Vessel"
-        Me.VesselDataGridViewTextBoxColumn.HeaderText = "Vessel"
-        Me.VesselDataGridViewTextBoxColumn.Name = "VesselDataGridViewTextBoxColumn"
-        Me.VesselDataGridViewTextBoxColumn.ReadOnly = True
-        Me.VesselDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.VesselDataGridViewTextBoxColumn.Width = 49
-        '
-        'NavigatorDataGridViewTextBoxColumn
-        '
-        Me.NavigatorDataGridViewTextBoxColumn.DataPropertyName = "Navigator"
-        Me.NavigatorDataGridViewTextBoxColumn.HeaderText = "Navigator"
-        Me.NavigatorDataGridViewTextBoxColumn.Name = "NavigatorDataGridViewTextBoxColumn"
-        Me.NavigatorDataGridViewTextBoxColumn.ReadOnly = True
-        Me.NavigatorDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.NavigatorDataGridViewTextBoxColumn.Width = 66
-        '
-        'FromDataGridViewTextBoxColumn
-        '
-        Me.FromDataGridViewTextBoxColumn.DataPropertyName = "From"
-        Me.FromDataGridViewTextBoxColumn.HeaderText = "From"
-        Me.FromDataGridViewTextBoxColumn.Name = "FromDataGridViewTextBoxColumn"
-        Me.FromDataGridViewTextBoxColumn.ReadOnly = True
-        Me.FromDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.FromDataGridViewTextBoxColumn.Width = 42
-        '
-        'ToDataGridViewTextBoxColumn
-        '
-        Me.ToDataGridViewTextBoxColumn.DataPropertyName = "To"
-        Me.ToDataGridViewTextBoxColumn.HeaderText = "To"
-        Me.ToDataGridViewTextBoxColumn.Name = "ToDataGridViewTextBoxColumn"
-        Me.ToDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ToDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.ToDataGridViewTextBoxColumn.Width = 26
-        '
-        'ZoneDateTimeDataGridViewTextBoxColumn
-        '
-        Me.ZoneDateTimeDataGridViewTextBoxColumn.DataPropertyName = "ZoneDateTime"
-        Me.ZoneDateTimeDataGridViewTextBoxColumn.HeaderText = "ZoneDateTime"
-        Me.ZoneDateTimeDataGridViewTextBoxColumn.Name = "ZoneDateTimeDataGridViewTextBoxColumn"
-        Me.ZoneDateTimeDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ZoneDateTimeDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.ZoneDateTimeDataGridViewTextBoxColumn.Width = 93
-        '
-        'CompassDataGridViewTextBoxColumn
-        '
-        Me.CompassDataGridViewTextBoxColumn.DataPropertyName = "Compass"
-        Me.CompassDataGridViewTextBoxColumn.HeaderText = "Compass"
-        Me.CompassDataGridViewTextBoxColumn.Name = "CompassDataGridViewTextBoxColumn"
-        Me.CompassDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CompassDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.CompassDataGridViewTextBoxColumn.Width = 62
-        '
-        'VarDataGridViewTextBoxColumn
-        '
-        Me.VarDataGridViewTextBoxColumn.DataPropertyName = "Var"
-        Me.VarDataGridViewTextBoxColumn.HeaderText = "Var"
-        Me.VarDataGridViewTextBoxColumn.Name = "VarDataGridViewTextBoxColumn"
-        Me.VarDataGridViewTextBoxColumn.ReadOnly = True
-        Me.VarDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.VarDataGridViewTextBoxColumn.Width = 33
-        '
-        'DevDataGridViewTextBoxColumn
-        '
-        Me.DevDataGridViewTextBoxColumn.DataPropertyName = "Dev"
-        Me.DevDataGridViewTextBoxColumn.HeaderText = "Dev"
-        Me.DevDataGridViewTextBoxColumn.Name = "DevDataGridViewTextBoxColumn"
-        Me.DevDataGridViewTextBoxColumn.ReadOnly = True
-        Me.DevDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.DevDataGridViewTextBoxColumn.Width = 33
-        '
-        'TrueDataGridViewTextBoxColumn
-        '
-        Me.TrueDataGridViewTextBoxColumn.DataPropertyName = "True"
-        Me.TrueDataGridViewTextBoxColumn.HeaderText = "True"
-        Me.TrueDataGridViewTextBoxColumn.Name = "TrueDataGridViewTextBoxColumn"
-        Me.TrueDataGridViewTextBoxColumn.ReadOnly = True
-        Me.TrueDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.TrueDataGridViewTextBoxColumn.Width = 39
-        '
-        'SpeedDataGridViewTextBoxColumn
-        '
-        Me.SpeedDataGridViewTextBoxColumn.DataPropertyName = "Speed"
-        Me.SpeedDataGridViewTextBoxColumn.HeaderText = "Speed"
-        Me.SpeedDataGridViewTextBoxColumn.Name = "SpeedDataGridViewTextBoxColumn"
-        Me.SpeedDataGridViewTextBoxColumn.ReadOnly = True
-        Me.SpeedDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.SpeedDataGridViewTextBoxColumn.Width = 45
-        '
-        'LocLatLongDataGridViewTextBoxColumn
-        '
-        Me.LocLatLongDataGridViewTextBoxColumn.DataPropertyName = "Loc Lat Long"
-        Me.LocLatLongDataGridViewTextBoxColumn.HeaderText = "Loc Lat Long"
-        Me.LocLatLongDataGridViewTextBoxColumn.Name = "LocLatLongDataGridViewTextBoxColumn"
-        Me.LocLatLongDataGridViewTextBoxColumn.ReadOnly = True
-        Me.LocLatLongDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.LocLatLongDataGridViewTextBoxColumn.Width = 85
-        '
-        'LocTypeDataGridViewTextBoxColumn
-        '
-        Me.LocTypeDataGridViewTextBoxColumn.DataPropertyName = "LocType"
-        Me.LocTypeDataGridViewTextBoxColumn.HeaderText = "LocType"
-        Me.LocTypeDataGridViewTextBoxColumn.Name = "LocTypeDataGridViewTextBoxColumn"
-        Me.LocTypeDataGridViewTextBoxColumn.ReadOnly = True
-        Me.LocTypeDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.LocTypeDataGridViewTextBoxColumn.Width = 58
-        '
-        'WeatherDataGridViewTextBoxColumn
-        '
-        Me.WeatherDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.WeatherDataGridViewTextBoxColumn.DataPropertyName = "Weather"
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
-        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.WeatherDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle10
-        Me.WeatherDataGridViewTextBoxColumn.HeaderText = "Weather"
-        Me.WeatherDataGridViewTextBoxColumn.MinimumWidth = 300
-        Me.WeatherDataGridViewTextBoxColumn.Name = "WeatherDataGridViewTextBoxColumn"
-        Me.WeatherDataGridViewTextBoxColumn.ReadOnly = True
-        Me.WeatherDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.WeatherDataGridViewTextBoxColumn.Width = 300
-        '
-        'RemarksDataGridViewTextBoxColumn
-        '
-        Me.RemarksDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.RemarksDataGridViewTextBoxColumn.DataPropertyName = "Remarks"
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
-        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.RemarksDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle11
-        Me.RemarksDataGridViewTextBoxColumn.HeaderText = "Remarks"
-        Me.RemarksDataGridViewTextBoxColumn.MinimumWidth = 300
-        Me.RemarksDataGridViewTextBoxColumn.Name = "RemarksDataGridViewTextBoxColumn"
-        Me.RemarksDataGridViewTextBoxColumn.ReadOnly = True
-        Me.RemarksDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.RemarksDataGridViewTextBoxColumn.Width = 300
-        '
-        'DataSet2
-        '
-        Me.DataSet2.DataSetName = "DeckLogDataSet"
-        Me.DataSet2.Tables.AddRange(New System.Data.DataTable() {Me.DataTable1})
-        '
-        'DataTable1
-        '
-        Me.DataTable1.Columns.AddRange(New System.Data.DataColumn() {Me.DataColumn1, Me.DataColumn2, Me.DataColumn3, Me.DataColumn4, Me.DataColumn5, Me.DataColumn6, Me.DataColumn7, Me.DataColumn8, Me.DataColumn9, Me.DataColumn10, Me.DataColumn11, Me.DataColumn12, Me.DataColumn13, Me.DataColumn14})
-        Me.DataTable1.TableName = "Table1"
-        '
-        'DataColumn1
-        '
-        Me.DataColumn1.ColumnName = "Vessel"
-        '
-        'DataColumn2
-        '
-        Me.DataColumn2.ColumnName = "Navigator"
-        '
-        'DataColumn3
-        '
-        Me.DataColumn3.ColumnName = "From"
-        '
-        'DataColumn4
-        '
-        Me.DataColumn4.ColumnName = "To"
-        '
-        'DataColumn5
-        '
-        Me.DataColumn5.ColumnName = "ZoneDateTime"
-        '
-        'DataColumn6
-        '
-        Me.DataColumn6.ColumnName = "Compass"
-        '
-        'DataColumn7
-        '
-        Me.DataColumn7.ColumnName = "Var"
-        '
-        'DataColumn8
-        '
-        Me.DataColumn8.ColumnName = "Dev"
-        '
-        'DataColumn9
-        '
-        Me.DataColumn9.ColumnName = "True"
-        '
-        'DataColumn10
-        '
-        Me.DataColumn10.ColumnName = "Speed"
-        '
-        'DataColumn11
-        '
-        Me.DataColumn11.ColumnName = "Loc Lat Long"
-        '
-        'DataColumn12
-        '
-        Me.DataColumn12.ColumnName = "LocType"
-        '
-        'DataColumn13
-        '
-        Me.DataColumn13.ColumnName = "Weather"
-        '
-        'DataColumn14
-        '
-        Me.DataColumn14.ColumnName = "Remarks"
-        '
         'btnExit
         '
         Me.btnExit.BackColor = System.Drawing.Color.Red
         Me.btnExit.ForeColor = System.Drawing.Color.White
-        Me.btnExit.Location = New System.Drawing.Point(1255, 8)
+        Me.btnExit.Location = New System.Drawing.Point(1255, 9)
         Me.btnExit.Name = "btnExit"
         Me.btnExit.Size = New System.Drawing.Size(118, 23)
         Me.btnExit.TabIndex = 1
@@ -437,7 +230,7 @@ Partial Class DeckLogUpdate
         '
         Me.btnOpenCSV.BackColor = System.Drawing.Color.Yellow
         Me.btnOpenCSV.ForeColor = System.Drawing.Color.Black
-        Me.btnOpenCSV.Location = New System.Drawing.Point(1009, 9)
+        Me.btnOpenCSV.Location = New System.Drawing.Point(1009, 8)
         Me.btnOpenCSV.Name = "btnOpenCSV"
         Me.btnOpenCSV.Size = New System.Drawing.Size(118, 23)
         Me.btnOpenCSV.TabIndex = 3
@@ -447,7 +240,7 @@ Partial Class DeckLogUpdate
         'lblOpenFN
         '
         Me.lblOpenFN.AutoSize = True
-        Me.lblOpenFN.Location = New System.Drawing.Point(306, 41)
+        Me.lblOpenFN.Location = New System.Drawing.Point(263, 43)
         Me.lblOpenFN.Name = "lblOpenFN"
         Me.lblOpenFN.Size = New System.Drawing.Size(58, 13)
         Me.lblOpenFN.TabIndex = 4
@@ -456,10 +249,10 @@ Partial Class DeckLogUpdate
         '
         'txtOpenFN
         '
-        Me.txtOpenFN.Location = New System.Drawing.Point(364, 38)
+        Me.txtOpenFN.Location = New System.Drawing.Point(319, 40)
         Me.txtOpenFN.Name = "txtOpenFN"
         Me.txtOpenFN.ReadOnly = True
-        Me.txtOpenFN.Size = New System.Drawing.Size(700, 20)
+        Me.txtOpenFN.Size = New System.Drawing.Size(685, 20)
         Me.txtOpenFN.TabIndex = 5
         Me.txtOpenFN.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.txtOpenFN.Visible = False
@@ -479,7 +272,7 @@ Partial Class DeckLogUpdate
         '
         Me.btnInfoForm.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.btnInfoForm.ForeColor = System.Drawing.Color.Black
-        Me.btnInfoForm.Location = New System.Drawing.Point(1133, 32)
+        Me.btnInfoForm.Location = New System.Drawing.Point(1010, 34)
         Me.btnInfoForm.Name = "btnInfoForm"
         Me.btnInfoForm.Size = New System.Drawing.Size(118, 23)
         Me.btnInfoForm.TabIndex = 7
@@ -548,8 +341,8 @@ Partial Class DeckLogUpdate
         'cboLocType
         '
         Me.cboLocType.FormattingEnabled = True
-        Me.cboLocType.Items.AddRange(New Object() {"DR", "GPS", "Fix"})
-        Me.cboLocType.Location = New System.Drawing.Point(1201, 55)
+        Me.cboLocType.Items.AddRange(New Object() {"DR", "GPS", "Fix", "Weather", "Remarks"})
+        Me.cboLocType.Location = New System.Drawing.Point(86, 51)
         Me.cboLocType.Name = "cboLocType"
         Me.cboLocType.Size = New System.Drawing.Size(59, 21)
         Me.cboLocType.TabIndex = 221
@@ -560,24 +353,24 @@ Partial Class DeckLogUpdate
         Me.Label5.Cursor = System.Windows.Forms.Cursors.Default
         Me.Label5.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label5.Location = New System.Drawing.Point(1137, 56)
+        Me.Label5.Location = New System.Drawing.Point(38, 52)
         Me.Label5.Name = "Label5"
         Me.Label5.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Label5.Size = New System.Drawing.Size(66, 18)
+        Me.Label5.Size = New System.Drawing.Size(40, 18)
         Me.Label5.TabIndex = 220
         Me.Label5.Text = "Loc Type:"
-        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'btnClearFields
         '
         Me.btnClearFields.BackColor = System.Drawing.Color.Yellow
         Me.btnClearFields.Font = New System.Drawing.Font("Arial Narrow", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnClearFields.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.btnClearFields.Location = New System.Drawing.Point(1235, 19)
+        Me.btnClearFields.Location = New System.Drawing.Point(1228, 19)
         Me.btnClearFields.Name = "btnClearFields"
         Me.btnClearFields.Size = New System.Drawing.Size(110, 23)
         Me.btnClearFields.TabIndex = 219
-        Me.btnClearFields.Text = "Clear Fields"
+        Me.btnClearFields.Text = "Clear Input Fields"
         Me.btnClearFields.UseVisualStyleBackColor = False
         '
         'btnAddNew
@@ -585,7 +378,7 @@ Partial Class DeckLogUpdate
         Me.btnAddNew.BackColor = System.Drawing.Color.Yellow
         Me.btnAddNew.Font = New System.Drawing.Font("Arial Narrow", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAddNew.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.btnAddNew.Location = New System.Drawing.Point(890, 19)
+        Me.btnAddNew.Location = New System.Drawing.Point(881, 19)
         Me.btnAddNew.Name = "btnAddNew"
         Me.btnAddNew.Size = New System.Drawing.Size(110, 23)
         Me.btnAddNew.TabIndex = 216
@@ -597,7 +390,7 @@ Partial Class DeckLogUpdate
         Me.btnUpdateExisting.BackColor = System.Drawing.Color.Yellow
         Me.btnUpdateExisting.Font = New System.Drawing.Font("Arial Narrow", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnUpdateExisting.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.btnUpdateExisting.Location = New System.Drawing.Point(1006, 19)
+        Me.btnUpdateExisting.Location = New System.Drawing.Point(996, 19)
         Me.btnUpdateExisting.Name = "btnUpdateExisting"
         Me.btnUpdateExisting.Size = New System.Drawing.Size(110, 23)
         Me.btnUpdateExisting.TabIndex = 217
@@ -609,7 +402,7 @@ Partial Class DeckLogUpdate
         Me.btnDeleteSight.BackColor = System.Drawing.Color.Red
         Me.btnDeleteSight.Font = New System.Drawing.Font("Arial Narrow", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnDeleteSight.ForeColor = System.Drawing.SystemColors.HighlightText
-        Me.btnDeleteSight.Location = New System.Drawing.Point(1119, 19)
+        Me.btnDeleteSight.Location = New System.Drawing.Point(1111, 19)
         Me.btnDeleteSight.Name = "btnDeleteSight"
         Me.btnDeleteSight.Size = New System.Drawing.Size(110, 23)
         Me.btnDeleteSight.TabIndex = 218
@@ -618,7 +411,7 @@ Partial Class DeckLogUpdate
         '
         'txtSpeed
         '
-        Me.txtSpeed.Location = New System.Drawing.Point(726, 54)
+        Me.txtSpeed.Location = New System.Drawing.Point(862, 54)
         Me.txtSpeed.MaxLength = 4
         Me.txtSpeed.Name = "txtSpeed"
         Me.txtSpeed.Size = New System.Drawing.Size(35, 20)
@@ -628,7 +421,7 @@ Partial Class DeckLogUpdate
         '
         Me.lblSpeed.AutoSize = True
         Me.lblSpeed.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblSpeed.Location = New System.Drawing.Point(681, 56)
+        Me.lblSpeed.Location = New System.Drawing.Point(817, 56)
         Me.lblSpeed.Name = "lblSpeed"
         Me.lblSpeed.Size = New System.Drawing.Size(43, 15)
         Me.lblSpeed.TabIndex = 214
@@ -641,7 +434,7 @@ Partial Class DeckLogUpdate
         Me.Label4.Cursor = System.Windows.Forms.Cursors.Default
         Me.Label4.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label4.Location = New System.Drawing.Point(663, 55)
+        Me.Label4.Location = New System.Drawing.Point(799, 55)
         Me.Label4.Name = "Label4"
         Me.Label4.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.Label4.Size = New System.Drawing.Size(9, 17)
@@ -651,7 +444,7 @@ Partial Class DeckLogUpdate
         'txtCTrue
         '
         Me.txtCTrue.Enabled = False
-        Me.txtCTrue.Location = New System.Drawing.Point(631, 53)
+        Me.txtCTrue.Location = New System.Drawing.Point(767, 53)
         Me.txtCTrue.MaxLength = 3
         Me.txtCTrue.Name = "txtCTrue"
         Me.txtCTrue.ReadOnly = True
@@ -662,7 +455,7 @@ Partial Class DeckLogUpdate
         '
         Me.lblCTrue.AutoSize = True
         Me.lblCTrue.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCTrue.Location = New System.Drawing.Point(594, 55)
+        Me.lblCTrue.Location = New System.Drawing.Point(730, 55)
         Me.lblCTrue.Name = "lblCTrue"
         Me.lblCTrue.Size = New System.Drawing.Size(35, 15)
         Me.lblCTrue.TabIndex = 211
@@ -671,7 +464,7 @@ Partial Class DeckLogUpdate
         '
         'txtRemarks
         '
-        Me.txtRemarks.Location = New System.Drawing.Point(83, 104)
+        Me.txtRemarks.Location = New System.Drawing.Point(725, 82)
         Me.txtRemarks.Multiline = True
         Me.txtRemarks.Name = "txtRemarks"
         Me.txtRemarks.ScrollBars = System.Windows.Forms.ScrollBars.Both
@@ -682,7 +475,7 @@ Partial Class DeckLogUpdate
         '
         Me.lblRemarks.AutoSize = True
         Me.lblRemarks.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblRemarks.Location = New System.Drawing.Point(23, 106)
+        Me.lblRemarks.Location = New System.Drawing.Point(665, 84)
         Me.lblRemarks.Name = "lblRemarks"
         Me.lblRemarks.Size = New System.Drawing.Size(55, 15)
         Me.lblRemarks.TabIndex = 209
@@ -690,16 +483,18 @@ Partial Class DeckLogUpdate
         '
         'txtWeather
         '
-        Me.txtWeather.Location = New System.Drawing.Point(83, 78)
+        Me.txtWeather.Location = New System.Drawing.Point(86, 80)
+        Me.txtWeather.Multiline = True
         Me.txtWeather.Name = "txtWeather"
-        Me.txtWeather.Size = New System.Drawing.Size(570, 20)
+        Me.txtWeather.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.txtWeather.Size = New System.Drawing.Size(570, 43)
         Me.txtWeather.TabIndex = 208
         '
         'lblWeather
         '
         Me.lblWeather.AutoSize = True
         Me.lblWeather.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblWeather.Location = New System.Drawing.Point(21, 80)
+        Me.lblWeather.Location = New System.Drawing.Point(28, 82)
         Me.lblWeather.Name = "lblWeather"
         Me.lblWeather.Size = New System.Drawing.Size(55, 15)
         Me.lblWeather.TabIndex = 207
@@ -713,7 +508,7 @@ Partial Class DeckLogUpdate
         Me.cboLo.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboLo.ForeColor = System.Drawing.SystemColors.WindowText
         Me.cboLo.Items.AddRange(New Object() {"W", "E"})
-        Me.cboLo.Location = New System.Drawing.Point(1092, 53)
+        Me.cboLo.Location = New System.Drawing.Point(1251, 52)
         Me.cboLo.Name = "cboLo"
         Me.cboLo.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.cboLo.Size = New System.Drawing.Size(41, 24)
@@ -727,7 +522,7 @@ Partial Class DeckLogUpdate
         Me.cboL.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboL.ForeColor = System.Drawing.SystemColors.WindowText
         Me.cboL.Items.AddRange(New Object() {"N", "S"})
-        Me.cboL.Location = New System.Drawing.Point(894, 53)
+        Me.cboL.Location = New System.Drawing.Point(1053, 52)
         Me.cboL.Name = "cboL"
         Me.cboL.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.cboL.Size = New System.Drawing.Size(41, 24)
@@ -741,7 +536,7 @@ Partial Class DeckLogUpdate
         Me.txtLDeg.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtLDeg.ForeColor = System.Drawing.SystemColors.WindowText
         Me.txtLDeg.HideSelection = False
-        Me.txtLDeg.Location = New System.Drawing.Point(822, 53)
+        Me.txtLDeg.Location = New System.Drawing.Point(981, 52)
         Me.txtLDeg.MaxLength = 2
         Me.txtLDeg.Name = "txtLDeg"
         Me.txtLDeg.RightToLeft = System.Windows.Forms.RightToLeft.No
@@ -756,7 +551,7 @@ Partial Class DeckLogUpdate
         Me.txtLoMin.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtLoMin.ForeColor = System.Drawing.SystemColors.WindowText
         Me.txtLoMin.HideSelection = False
-        Me.txtLoMin.Location = New System.Drawing.Point(1048, 54)
+        Me.txtLoMin.Location = New System.Drawing.Point(1207, 53)
         Me.txtLoMin.MaxLength = 4
         Me.txtLoMin.Name = "txtLoMin"
         Me.txtLoMin.RightToLeft = System.Windows.Forms.RightToLeft.No
@@ -771,7 +566,7 @@ Partial Class DeckLogUpdate
         Me.txtLoDeg.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtLoDeg.ForeColor = System.Drawing.SystemColors.WindowText
         Me.txtLoDeg.HideSelection = False
-        Me.txtLoDeg.Location = New System.Drawing.Point(1006, 54)
+        Me.txtLoDeg.Location = New System.Drawing.Point(1165, 53)
         Me.txtLoDeg.MaxLength = 3
         Me.txtLoDeg.Name = "txtLoDeg"
         Me.txtLoDeg.RightToLeft = System.Windows.Forms.RightToLeft.No
@@ -786,7 +581,7 @@ Partial Class DeckLogUpdate
         Me.txtLMin.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtLMin.ForeColor = System.Drawing.SystemColors.WindowText
         Me.txtLMin.HideSelection = False
-        Me.txtLMin.Location = New System.Drawing.Point(854, 53)
+        Me.txtLMin.Location = New System.Drawing.Point(1013, 52)
         Me.txtLMin.MaxLength = 4
         Me.txtLMin.Name = "txtLMin"
         Me.txtLMin.RightToLeft = System.Windows.Forms.RightToLeft.No
@@ -799,7 +594,7 @@ Partial Class DeckLogUpdate
         Me.lblLoMin.Cursor = System.Windows.Forms.Cursors.Default
         Me.lblLoMin.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblLoMin.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblLoMin.Location = New System.Drawing.Point(1081, 55)
+        Me.lblLoMin.Location = New System.Drawing.Point(1240, 54)
         Me.lblLoMin.Name = "lblLoMin"
         Me.lblLoMin.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.lblLoMin.Size = New System.Drawing.Size(9, 17)
@@ -812,7 +607,7 @@ Partial Class DeckLogUpdate
         Me.lblLoDeg.Cursor = System.Windows.Forms.Cursors.Default
         Me.lblLoDeg.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblLoDeg.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblLoDeg.Location = New System.Drawing.Point(1040, 55)
+        Me.lblLoDeg.Location = New System.Drawing.Point(1199, 54)
         Me.lblLoDeg.Name = "lblLoDeg"
         Me.lblLoDeg.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.lblLoDeg.Size = New System.Drawing.Size(9, 17)
@@ -825,7 +620,7 @@ Partial Class DeckLogUpdate
         Me.lblDRLo.Cursor = System.Windows.Forms.Cursors.Default
         Me.lblDRLo.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblDRLo.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblDRLo.Location = New System.Drawing.Point(939, 56)
+        Me.lblDRLo.Location = New System.Drawing.Point(1098, 55)
         Me.lblDRLo.Name = "lblDRLo"
         Me.lblDRLo.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.lblDRLo.Size = New System.Drawing.Size(66, 18)
@@ -839,7 +634,7 @@ Partial Class DeckLogUpdate
         Me.lblLMin.Cursor = System.Windows.Forms.Cursors.Default
         Me.lblLMin.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblLMin.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblLMin.Location = New System.Drawing.Point(887, 55)
+        Me.lblLMin.Location = New System.Drawing.Point(1046, 54)
         Me.lblLMin.Name = "lblLMin"
         Me.lblLMin.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.lblLMin.Size = New System.Drawing.Size(9, 17)
@@ -852,7 +647,7 @@ Partial Class DeckLogUpdate
         Me.lblLDeg.Cursor = System.Windows.Forms.Cursors.Default
         Me.lblLDeg.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblLDeg.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblLDeg.Location = New System.Drawing.Point(847, 55)
+        Me.lblLDeg.Location = New System.Drawing.Point(1006, 54)
         Me.lblLDeg.Name = "lblLDeg"
         Me.lblLDeg.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.lblLDeg.Size = New System.Drawing.Size(9, 17)
@@ -865,7 +660,7 @@ Partial Class DeckLogUpdate
         Me.lblDRL.Cursor = System.Windows.Forms.Cursors.Default
         Me.lblDRL.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblDRL.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblDRL.Location = New System.Drawing.Point(768, 54)
+        Me.lblDRL.Location = New System.Drawing.Point(927, 53)
         Me.lblDRL.Name = "lblDRL"
         Me.lblDRL.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.lblDRL.Size = New System.Drawing.Size(56, 20)
@@ -879,7 +674,7 @@ Partial Class DeckLogUpdate
         Me.Label3.Cursor = System.Windows.Forms.Cursors.Default
         Me.Label3.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label3.Location = New System.Drawing.Point(546, 55)
+        Me.Label3.Location = New System.Drawing.Point(682, 55)
         Me.Label3.Name = "Label3"
         Me.Label3.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.Label3.Size = New System.Drawing.Size(9, 17)
@@ -892,7 +687,7 @@ Partial Class DeckLogUpdate
         Me.Label2.Cursor = System.Windows.Forms.Cursors.Default
         Me.Label2.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label2.Location = New System.Drawing.Point(439, 55)
+        Me.Label2.Location = New System.Drawing.Point(575, 55)
         Me.Label2.Name = "Label2"
         Me.Label2.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.Label2.Size = New System.Drawing.Size(9, 17)
@@ -903,14 +698,14 @@ Partial Class DeckLogUpdate
         '
         Me.cboDev.FormattingEnabled = True
         Me.cboDev.Items.AddRange(New Object() {"W", "E"})
-        Me.cboDev.Location = New System.Drawing.Point(557, 52)
+        Me.cboDev.Location = New System.Drawing.Point(693, 52)
         Me.cboDev.Name = "cboDev"
         Me.cboDev.Size = New System.Drawing.Size(35, 21)
         Me.cboDev.TabIndex = 178
         '
         'txtDev
         '
-        Me.txtDev.Location = New System.Drawing.Point(519, 53)
+        Me.txtDev.Location = New System.Drawing.Point(655, 53)
         Me.txtDev.MaxLength = 2
         Me.txtDev.Name = "txtDev"
         Me.txtDev.Size = New System.Drawing.Size(25, 20)
@@ -920,7 +715,7 @@ Partial Class DeckLogUpdate
         '
         Me.lblDev.AutoSize = True
         Me.lblDev.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDev.Location = New System.Drawing.Point(489, 55)
+        Me.lblDev.Location = New System.Drawing.Point(625, 55)
         Me.lblDev.Name = "lblDev"
         Me.lblDev.Size = New System.Drawing.Size(32, 15)
         Me.lblDev.TabIndex = 176
@@ -931,14 +726,14 @@ Partial Class DeckLogUpdate
         '
         Me.cboVar.FormattingEnabled = True
         Me.cboVar.Items.AddRange(New Object() {"W", "E"})
-        Me.cboVar.Location = New System.Drawing.Point(448, 52)
+        Me.cboVar.Location = New System.Drawing.Point(584, 52)
         Me.cboVar.Name = "cboVar"
         Me.cboVar.Size = New System.Drawing.Size(35, 21)
         Me.cboVar.TabIndex = 175
         '
         'txtVar
         '
-        Me.txtVar.Location = New System.Drawing.Point(413, 53)
+        Me.txtVar.Location = New System.Drawing.Point(549, 53)
         Me.txtVar.MaxLength = 2
         Me.txtVar.Name = "txtVar"
         Me.txtVar.Size = New System.Drawing.Size(25, 20)
@@ -948,7 +743,7 @@ Partial Class DeckLogUpdate
         '
         Me.lblVariation.AutoSize = True
         Me.lblVariation.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblVariation.Location = New System.Drawing.Point(385, 55)
+        Me.lblVariation.Location = New System.Drawing.Point(521, 55)
         Me.lblVariation.Name = "lblVariation"
         Me.lblVariation.Size = New System.Drawing.Size(27, 15)
         Me.lblVariation.TabIndex = 173
@@ -961,7 +756,7 @@ Partial Class DeckLogUpdate
         Me.Label6.Cursor = System.Windows.Forms.Cursors.Default
         Me.Label6.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label6.Location = New System.Drawing.Point(370, 54)
+        Me.Label6.Location = New System.Drawing.Point(506, 54)
         Me.Label6.Name = "Label6"
         Me.Label6.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.Label6.Size = New System.Drawing.Size(9, 17)
@@ -972,14 +767,14 @@ Partial Class DeckLogUpdate
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(403, 54)
+        Me.Label1.Location = New System.Drawing.Point(562, 53)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(0, 15)
         Me.Label1.TabIndex = 12
         '
         'txtCompass
         '
-        Me.txtCompass.Location = New System.Drawing.Point(338, 52)
+        Me.txtCompass.Location = New System.Drawing.Point(474, 52)
         Me.txtCompass.MaxLength = 3
         Me.txtCompass.Name = "txtCompass"
         Me.txtCompass.Size = New System.Drawing.Size(30, 20)
@@ -989,7 +784,7 @@ Partial Class DeckLogUpdate
         '
         Me.lblCompass.AutoSize = True
         Me.lblCompass.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCompass.Location = New System.Drawing.Point(278, 54)
+        Me.lblCompass.Location = New System.Drawing.Point(414, 54)
         Me.lblCompass.Name = "lblCompass"
         Me.lblCompass.Size = New System.Drawing.Size(59, 15)
         Me.lblCompass.TabIndex = 10
@@ -1000,7 +795,7 @@ Partial Class DeckLogUpdate
         '
         Me.DTDateZoneTime.CustomFormat = "MM/dd/yyyy HH:mm:ss"
         Me.DTDateZoneTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DTDateZoneTime.Location = New System.Drawing.Point(128, 50)
+        Me.DTDateZoneTime.Location = New System.Drawing.Point(262, 52)
         Me.DTDateZoneTime.Name = "DTDateZoneTime"
         Me.DTDateZoneTime.ShowUpDown = True
         Me.DTDateZoneTime.Size = New System.Drawing.Size(144, 20)
@@ -1010,7 +805,7 @@ Partial Class DeckLogUpdate
         '
         Me.lblZoneDT.AutoSize = True
         Me.lblZoneDT.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblZoneDT.Location = New System.Drawing.Point(23, 52)
+        Me.lblZoneDT.Location = New System.Drawing.Point(157, 54)
         Me.lblZoneDT.Name = "lblZoneDT"
         Me.lblZoneDT.Size = New System.Drawing.Size(102, 15)
         Me.lblZoneDT.TabIndex = 8
@@ -1073,7 +868,7 @@ Partial Class DeckLogUpdate
         '
         'txtVessel
         '
-        Me.txtVessel.Location = New System.Drawing.Point(72, 20)
+        Me.txtVessel.Location = New System.Drawing.Point(84, 20)
         Me.txtVessel.Name = "txtVessel"
         Me.txtVessel.Size = New System.Drawing.Size(160, 20)
         Me.txtVessel.TabIndex = 1
@@ -1082,7 +877,7 @@ Partial Class DeckLogUpdate
         '
         Me.lblVessel.AutoSize = True
         Me.lblVessel.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblVessel.Location = New System.Drawing.Point(24, 23)
+        Me.lblVessel.Location = New System.Drawing.Point(37, 23)
         Me.lblVessel.Name = "lblVessel"
         Me.lblVessel.Size = New System.Drawing.Size(44, 15)
         Me.lblVessel.TabIndex = 0
@@ -1110,6 +905,246 @@ Partial Class DeckLogUpdate
         Me.PictureBox1.TabIndex = 10
         Me.PictureBox1.TabStop = False
         '
+        'VesselDataGridViewTextBoxColumn
+        '
+        Me.VesselDataGridViewTextBoxColumn.DataPropertyName = "Vessel"
+        Me.VesselDataGridViewTextBoxColumn.HeaderText = "Vessel"
+        Me.VesselDataGridViewTextBoxColumn.Name = "VesselDataGridViewTextBoxColumn"
+        Me.VesselDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.VesselDataGridViewTextBoxColumn.Width = 49
+        '
+        'NavigatorDataGridViewTextBoxColumn
+        '
+        Me.NavigatorDataGridViewTextBoxColumn.DataPropertyName = "Navigator"
+        Me.NavigatorDataGridViewTextBoxColumn.HeaderText = "Navigator"
+        Me.NavigatorDataGridViewTextBoxColumn.Name = "NavigatorDataGridViewTextBoxColumn"
+        Me.NavigatorDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.NavigatorDataGridViewTextBoxColumn.Width = 66
+        '
+        'FromDataGridViewTextBoxColumn
+        '
+        Me.FromDataGridViewTextBoxColumn.DataPropertyName = "From"
+        Me.FromDataGridViewTextBoxColumn.HeaderText = "From"
+        Me.FromDataGridViewTextBoxColumn.Name = "FromDataGridViewTextBoxColumn"
+        Me.FromDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.FromDataGridViewTextBoxColumn.Width = 42
+        '
+        'ToDataGridViewTextBoxColumn
+        '
+        Me.ToDataGridViewTextBoxColumn.DataPropertyName = "To"
+        Me.ToDataGridViewTextBoxColumn.HeaderText = "To"
+        Me.ToDataGridViewTextBoxColumn.Name = "ToDataGridViewTextBoxColumn"
+        Me.ToDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.ToDataGridViewTextBoxColumn.Width = 26
+        '
+        'ZoneDateTimeDataGridViewTextBoxColumn
+        '
+        Me.ZoneDateTimeDataGridViewTextBoxColumn.DataPropertyName = "ZoneDateTime"
+        Me.ZoneDateTimeDataGridViewTextBoxColumn.HeaderText = "ZoneDateTime"
+        Me.ZoneDateTimeDataGridViewTextBoxColumn.Name = "ZoneDateTimeDataGridViewTextBoxColumn"
+        Me.ZoneDateTimeDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.ZoneDateTimeDataGridViewTextBoxColumn.Width = 93
+        '
+        'CompassDataGridViewTextBoxColumn
+        '
+        Me.CompassDataGridViewTextBoxColumn.DataPropertyName = "Compass"
+        Me.CompassDataGridViewTextBoxColumn.HeaderText = "Compass"
+        Me.CompassDataGridViewTextBoxColumn.Name = "CompassDataGridViewTextBoxColumn"
+        Me.CompassDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.CompassDataGridViewTextBoxColumn.Width = 62
+        '
+        'VarDataGridViewTextBoxColumn
+        '
+        Me.VarDataGridViewTextBoxColumn.DataPropertyName = "Var"
+        Me.VarDataGridViewTextBoxColumn.HeaderText = "Var"
+        Me.VarDataGridViewTextBoxColumn.Name = "VarDataGridViewTextBoxColumn"
+        Me.VarDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.VarDataGridViewTextBoxColumn.Width = 33
+        '
+        'DevDataGridViewTextBoxColumn
+        '
+        Me.DevDataGridViewTextBoxColumn.DataPropertyName = "Dev"
+        Me.DevDataGridViewTextBoxColumn.HeaderText = "Dev"
+        Me.DevDataGridViewTextBoxColumn.Name = "DevDataGridViewTextBoxColumn"
+        Me.DevDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.DevDataGridViewTextBoxColumn.Width = 33
+        '
+        'TrueDataGridViewTextBoxColumn
+        '
+        Me.TrueDataGridViewTextBoxColumn.DataPropertyName = "True"
+        Me.TrueDataGridViewTextBoxColumn.HeaderText = "True"
+        Me.TrueDataGridViewTextBoxColumn.Name = "TrueDataGridViewTextBoxColumn"
+        Me.TrueDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.TrueDataGridViewTextBoxColumn.Width = 39
+        '
+        'SpeedDataGridViewTextBoxColumn
+        '
+        Me.SpeedDataGridViewTextBoxColumn.DataPropertyName = "Speed"
+        Me.SpeedDataGridViewTextBoxColumn.HeaderText = "Speed"
+        Me.SpeedDataGridViewTextBoxColumn.Name = "SpeedDataGridViewTextBoxColumn"
+        Me.SpeedDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.SpeedDataGridViewTextBoxColumn.Width = 45
+        '
+        'LocLatLongDataGridViewTextBoxColumn
+        '
+        Me.LocLatLongDataGridViewTextBoxColumn.DataPropertyName = "Loc Lat Long"
+        Me.LocLatLongDataGridViewTextBoxColumn.HeaderText = "Loc Lat Long"
+        Me.LocLatLongDataGridViewTextBoxColumn.Name = "LocLatLongDataGridViewTextBoxColumn"
+        Me.LocLatLongDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.LocLatLongDataGridViewTextBoxColumn.Width = 85
+        '
+        'LocTypeDataGridViewTextBoxColumn
+        '
+        Me.LocTypeDataGridViewTextBoxColumn.DataPropertyName = "LocType"
+        Me.LocTypeDataGridViewTextBoxColumn.HeaderText = "LocType"
+        Me.LocTypeDataGridViewTextBoxColumn.Name = "LocTypeDataGridViewTextBoxColumn"
+        Me.LocTypeDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.LocTypeDataGridViewTextBoxColumn.Width = 58
+        '
+        'WeatherDataGridViewTextBoxColumn
+        '
+        Me.WeatherDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.WeatherDataGridViewTextBoxColumn.DataPropertyName = "Weather"
+        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
+        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.WeatherDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle13
+        Me.WeatherDataGridViewTextBoxColumn.HeaderText = "Weather"
+        Me.WeatherDataGridViewTextBoxColumn.MinimumWidth = 100
+        Me.WeatherDataGridViewTextBoxColumn.Name = "WeatherDataGridViewTextBoxColumn"
+        Me.WeatherDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'RemarksDataGridViewTextBoxColumn
+        '
+        Me.RemarksDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.RemarksDataGridViewTextBoxColumn.DataPropertyName = "Remarks"
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
+        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.RemarksDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle14
+        Me.RemarksDataGridViewTextBoxColumn.HeaderText = "Remarks"
+        Me.RemarksDataGridViewTextBoxColumn.MinimumWidth = 100
+        Me.RemarksDataGridViewTextBoxColumn.Name = "RemarksDataGridViewTextBoxColumn"
+        Me.RemarksDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'ActualLoc
+        '
+        Me.ActualLoc.DataPropertyName = "Calc'd Loc"
+        Me.ActualLoc.HeaderText = "Calc'd Loc"
+        Me.ActualLoc.Name = "ActualLoc"
+        Me.ActualLoc.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "CMG"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "CMG"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        '
+        'VesselDataGridViewTextBoxColumn1
+        '
+        Me.VesselDataGridViewTextBoxColumn1.DataPropertyName = "Vessel"
+        Me.VesselDataGridViewTextBoxColumn1.HeaderText = "Vessel"
+        Me.VesselDataGridViewTextBoxColumn1.Name = "VesselDataGridViewTextBoxColumn1"
+        Me.VesselDataGridViewTextBoxColumn1.Width = 68
+        '
+        'NavigatorDataGridViewTextBoxColumn1
+        '
+        Me.NavigatorDataGridViewTextBoxColumn1.DataPropertyName = "Navigator"
+        Me.NavigatorDataGridViewTextBoxColumn1.HeaderText = "Navigator"
+        Me.NavigatorDataGridViewTextBoxColumn1.Name = "NavigatorDataGridViewTextBoxColumn1"
+        Me.NavigatorDataGridViewTextBoxColumn1.Width = 85
+        '
+        'FromDataGridViewTextBoxColumn1
+        '
+        Me.FromDataGridViewTextBoxColumn1.DataPropertyName = "From"
+        Me.FromDataGridViewTextBoxColumn1.HeaderText = "From"
+        Me.FromDataGridViewTextBoxColumn1.Name = "FromDataGridViewTextBoxColumn1"
+        Me.FromDataGridViewTextBoxColumn1.Width = 61
+        '
+        'ToDataGridViewTextBoxColumn1
+        '
+        Me.ToDataGridViewTextBoxColumn1.DataPropertyName = "To"
+        Me.ToDataGridViewTextBoxColumn1.HeaderText = "To"
+        Me.ToDataGridViewTextBoxColumn1.Name = "ToDataGridViewTextBoxColumn1"
+        Me.ToDataGridViewTextBoxColumn1.Width = 45
+        '
+        'LocTypeDataGridViewTextBoxColumn1
+        '
+        Me.LocTypeDataGridViewTextBoxColumn1.DataPropertyName = "LocType"
+        Me.LocTypeDataGridViewTextBoxColumn1.HeaderText = "LocType"
+        Me.LocTypeDataGridViewTextBoxColumn1.Name = "LocTypeDataGridViewTextBoxColumn1"
+        Me.LocTypeDataGridViewTextBoxColumn1.Width = 77
+        '
+        'ZoneDateTimeDataGridViewTextBoxColumn1
+        '
+        Me.ZoneDateTimeDataGridViewTextBoxColumn1.DataPropertyName = "ZoneDateTime"
+        Me.ZoneDateTimeDataGridViewTextBoxColumn1.HeaderText = "ZoneDateTime"
+        Me.ZoneDateTimeDataGridViewTextBoxColumn1.Name = "ZoneDateTimeDataGridViewTextBoxColumn1"
+        Me.ZoneDateTimeDataGridViewTextBoxColumn1.Width = 112
+        '
+        'CompassDataGridViewTextBoxColumn1
+        '
+        Me.CompassDataGridViewTextBoxColumn1.DataPropertyName = "Compass"
+        Me.CompassDataGridViewTextBoxColumn1.HeaderText = "Compass"
+        Me.CompassDataGridViewTextBoxColumn1.Name = "CompassDataGridViewTextBoxColumn1"
+        Me.CompassDataGridViewTextBoxColumn1.Width = 81
+        '
+        'VarDataGridViewTextBoxColumn1
+        '
+        Me.VarDataGridViewTextBoxColumn1.DataPropertyName = "Var"
+        Me.VarDataGridViewTextBoxColumn1.HeaderText = "Var"
+        Me.VarDataGridViewTextBoxColumn1.Name = "VarDataGridViewTextBoxColumn1"
+        Me.VarDataGridViewTextBoxColumn1.Width = 52
+        '
+        'DevDataGridViewTextBoxColumn1
+        '
+        Me.DevDataGridViewTextBoxColumn1.DataPropertyName = "Dev"
+        Me.DevDataGridViewTextBoxColumn1.HeaderText = "Dev"
+        Me.DevDataGridViewTextBoxColumn1.Name = "DevDataGridViewTextBoxColumn1"
+        Me.DevDataGridViewTextBoxColumn1.Width = 52
+        '
+        'TrueDataGridViewTextBoxColumn1
+        '
+        Me.TrueDataGridViewTextBoxColumn1.DataPropertyName = "True"
+        Me.TrueDataGridViewTextBoxColumn1.HeaderText = "True"
+        Me.TrueDataGridViewTextBoxColumn1.Name = "TrueDataGridViewTextBoxColumn1"
+        Me.TrueDataGridViewTextBoxColumn1.Width = 58
+        '
+        'SpeedDataGridViewTextBoxColumn1
+        '
+        Me.SpeedDataGridViewTextBoxColumn1.DataPropertyName = "Speed"
+        Me.SpeedDataGridViewTextBoxColumn1.HeaderText = "Speed"
+        Me.SpeedDataGridViewTextBoxColumn1.Name = "SpeedDataGridViewTextBoxColumn1"
+        Me.SpeedDataGridViewTextBoxColumn1.Width = 64
+        '
+        'LocLatLongDataGridViewTextBoxColumn1
+        '
+        Me.LocLatLongDataGridViewTextBoxColumn1.DataPropertyName = "Loc Lat Long"
+        Me.LocLatLongDataGridViewTextBoxColumn1.HeaderText = "Loc Lat Long"
+        Me.LocLatLongDataGridViewTextBoxColumn1.Name = "LocLatLongDataGridViewTextBoxColumn1"
+        Me.LocLatLongDataGridViewTextBoxColumn1.Width = 104
+        '
+        'WeatherDataGridViewTextBoxColumn1
+        '
+        Me.WeatherDataGridViewTextBoxColumn1.DataPropertyName = "Weather"
+        Me.WeatherDataGridViewTextBoxColumn1.HeaderText = "Weather"
+        Me.WeatherDataGridViewTextBoxColumn1.Name = "WeatherDataGridViewTextBoxColumn1"
+        Me.WeatherDataGridViewTextBoxColumn1.Width = 79
+        '
+        'RemarksDataGridViewTextBoxColumn1
+        '
+        Me.RemarksDataGridViewTextBoxColumn1.DataPropertyName = "Remarks"
+        Me.RemarksDataGridViewTextBoxColumn1.HeaderText = "Remarks"
+        Me.RemarksDataGridViewTextBoxColumn1.Name = "RemarksDataGridViewTextBoxColumn1"
+        Me.RemarksDataGridViewTextBoxColumn1.Width = 83
+        '
+        'TimetoDest
+        '
+        Me.TimetoDest.DataPropertyName = "ElapsedTime"
+        Me.TimetoDest.HeaderText = "TimeToDest"
+        Me.TimetoDest.Name = "TimetoDest"
+        Me.TimetoDest.ReadOnly = True
+        Me.TimetoDest.Width = 98
+        '
         'DeckLogUpdate
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1129,8 +1164,6 @@ Partial Class DeckLogUpdate
         Me.Name = "DeckLogUpdate"
         Me.Text = "Deck Log Updater"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataSet2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataTable1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1200,22 +1233,8 @@ Partial Class DeckLogUpdate
     Friend WithEvents btnDeleteSight As Button
     Friend WithEvents cboLocType As ComboBox
     Public WithEvents Label5 As Label
-    Friend WithEvents DataSet2 As DataSet
-    Friend WithEvents DataTable1 As DataTable
-    Friend WithEvents DataColumn1 As DataColumn
-    Friend WithEvents DataColumn2 As DataColumn
-    Friend WithEvents DataColumn3 As DataColumn
-    Friend WithEvents DataColumn4 As DataColumn
-    Friend WithEvents DataColumn5 As DataColumn
-    Friend WithEvents DataColumn6 As DataColumn
-    Friend WithEvents DataColumn7 As DataColumn
-    Friend WithEvents DataColumn8 As DataColumn
-    Friend WithEvents DataColumn9 As DataColumn
-    Friend WithEvents DataColumn10 As DataColumn
-    Friend WithEvents DataColumn11 As DataColumn
-    Friend WithEvents DataColumn12 As DataColumn
-    Friend WithEvents DataColumn13 As DataColumn
-    Friend WithEvents DataColumn14 As DataColumn
+    Friend WithEvents Label7 As Label
+    Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents VesselDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents NavigatorDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents FromDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
@@ -1230,6 +1249,21 @@ Partial Class DeckLogUpdate
     Friend WithEvents LocTypeDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents WeatherDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents RemarksDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents Label7 As Label
-    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents ActualLoc As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents VesselDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents NavigatorDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents FromDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents ToDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents LocTypeDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents ZoneDateTimeDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents CompassDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents VarDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents DevDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents TrueDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents SpeedDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents LocLatLongDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents WeatherDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents RemarksDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents TimetoDest As DataGridViewTextBoxColumn
 End Class
