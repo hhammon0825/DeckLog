@@ -257,12 +257,14 @@
         End If
 
         Dim n As Integer
-        If IsNothing(DataGridView1.CurrentRow.Index) Or DataGridView1.CurrentRow.Index = vbNull Then
+        If IsNothing(DataGridView1.CurrentRow.Index) Then 'Or DataGridView1.CurrentRow.Index = vbNull Then
             Exit Sub
         Else
             n = DataGridView1.CurrentRow.Index
         End If
-        If IsNothing(DataGridView1.Rows(n).Cells(0).Value) Then Exit Sub
+        If IsNothing(DataGridView1.Rows(n).Cells(0).Value) Then
+            Exit Sub
+        End If
         UpdtRow = DataGridView1.CurrentRow.Index
 
         ' The order of these variable and the integer indexs contained in each MUST match the order of the fields in the data grid
@@ -297,7 +299,7 @@
             txtTo.Text = DataGridView1.Rows(n).Cells(3).Value
         Else
             UpdtRtn.LocTo = vbNullString
-            txtTo.Text = vbNull
+            txtTo.Text = vbNullString
         End If
 
         If DataGridView1.Rows(n).Cells(4).Value <> vbNullString Then
@@ -403,6 +405,8 @@
             txtRemarks.Text = vbNullString
         End If
 
+        btnUpdateExisting.Visible = True
+        btnDeleteSight.Visible = True
         Me.Refresh()
 
         Exit Sub
@@ -596,8 +600,12 @@
         End If
         Try
             UpdtRtn.LMinI = Convert.ToDecimal(txtLMin.Text)
-            UpdtRtn.LatDecimal = Convert.ToDecimal(UpdtRtn.LDegI) + UpdtRtn.LMinI / 60
             UpdtRtn.LNS = cboL.Text
+            If cboL.Text = "N" Then
+                UpdtRtn.LatDecimal = Convert.ToDecimal(UpdtRtn.LDegI) + UpdtRtn.LMinI / 60
+            Else
+                UpdtRtn.LatDecimal = -1 * (Convert.ToDecimal(UpdtRtn.LDegI) + UpdtRtn.LMinI / 60)
+            End If
             If UpdtRtn.LMinI < 0 Or UpdtRtn.LMinI > 59.9 Then
                 ErrorMsgBox("LMin Course must be numeric between 0 and 59.9")
                 Return False
@@ -606,7 +614,6 @@
             ErrorMsgBox("LMin Course must be numeric between 0 and 59.9")
             Return False
         End Try
-
 
         If txtLoDeg.Text = vbNullString Or txtLDeg.Text = "" Then
             ErrorMsgBox("Longitude Degrees must be entered")
@@ -637,8 +644,14 @@
         End If
         Try
             UpdtRtn.LoMinI = Convert.ToDecimal(txtLoMin.Text)
-            UpdtRtn.LongDecimal = Convert.ToDecimal(UpdtRtn.LoDegI) + UpdtRtn.LoMinI / 60
             UpdtRtn.LoEW = cboLo.Text
+            If cboLo.Text = "W" Then
+                UpdtRtn.LongDecimal = Convert.ToDecimal(UpdtRtn.LoDegI) + UpdtRtn.LoMinI / 60
+            Else
+                UpdtRtn.LongDecimal = -1 * (Convert.ToDecimal(UpdtRtn.LoDegI) + UpdtRtn.LoMinI / 60)
+            End If
+            UpdtRtn.LongDecimal = Convert.ToDecimal(UpdtRtn.LoDegI) + UpdtRtn.LoMinI / 60
+
             If UpdtRtn.LoMinI < 0 Or UpdtRtn.LoMinI > 59.9 Then
                 ErrorMsgBox("Longitude Minutes must be numeric between 0 and 59.9")
                 Return False
@@ -698,8 +711,85 @@
             ErrorMsgBox("Nothing to evaluate - the Data Grid only has one entry")
         End If
 
-        For i As Integer = 1 To DGlimit - 1
+        For i As Integer = 1 To DGlimit - 2
+            ' evaluate Elapsed time from last entry
+            Dim DT1 As DateTime = Convert.ToDateTime(DataGridView1.Rows(i - 1).Cells(5).Value)
+            Dim DT2 As DateTime = Convert.ToDateTime(DataGridView1.Rows(i).Cells(5).Value)
+            Dim TS As TimeSpan = DT2 - DT1
+            DataGridView1.Rows(i).Cells(14).Value = TS.ToString("c")
+            ' evaluate Calculate destination location 
+            Dim LLo1 As String = DataGridView1.Rows(i - 1).Cells(11).Value
+            Dim LPos1 As Integer = LLo1.IndexOf("=")
+            Dim LDegPos1 As Integer = LLo1.IndexOf(Chr(176))
+            Dim LMinPos1 As Integer = LLo1.IndexOf("'")
+            Dim LoPos1 As Integer = LLo1.IndexOf("=", LPos1 + 1)
+            Dim LoDegPos1 As Integer = LLo1.IndexOf(Chr(176), LDegPos1 + 1)
+            Dim LoMinPos1 As Integer = LLo1.IndexOf("'", LMinPos1 + 1)
+            Dim TempL1 As Double = Convert.ToDouble(LLo1.Substring(LPos1 + 1, (LDegPos1 - 1) - (LPos1 + 1) + 1)) + Convert.ToDouble(LLo1.Substring(LDegPos1 + 1, (LMinPos1 - 1) - (LDegPos1 + 1) + 1) / 60)
+            Dim TempcboL1 As String = LLo1.Substring(LMinPos1 + 1, 1)
+            If TempcboL1 = "S" Then
+                TempL1 = -1 * TempL1
+            End If
+            Dim TempLo1 As Double = Convert.ToDouble(LLo1.Substring(LoPos1 + 1, (LoDegPos1 - 1) - (LoPos1 + 1) + 1)) + Convert.ToDouble(LLo1.Substring(LoDegPos1 + 1, (LoMinPos1 - 1) - (LoDegPos1 + 1) + 1) / 60)
+            Dim TempcboLo1 As String = LLo1.Substring(LoMinPos1 + 1, 1)
+            If TempcboLo1 = "W" Then
+                TempLo1 = -1 * TempLo1
+            End If
 
+            Dim LLo As String = DataGridView1.Rows(i).Cells(11).Value
+            Dim LPos As Integer = LLo.IndexOf("=")
+            Dim LDegPos As Integer = LLo.IndexOf(Chr(176))
+            Dim LMinPos As Integer = LLo.IndexOf("'")
+            Dim LoPos As Integer = LLo.IndexOf("=", LPos + 1)
+            Dim LoDegPos As Integer = LLo.IndexOf(Chr(176), LDegPos + 1)
+            Dim LoMinPos As Integer = LLo.IndexOf("'", LMinPos + 1)
+            Dim TempL As Double = Convert.ToDouble(LLo.Substring(LPos + 1, (LDegPos - 1) - (LPos + 1) + 1)) + Convert.ToDouble(LLo.Substring(LDegPos + 1, (LMinPos - 1) - (LDegPos + 1) + 1) / 60)
+            Dim TempcboL As String = LLo.Substring(LMinPos + 1, 1)
+            If TempcboL = "S" Then
+                TempL = -1 * TempL
+            End If
+            Dim TempLo As Double = Convert.ToDouble(LLo.Substring(LoPos + 1, (LoDegPos - 1) - (LoPos + 1) + 1)) + Convert.ToDouble(LLo.Substring(LoDegPos + 1, (LoMinPos - 1) - (LoDegPos + 1) + 1) / 60)
+            Dim TempcboLo As String = LLo.Substring(LoMinPos + 1, 1)
+            If TempcboLo = "W" Then
+                TempLo = -1 * TempLo
+            End If
+
+            Dim TempTrue As Decimal = Convert.ToDecimal(DataGridView1.Rows(i - 1).Cells(9).Value)
+            Dim TempSpeed As Decimal = Convert.ToDecimal(DataGridView1.Rows(i - 1).Cells(10).Value)
+
+            Dim Dist As Double = GetDistance(TempL1, TempLo1, TempL, TempLo)
+
+            Dim TempLoc As System.Device.Location.GeoCoordinate = FindDestLatLong(TempL1, TempLo1, Dist, TempTrue)
+            Dim TempL3 As Double = TempLoc.Latitude
+            Dim TempL3NS As String
+            If TempL3 < 0 Then
+                TempL3NS = "S"
+                TempL3 = -1 * TempL3
+            Else
+                TempL3NS = "N"
+            End If
+            Dim TempL3Deg As Integer = Int(TempL3)
+            Dim TempL3Min As Decimal = (TempL3 - TempL3Deg) * 60
+
+            Dim TempLo3 As Double = TempLoc.Longitude
+            Dim TempLo3EW As String
+            If TempLo3 < 0 Then
+                TempLo3EW = "W"
+                TempLo3 = -1 * TempL3
+            Else
+                TempLo3EW = "E"
+            End If
+            Dim TempLo3Deg As Integer = Int(TempLo3)
+            Dim TempLo3Min As Decimal = (TempLo3 - TempLo3Deg) * 60
+
+            DataGridView1.Rows(i).Cells(15).Value = "L=" & TempL3Deg.ToString("##0") & Chr(176) & TempL3Min.ToString("#0.0") & "'" & TempL3NS & " " &
+                                                    "Lo=" & TempLo3Deg.ToString("##0") & Chr(176) & TempLo3Min.ToString("#0.0") & "'" & TempLo3EW
+
+            Dim CMG As Double = GetHeading(TempL1, TempLo1, TempL, TempLo)
+            DataGridView1.Rows(i).Cells(17).Value = CMG.ToString("##0.0")
+
+            Dim SMG As Double = Calc60DSTSpeed(DT1, DT2, Dist)
+            DataGridView1.Rows(i).Cells(17).Value = SMG.ToString("##0.0")
         Next
 
         Exit Sub
@@ -707,7 +797,7 @@
     Private Function GetDistance(ByVal Lat1In As Double, ByVal Long1In As Double, ByVal Lat2In As Double, ByVal Long2In As Double) As Double
         Dim Coord1 As System.Device.Location.GeoCoordinate = New System.Device.Location.GeoCoordinate(Lat1In, Long1In)
         Dim Coord2 As System.Device.Location.GeoCoordinate = New System.Device.Location.GeoCoordinate(Lat2In, Long2In)
-        Return Coord1.GetDistanceTo(Coord2)
+        Return (Coord1.GetDistanceTo(Coord2)) / 1852  ' GetDistanceTo returns distance between geo coords in meters - there are 1852 meters in a nuatical mile
     End Function
     Private Function GetHeading(ByVal lat1 As Double, ByVal long1 As Double, ByVal lat2 As Double, ByVal long2 As Double) As Double
         Dim a As Double = lat1 * Math.PI / 180
@@ -742,17 +832,26 @@
         Dim TS As TimeSpan = DT2 - DT1
         Return (Speed * TS.TotalHours)
     End Function
+    Private Function Calc60DSTSpeed(ByVal DT1 As DateTime, ByVal DT2 As DateTime, ByVal Dist As Double) As Double
+        Dim TS As TimeSpan = DT2 - DT1
+        Return (Dist / TS.TotalHours)
+    End Function
 
-    Private Sub btnClearForm_Click(sender As Object, e As EventArgs)
-        ResetScreenFields()
-        DataSet1.Tables(tablename).Clear()
-        DataSet1.Tables(tablename).Rows.Add(NullStr)
-        DataSet1.Tables(tablename).Rows.RemoveAt(0)
-        DataGridView1.DataSource = DataSet1.Tables(0).DefaultView
-        SortDataGridonDate()
-        DataGridView1.Refresh()
-        btnUpdateExisting.Visible = False
-        btnDeleteSight.Visible = False
+    Private Sub btnEval_Click(sender As Object, e As EventArgs) Handles btnEval.Click
+        evaluateDB()
         Exit Sub
     End Sub
+
+    'Private Sub btnClearForm_Click(sender As Object, e As EventArgs)
+    '    ResetScreenFields()
+    '    DataSet1.Tables(tablename).Clear()
+    '    DataSet1.Tables(tablename).Rows.Add(NullStr)
+    '    DataSet1.Tables(tablename).Rows.RemoveAt(0)
+    '    DataGridView1.DataSource = DataSet1.Tables(0).DefaultView
+    '    SortDataGridonDate()
+    '    DataGridView1.Refresh()
+    '    btnUpdateExisting.Visible = False
+    '    btnDeleteSight.Visible = False
+    '    Exit Sub
+    'End Sub
 End Class
