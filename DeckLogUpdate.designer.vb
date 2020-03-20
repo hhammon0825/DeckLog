@@ -359,12 +359,12 @@ Partial Class DeckLogUpdate
         Me.Label5.Cursor = System.Windows.Forms.Cursors.Default
         Me.Label5.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label5.Location = New System.Drawing.Point(38, 52)
+        Me.Label5.Location = New System.Drawing.Point(22, 52)
         Me.Label5.Name = "Label5"
         Me.Label5.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Label5.Size = New System.Drawing.Size(40, 18)
+        Me.Label5.Size = New System.Drawing.Size(65, 18)
         Me.Label5.TabIndex = 220
-        Me.Label5.Text = "Loc Type:"
+        Me.Label5.Text = "Log Type:"
         Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'btnClearFields
@@ -417,7 +417,7 @@ Partial Class DeckLogUpdate
         '
         'txtSpeed
         '
-        Me.txtSpeed.Location = New System.Drawing.Point(862, 54)
+        Me.txtSpeed.Location = New System.Drawing.Point(1235, 55)
         Me.txtSpeed.MaxLength = 4
         Me.txtSpeed.Name = "txtSpeed"
         Me.txtSpeed.Size = New System.Drawing.Size(35, 20)
@@ -427,7 +427,7 @@ Partial Class DeckLogUpdate
         '
         Me.lblSpeed.AutoSize = True
         Me.lblSpeed.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblSpeed.Location = New System.Drawing.Point(817, 56)
+        Me.lblSpeed.Location = New System.Drawing.Point(1190, 57)
         Me.lblSpeed.Name = "lblSpeed"
         Me.lblSpeed.Size = New System.Drawing.Size(43, 15)
         Me.lblSpeed.TabIndex = 214
@@ -440,7 +440,7 @@ Partial Class DeckLogUpdate
         Me.Label4.Cursor = System.Windows.Forms.Cursors.Default
         Me.Label4.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label4.Location = New System.Drawing.Point(799, 55)
+        Me.Label4.Location = New System.Drawing.Point(1172, 56)
         Me.Label4.Name = "Label4"
         Me.Label4.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.Label4.Size = New System.Drawing.Size(9, 17)
@@ -450,7 +450,7 @@ Partial Class DeckLogUpdate
         'txtCTrue
         '
         Me.txtCTrue.Enabled = False
-        Me.txtCTrue.Location = New System.Drawing.Point(767, 53)
+        Me.txtCTrue.Location = New System.Drawing.Point(1140, 54)
         Me.txtCTrue.MaxLength = 3
         Me.txtCTrue.Name = "txtCTrue"
         Me.txtCTrue.ReadOnly = True
@@ -461,7 +461,7 @@ Partial Class DeckLogUpdate
         '
         Me.lblCTrue.AutoSize = True
         Me.lblCTrue.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCTrue.Location = New System.Drawing.Point(730, 55)
+        Me.lblCTrue.Location = New System.Drawing.Point(1103, 56)
         Me.lblCTrue.Name = "lblCTrue"
         Me.lblCTrue.Size = New System.Drawing.Size(35, 15)
         Me.lblCTrue.TabIndex = 211
@@ -470,7 +470,7 @@ Partial Class DeckLogUpdate
         '
         'txtRemarks
         '
-        Me.txtRemarks.Location = New System.Drawing.Point(725, 82)
+        Me.txtRemarks.Location = New System.Drawing.Point(725, 80)
         Me.txtRemarks.Multiline = True
         Me.txtRemarks.Name = "txtRemarks"
         Me.txtRemarks.ScrollBars = System.Windows.Forms.ScrollBars.Both
@@ -481,15 +481,15 @@ Partial Class DeckLogUpdate
         '
         Me.lblRemarks.AutoSize = True
         Me.lblRemarks.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblRemarks.Location = New System.Drawing.Point(665, 84)
+        Me.lblRemarks.Location = New System.Drawing.Point(663, 82)
         Me.lblRemarks.Name = "lblRemarks"
-        Me.lblRemarks.Size = New System.Drawing.Size(55, 15)
+        Me.lblRemarks.Size = New System.Drawing.Size(60, 30)
         Me.lblRemarks.TabIndex = 209
-        Me.lblRemarks.Text = "Remarks:"
+        Me.lblRemarks.Text = "Log Entry" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Notes:"
         '
         'txtWeather
         '
-        Me.txtWeather.Location = New System.Drawing.Point(86, 80)
+        Me.txtWeather.Location = New System.Drawing.Point(86, 78)
         Me.txtWeather.Multiline = True
         Me.txtWeather.Name = "txtWeather"
         Me.txtWeather.ScrollBars = System.Windows.Forms.ScrollBars.Both
@@ -500,11 +500,11 @@ Partial Class DeckLogUpdate
         '
         Me.lblWeather.AutoSize = True
         Me.lblWeather.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblWeather.Location = New System.Drawing.Point(28, 82)
+        Me.lblWeather.Location = New System.Drawing.Point(21, 82)
         Me.lblWeather.Name = "lblWeather"
-        Me.lblWeather.Size = New System.Drawing.Size(55, 15)
+        Me.lblWeather.Size = New System.Drawing.Size(52, 30)
         Me.lblWeather.TabIndex = 207
-        Me.lblWeather.Text = "Weather:"
+        Me.lblWeather.Text = "Weather" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Notes:"
         '
         'cboLo
         '
@@ -514,7 +514,7 @@ Partial Class DeckLogUpdate
         Me.cboLo.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboLo.ForeColor = System.Drawing.SystemColors.WindowText
         Me.cboLo.Items.AddRange(New Object() {"W", "E"})
-        Me.cboLo.Location = New System.Drawing.Point(1251, 52)
+        Me.cboLo.Location = New System.Drawing.Point(740, 50)
         Me.cboLo.Name = "cboLo"
         Me.cboLo.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.cboLo.Size = New System.Drawing.Size(41, 24)
@@ -528,7 +528,7 @@ Partial Class DeckLogUpdate
         Me.cboL.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboL.ForeColor = System.Drawing.SystemColors.WindowText
         Me.cboL.Items.AddRange(New Object() {"N", "S"})
-        Me.cboL.Location = New System.Drawing.Point(1053, 52)
+        Me.cboL.Location = New System.Drawing.Point(542, 50)
         Me.cboL.Name = "cboL"
         Me.cboL.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.cboL.Size = New System.Drawing.Size(41, 24)
@@ -542,7 +542,7 @@ Partial Class DeckLogUpdate
         Me.txtLDeg.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtLDeg.ForeColor = System.Drawing.SystemColors.WindowText
         Me.txtLDeg.HideSelection = False
-        Me.txtLDeg.Location = New System.Drawing.Point(981, 52)
+        Me.txtLDeg.Location = New System.Drawing.Point(470, 50)
         Me.txtLDeg.MaxLength = 2
         Me.txtLDeg.Name = "txtLDeg"
         Me.txtLDeg.RightToLeft = System.Windows.Forms.RightToLeft.No
@@ -557,7 +557,7 @@ Partial Class DeckLogUpdate
         Me.txtLoMin.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtLoMin.ForeColor = System.Drawing.SystemColors.WindowText
         Me.txtLoMin.HideSelection = False
-        Me.txtLoMin.Location = New System.Drawing.Point(1207, 53)
+        Me.txtLoMin.Location = New System.Drawing.Point(696, 51)
         Me.txtLoMin.MaxLength = 4
         Me.txtLoMin.Name = "txtLoMin"
         Me.txtLoMin.RightToLeft = System.Windows.Forms.RightToLeft.No
@@ -572,7 +572,7 @@ Partial Class DeckLogUpdate
         Me.txtLoDeg.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtLoDeg.ForeColor = System.Drawing.SystemColors.WindowText
         Me.txtLoDeg.HideSelection = False
-        Me.txtLoDeg.Location = New System.Drawing.Point(1165, 53)
+        Me.txtLoDeg.Location = New System.Drawing.Point(654, 51)
         Me.txtLoDeg.MaxLength = 3
         Me.txtLoDeg.Name = "txtLoDeg"
         Me.txtLoDeg.RightToLeft = System.Windows.Forms.RightToLeft.No
@@ -587,7 +587,7 @@ Partial Class DeckLogUpdate
         Me.txtLMin.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtLMin.ForeColor = System.Drawing.SystemColors.WindowText
         Me.txtLMin.HideSelection = False
-        Me.txtLMin.Location = New System.Drawing.Point(1013, 52)
+        Me.txtLMin.Location = New System.Drawing.Point(502, 50)
         Me.txtLMin.MaxLength = 4
         Me.txtLMin.Name = "txtLMin"
         Me.txtLMin.RightToLeft = System.Windows.Forms.RightToLeft.No
@@ -600,7 +600,7 @@ Partial Class DeckLogUpdate
         Me.lblLoMin.Cursor = System.Windows.Forms.Cursors.Default
         Me.lblLoMin.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblLoMin.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblLoMin.Location = New System.Drawing.Point(1240, 54)
+        Me.lblLoMin.Location = New System.Drawing.Point(729, 52)
         Me.lblLoMin.Name = "lblLoMin"
         Me.lblLoMin.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.lblLoMin.Size = New System.Drawing.Size(9, 17)
@@ -613,7 +613,7 @@ Partial Class DeckLogUpdate
         Me.lblLoDeg.Cursor = System.Windows.Forms.Cursors.Default
         Me.lblLoDeg.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblLoDeg.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblLoDeg.Location = New System.Drawing.Point(1199, 54)
+        Me.lblLoDeg.Location = New System.Drawing.Point(688, 52)
         Me.lblLoDeg.Name = "lblLoDeg"
         Me.lblLoDeg.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.lblLoDeg.Size = New System.Drawing.Size(9, 17)
@@ -626,7 +626,7 @@ Partial Class DeckLogUpdate
         Me.lblDRLo.Cursor = System.Windows.Forms.Cursors.Default
         Me.lblDRLo.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblDRLo.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblDRLo.Location = New System.Drawing.Point(1098, 55)
+        Me.lblDRLo.Location = New System.Drawing.Point(587, 53)
         Me.lblDRLo.Name = "lblDRLo"
         Me.lblDRLo.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.lblDRLo.Size = New System.Drawing.Size(66, 18)
@@ -640,7 +640,7 @@ Partial Class DeckLogUpdate
         Me.lblLMin.Cursor = System.Windows.Forms.Cursors.Default
         Me.lblLMin.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblLMin.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblLMin.Location = New System.Drawing.Point(1046, 54)
+        Me.lblLMin.Location = New System.Drawing.Point(535, 52)
         Me.lblLMin.Name = "lblLMin"
         Me.lblLMin.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.lblLMin.Size = New System.Drawing.Size(9, 17)
@@ -653,7 +653,7 @@ Partial Class DeckLogUpdate
         Me.lblLDeg.Cursor = System.Windows.Forms.Cursors.Default
         Me.lblLDeg.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblLDeg.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblLDeg.Location = New System.Drawing.Point(1006, 54)
+        Me.lblLDeg.Location = New System.Drawing.Point(495, 52)
         Me.lblLDeg.Name = "lblLDeg"
         Me.lblLDeg.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.lblLDeg.Size = New System.Drawing.Size(9, 17)
@@ -666,7 +666,7 @@ Partial Class DeckLogUpdate
         Me.lblDRL.Cursor = System.Windows.Forms.Cursors.Default
         Me.lblDRL.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblDRL.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblDRL.Location = New System.Drawing.Point(927, 53)
+        Me.lblDRL.Location = New System.Drawing.Point(416, 51)
         Me.lblDRL.Name = "lblDRL"
         Me.lblDRL.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.lblDRL.Size = New System.Drawing.Size(56, 20)
@@ -680,7 +680,7 @@ Partial Class DeckLogUpdate
         Me.Label3.Cursor = System.Windows.Forms.Cursors.Default
         Me.Label3.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label3.Location = New System.Drawing.Point(682, 55)
+        Me.Label3.Location = New System.Drawing.Point(1055, 56)
         Me.Label3.Name = "Label3"
         Me.Label3.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.Label3.Size = New System.Drawing.Size(9, 17)
@@ -693,7 +693,7 @@ Partial Class DeckLogUpdate
         Me.Label2.Cursor = System.Windows.Forms.Cursors.Default
         Me.Label2.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label2.Location = New System.Drawing.Point(575, 55)
+        Me.Label2.Location = New System.Drawing.Point(948, 56)
         Me.Label2.Name = "Label2"
         Me.Label2.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.Label2.Size = New System.Drawing.Size(9, 17)
@@ -704,14 +704,14 @@ Partial Class DeckLogUpdate
         '
         Me.cboDev.FormattingEnabled = True
         Me.cboDev.Items.AddRange(New Object() {"W", "E"})
-        Me.cboDev.Location = New System.Drawing.Point(693, 52)
+        Me.cboDev.Location = New System.Drawing.Point(1066, 53)
         Me.cboDev.Name = "cboDev"
         Me.cboDev.Size = New System.Drawing.Size(35, 21)
         Me.cboDev.TabIndex = 178
         '
         'txtDev
         '
-        Me.txtDev.Location = New System.Drawing.Point(655, 53)
+        Me.txtDev.Location = New System.Drawing.Point(1028, 54)
         Me.txtDev.MaxLength = 2
         Me.txtDev.Name = "txtDev"
         Me.txtDev.Size = New System.Drawing.Size(25, 20)
@@ -721,7 +721,7 @@ Partial Class DeckLogUpdate
         '
         Me.lblDev.AutoSize = True
         Me.lblDev.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDev.Location = New System.Drawing.Point(625, 55)
+        Me.lblDev.Location = New System.Drawing.Point(998, 56)
         Me.lblDev.Name = "lblDev"
         Me.lblDev.Size = New System.Drawing.Size(32, 15)
         Me.lblDev.TabIndex = 176
@@ -732,14 +732,14 @@ Partial Class DeckLogUpdate
         '
         Me.cboVar.FormattingEnabled = True
         Me.cboVar.Items.AddRange(New Object() {"W", "E"})
-        Me.cboVar.Location = New System.Drawing.Point(584, 52)
+        Me.cboVar.Location = New System.Drawing.Point(957, 53)
         Me.cboVar.Name = "cboVar"
         Me.cboVar.Size = New System.Drawing.Size(35, 21)
         Me.cboVar.TabIndex = 175
         '
         'txtVar
         '
-        Me.txtVar.Location = New System.Drawing.Point(549, 53)
+        Me.txtVar.Location = New System.Drawing.Point(922, 54)
         Me.txtVar.MaxLength = 2
         Me.txtVar.Name = "txtVar"
         Me.txtVar.Size = New System.Drawing.Size(25, 20)
@@ -749,7 +749,7 @@ Partial Class DeckLogUpdate
         '
         Me.lblVariation.AutoSize = True
         Me.lblVariation.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblVariation.Location = New System.Drawing.Point(521, 55)
+        Me.lblVariation.Location = New System.Drawing.Point(894, 56)
         Me.lblVariation.Name = "lblVariation"
         Me.lblVariation.Size = New System.Drawing.Size(27, 15)
         Me.lblVariation.TabIndex = 173
@@ -762,7 +762,7 @@ Partial Class DeckLogUpdate
         Me.Label6.Cursor = System.Windows.Forms.Cursors.Default
         Me.Label6.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label6.Location = New System.Drawing.Point(506, 54)
+        Me.Label6.Location = New System.Drawing.Point(879, 55)
         Me.Label6.Name = "Label6"
         Me.Label6.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.Label6.Size = New System.Drawing.Size(9, 17)
@@ -773,14 +773,14 @@ Partial Class DeckLogUpdate
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(562, 53)
+        Me.Label1.Location = New System.Drawing.Point(935, 54)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(0, 15)
         Me.Label1.TabIndex = 12
         '
         'txtCompass
         '
-        Me.txtCompass.Location = New System.Drawing.Point(474, 52)
+        Me.txtCompass.Location = New System.Drawing.Point(847, 53)
         Me.txtCompass.MaxLength = 3
         Me.txtCompass.Name = "txtCompass"
         Me.txtCompass.Size = New System.Drawing.Size(30, 20)
@@ -790,7 +790,7 @@ Partial Class DeckLogUpdate
         '
         Me.lblCompass.AutoSize = True
         Me.lblCompass.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCompass.Location = New System.Drawing.Point(414, 54)
+        Me.lblCompass.Location = New System.Drawing.Point(787, 55)
         Me.lblCompass.Name = "lblCompass"
         Me.lblCompass.Size = New System.Drawing.Size(59, 15)
         Me.lblCompass.TabIndex = 10
@@ -883,12 +883,12 @@ Partial Class DeckLogUpdate
         '
         Me.lblVessel.AutoSize = True
         Me.lblVessel.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblVessel.Location = New System.Drawing.Point(37, 23)
+        Me.lblVessel.Location = New System.Drawing.Point(24, 23)
         Me.lblVessel.Name = "lblVessel"
-        Me.lblVessel.Size = New System.Drawing.Size(44, 15)
+        Me.lblVessel.Size = New System.Drawing.Size(47, 15)
         Me.lblVessel.TabIndex = 0
-        Me.lblVessel.Text = "Vessel:"
-        Me.lblVessel.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lblVessel.Text = "Vessel: "
+        Me.lblVessel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Label7
         '

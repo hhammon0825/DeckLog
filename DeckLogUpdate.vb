@@ -7,9 +7,9 @@
     Public SLOpenFName As String = ""
     Public tablename As String = "Table1"
     Public DataSet1 As DataSet
-    Public HdrStr As String() = {"Vessel", "Navigator", "LocFrom", "LocTo", "LocType",
-        "ZoneDateTime", "Compass", "Var", "Dev", "CTrue", "Speed", "PositionLatLong", "Weather", "Remarks",
-        "ElapsedTime", "Distance", "Calc Dest L/Lo", "CMG", "SMG", "Set", "Drift"}
+    Public HdrStr As String() = {"Vessel", "Navigator", "From", "To", "LogType",
+        "ZoneDateTime", "CPsc", "Var", "Dev", "CTrue", "Speed", "PositionLatLong", "Weather", "Remarks",
+        "ElapsedTime", "Distance", "Calculated L/Lo", "CMG", "SMG", "Set", "Drift"}
     Public NullStr As String() = {vbNullString, vbNullString, vbNullString, vbNullString, vbNullString,
         vbNullString, vbNullString, vbNullString, vbNullString, vbNullString,
         vbNullString, vbNullString, vbNullString, vbNullString, vbNullString,
@@ -75,6 +75,18 @@
         DataSet1.Tables(tablename).Rows.Add(NullStr)
         DataSet1.Tables(tablename).Rows.RemoveAt(0)
         DataGridView1.DataSource = DataSet1.Tables(0).DefaultView
+        For i As Integer = 0 To DataGridView1.Columns.Count - 1
+            DataGridView1.Columns(i).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        Next
+        DataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True
+        DataGridView1.Columns(12).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+        DataGridView1.Columns(12).DefaultCellStyle.WrapMode = DataGridViewTriState.True
+        DataGridView1.Columns(12).Width = 50
+        DataGridView1.Columns(12).MinimumWidth = 50
+        DataGridView1.Columns(13).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+        DataGridView1.Columns(13).DefaultCellStyle.WrapMode = DataGridViewTriState.True
+        DataGridView1.Columns(13).Width = 50
+        DataGridView1.Columns(13).MinimumWidth = 50
         SortDataGridonDate()
         DataGridView1.Refresh()
 
@@ -699,6 +711,13 @@
     End Sub
     Private Sub SortDataGridonDate()
         DataGridView1.Sort(DataGridView1.Columns(5), System.ComponentModel.ListSortDirection.Ascending)
+        For i As Integer = 0 To DataGridView1.Columns.Count - 1
+            DataGridView1.AutoResizeColumn(i)
+        Next
+        If DataGridView1.Rows.Count > 0 Then
+            DataGridView1.Rows(DataGridView1.Rows.Count - 1).Selected = True
+        End If
+
         Exit Sub
     End Sub
     Private Function EditRelationsinDG() As Boolean
@@ -710,7 +729,9 @@
         If DGlimit = 1 Then
             ErrorMsgBox("Nothing to evaluate - the Data Grid only has one entry")
         End If
+        ' for the first data grid row clear out the last 6 cells to make sure nothing displays
 
+        ' now pass thru the data grid from the second record to the end evaluate each pair of records and calculating the final route results
         For i As Integer = 1 To DGlimit - 1
             ' evaluate Elapsed time from last entry
             Dim DT1 As DateTime = Convert.ToDateTime(DataGridView1.Rows(i - 1).Cells(5).Value)
@@ -800,14 +821,16 @@
 
             Dim TempLo3 As Double = TempLoc.Longitude
             Dim TempLo3EW As String = TempcboLo
+            Dim TempLo3Disp As Double = 0
             If TempLo3 < 0 Then
                 TempLo3EW = "W"
-                TempLo3 = -1 * TempLo3
+                TempLo3Disp = -1 * TempLo3
             Else
                 TempLo3EW = "E"
+                TempLo3Disp = TempLo3
             End If
-            Dim TempLo3Deg As Integer = Int(TempLo3)
-            Dim TempLo3Min As Decimal = (TempLo3 - TempLo3Deg) * 60
+            Dim TempLo3Deg As Integer = Int(TempLo3Disp)
+            Dim TempLo3Min As Decimal = (TempLo3Disp - TempLo3Deg) * 60
 
             DataGridView1.Rows(i).Cells(16).Value = "L=" & TempL3Deg.ToString("##0") & Chr(176) & TempL3Min.ToString("#0.0") & "'" & TempL3NS & " " &
                                                     "Lo=" & TempLo3Deg.ToString("##0") & Chr(176) & TempLo3Min.ToString("#0.0") & "'" & TempLo3EW
