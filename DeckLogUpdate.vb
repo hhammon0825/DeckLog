@@ -9,7 +9,7 @@
     Public DataSet1 As DataSet
     Public HdrStr As String() = {"Vessel", "Navigator", "LocFrom", "LocTo", "LocType",
         "ZoneDateTime", "Compass", "Var", "Dev", "CTrue", "Speed", "PositionLatLong", "Weather", "Remarks",
-        "ElapsedTime", "CalculatedLoc", "CMG", "SMG", "Set", "Drift"}
+        "ElapsedTime", "Distance", "Calc Dest L/Lo", "CMG", "SMG", "Set", "Drift"}
     Public NullStr As String() = {vbNullString, vbNullString, vbNullString, vbNullString, vbNullString,
         vbNullString, vbNullString, vbNullString, vbNullString, vbNullString,
         vbNullString, vbNullString, vbNullString, vbNullString, vbNullString,
@@ -711,12 +711,13 @@
             ErrorMsgBox("Nothing to evaluate - the Data Grid only has one entry")
         End If
 
-        For i As Integer = 1 To DGlimit - 2
+        For i As Integer = 1 To DGlimit - 1
             ' evaluate Elapsed time from last entry
             Dim DT1 As DateTime = Convert.ToDateTime(DataGridView1.Rows(i - 1).Cells(5).Value)
             Dim DT2 As DateTime = Convert.ToDateTime(DataGridView1.Rows(i).Cells(5).Value)
             Dim TS As TimeSpan = DT2 - DT1
-            DataGridView1.Rows(i).Cells(14).Value = TS.ToString("c")
+            DataGridView1.Rows(i).Cells(14).Value = TS.Days.ToString() & "dy " & TS.Hours.ToString() & ":" & TS.Minutes.ToString() & ":" & TS.Seconds.ToString()
+
             ' evaluate Calculate destination location 
             Dim LLo1 As String = DataGridView1.Rows(i - 1).Cells(11).Value
             Dim LPos1 As Integer = LLo1.IndexOf("=")
@@ -758,6 +759,7 @@
             Dim TempSpeed As Decimal = Convert.ToDecimal(DataGridView1.Rows(i - 1).Cells(10).Value)
 
             Dim Dist As Double = GetDistance(TempL1, TempLo1, TempL, TempLo)
+            DataGridView1.Rows(i).Cells(15).Value = Dist.ToString("##.0") & " nm"
 
             Dim TempLoc As System.Device.Location.GeoCoordinate = FindDestLatLong(TempL1, TempLo1, Dist, TempTrue)
             Dim TempL3 As Double = TempLoc.Latitude
@@ -782,14 +784,14 @@
             Dim TempLo3Deg As Integer = Int(TempLo3)
             Dim TempLo3Min As Decimal = (TempLo3 - TempLo3Deg) * 60
 
-            DataGridView1.Rows(i).Cells(15).Value = "L=" & TempL3Deg.ToString("##0") & Chr(176) & TempL3Min.ToString("#0.0") & "'" & TempL3NS & " " &
+            DataGridView1.Rows(i).Cells(16).Value = "L=" & TempL3Deg.ToString("##0") & Chr(176) & TempL3Min.ToString("#0.0") & "'" & TempL3NS & " " &
                                                     "Lo=" & TempLo3Deg.ToString("##0") & Chr(176) & TempLo3Min.ToString("#0.0") & "'" & TempLo3EW
 
-            Dim CMG As Double = GetHeading(TempL1, TempLo1, TempL, TempLo)
+            Dim CMG As Double = GetHeading(TempL1, TempLo1, TempL3, TempLo3)
             DataGridView1.Rows(i).Cells(17).Value = CMG.ToString("##0.0")
 
             Dim SMG As Double = Calc60DSTSpeed(DT1, DT2, Dist)
-            DataGridView1.Rows(i).Cells(17).Value = SMG.ToString("##0.0")
+            DataGridView1.Rows(i).Cells(18).Value = SMG.ToString("##0.0")
         Next
 
         Exit Sub
@@ -800,22 +802,32 @@
         Return (Coord1.GetDistanceTo(Coord2)) / 1852  ' GetDistanceTo returns distance between geo coords in meters - there are 1852 meters in a nuatical mile
     End Function
     Private Function GetHeading(ByVal lat1 As Double, ByVal long1 As Double, ByVal lat2 As Double, ByVal long2 As Double) As Double
-        Dim a As Double = lat1 * Math.PI / 180
-        Dim b As Double = long1 * Math.PI / 180
-        Dim c As Double = lat2 * Math.PI / 180
-        Dim d As Double = long2 * Math.PI / 180
 
-        If (Math.Cos(c) * Math.Sin(d - b) = 0) Then
-            If (c > a) Then
-                Return 0
+        Dim x As Double = Math.Cos(DegreesToRadians(lat1)) * Math.Sin(DegreesToRadians(lat2)) - Math.Sin(DegreesToRadians(lat1)) * Math.Cos(DegreesToRadians(lat2)) * Math.Cos(DegreesToRadians(long2) - DegreesToRadians(long1))
+        Dim y As Double = Math.Sin(DegreesToRadians(long2) - DegreesToRadians(long1)) * Math.Cos(DegreesToRadians(lat2))
+        Dim DegX As Double = RadiansToDegrees(x)
+        Dim DegY As Double = RadiansToDegrees(y)
+        Dim Angle As Double = RadiansToDegrees(Math.Atan2(DegY, DegX))
+        If Angle < 180 Then
+            If lat2 > 0 Then
+                Angle = 360 - Angle
             Else
-                Return 180
+                Angle = 180 + Angle
             End If
         Else
-            Dim angle As Double = Math.Atan2(Math.Cos(c) * Math.Sin(d - b), Math.Sin(c) * Math.Cos(a) - Math.Sin(a) * Math.Cos(c) * Math.Cos(d - b))
-            Return (angle * 180 / Math.PI + 360) Mod 360
+            If lat2 > 0 Then
+                Angle = Angle
+            Else
+                Angle = 180 - Angle
+            End If
         End If
-        Return 0
+        Return Angle
+    End Function
+    Private Function DegreesToRadians(ByVal angle As Double) As Double
+        Return angle * Math.PI / 180
+    End Function
+    Private Function RadiansToDegrees(ByVal angle As Double) As Double
+        Return angle * 180 / Math.PI
     End Function
     Private Function FindDestLatLong(ByVal LatIn As Double, ByVal LonIn As Double, ByVal Dist As Double, ByVal Course As Double) As System.Device.Location.GeoCoordinate
         Dim lat1 As Double = LatIn * Math.PI / 180
