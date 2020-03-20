@@ -716,9 +716,13 @@
             Dim DT1 As DateTime = Convert.ToDateTime(DataGridView1.Rows(i - 1).Cells(5).Value)
             Dim DT2 As DateTime = Convert.ToDateTime(DataGridView1.Rows(i).Cells(5).Value)
             Dim TS As TimeSpan = DT2 - DT1
-            DataGridView1.Rows(i).Cells(14).Value = TS.Days.ToString() & "dy " & TS.Hours.ToString() & ":" & TS.Minutes.ToString() & ":" & TS.Seconds.ToString()
+            If TS.Days = 0 Then
+                DataGridView1.Rows(i).Cells(14).Value = TS.Hours.ToString("00") & "hr " & TS.Minutes.ToString("00") & "min " & TS.Seconds.ToString("00") & "sec "
+            Else
+                DataGridView1.Rows(i).Cells(14).Value = TS.Days.ToString("#0") & "dy " & TS.Hours.ToString("00") & "hr " & TS.Minutes.ToString("00") & "min " & TS.Seconds.ToString("00") & "sec "
+            End If
 
-            ' evaluate Calculate destination location 
+            ' evaluate Calculate destination location - start with location of previous entry 
             Dim LLo1 As String = DataGridView1.Rows(i - 1).Cells(11).Value
             Dim LPos1 As Integer = LLo1.IndexOf("=")
             Dim LDegPos1 As Integer = LLo1.IndexOf(Chr(176))
@@ -726,17 +730,26 @@
             Dim LoPos1 As Integer = LLo1.IndexOf("=", LPos1 + 1)
             Dim LoDegPos1 As Integer = LLo1.IndexOf(Chr(176), LDegPos1 + 1)
             Dim LoMinPos1 As Integer = LLo1.IndexOf("'", LMinPos1 + 1)
-            Dim TempL1 As Double = Convert.ToDouble(LLo1.Substring(LPos1 + 1, (LDegPos1 - 1) - (LPos1 + 1) + 1)) + Convert.ToDouble(LLo1.Substring(LDegPos1 + 1, (LMinPos1 - 1) - (LDegPos1 + 1) + 1) / 60)
+            Dim TempL1 As Double = Convert.ToDouble(LLo1.Substring(LPos1 + 1, (LDegPos1 - 1) - (LPos1 + 1) + 1)) +
+                Convert.ToDouble(LLo1.Substring(LDegPos1 + 1, (LMinPos1 - 1) - (LDegPos1 + 1) + 1) / 60)
             Dim TempcboL1 As String = LLo1.Substring(LMinPos1 + 1, 1)
+            Dim TempL1Disp As Double = 0
             If TempcboL1 = "S" Then
-                TempL1 = -1 * TempL1
+                TempL1Disp = -1 * TempL1
+            Else
+                TempL1Disp = TempL1
             End If
-            Dim TempLo1 As Double = Convert.ToDouble(LLo1.Substring(LoPos1 + 1, (LoDegPos1 - 1) - (LoPos1 + 1) + 1)) + Convert.ToDouble(LLo1.Substring(LoDegPos1 + 1, (LoMinPos1 - 1) - (LoDegPos1 + 1) + 1) / 60)
+            Dim TempLo1 As Double = Convert.ToDouble(LLo1.Substring(LoPos1 + 1, (LoDegPos1 - 1) - (LoPos1 + 1) + 1)) +
+                Convert.ToDouble(LLo1.Substring(LoDegPos1 + 1, (LoMinPos1 - 1) - (LoDegPos1 + 1) + 1) / 60)
             Dim TempcboLo1 As String = LLo1.Substring(LoMinPos1 + 1, 1)
+            Dim TempLo1Disp As Double = 0
             If TempcboLo1 = "W" Then
-                TempLo1 = -1 * TempLo1
+                TempLo1Disp = -1 * TempLo1
+            Else
+                TempLo1Disp = TempLo1
             End If
 
+            ' now calculate the location for the current entry
             Dim LLo As String = DataGridView1.Rows(i).Cells(11).Value
             Dim LPos As Integer = LLo.IndexOf("=")
             Dim LDegPos As Integer = LLo.IndexOf(Chr(176))
@@ -744,40 +757,52 @@
             Dim LoPos As Integer = LLo.IndexOf("=", LPos + 1)
             Dim LoDegPos As Integer = LLo.IndexOf(Chr(176), LDegPos + 1)
             Dim LoMinPos As Integer = LLo.IndexOf("'", LMinPos + 1)
-            Dim TempL As Double = Convert.ToDouble(LLo.Substring(LPos + 1, (LDegPos - 1) - (LPos + 1) + 1)) + Convert.ToDouble(LLo.Substring(LDegPos + 1, (LMinPos - 1) - (LDegPos + 1) + 1) / 60)
+            Dim TempL As Double = Convert.ToDouble(LLo.Substring(LPos + 1, (LDegPos - 1) - (LPos + 1) + 1)) +
+                Convert.ToDouble(LLo.Substring(LDegPos + 1, (LMinPos - 1) - (LDegPos + 1) + 1) / 60)
             Dim TempcboL As String = LLo.Substring(LMinPos + 1, 1)
+            Dim TempLDisp As Double = 0
             If TempcboL = "S" Then
-                TempL = -1 * TempL
+                TempLDisp = -1 * TempL
+            Else
+                TempLDisp = TempL
             End If
-            Dim TempLo As Double = Convert.ToDouble(LLo.Substring(LoPos + 1, (LoDegPos - 1) - (LoPos + 1) + 1)) + Convert.ToDouble(LLo.Substring(LoDegPos + 1, (LoMinPos - 1) - (LoDegPos + 1) + 1) / 60)
+            Dim TempLo As Double = Convert.ToDouble(LLo.Substring(LoPos + 1, (LoDegPos - 1) - (LoPos + 1) + 1)) +
+                Convert.ToDouble(LLo.Substring(LoDegPos + 1, (LoMinPos - 1) - (LoDegPos + 1) + 1) / 60)
             Dim TempcboLo As String = LLo.Substring(LoMinPos + 1, 1)
+            Dim TempLoDisp As Double = 0
             If TempcboLo = "W" Then
-                TempLo = -1 * TempLo
+                TempLoDisp = -1 * TempLo
+            Else
+                TempLoDisp = TempLo
             End If
 
             Dim TempTrue As Decimal = Convert.ToDecimal(DataGridView1.Rows(i - 1).Cells(9).Value)
             Dim TempSpeed As Decimal = Convert.ToDecimal(DataGridView1.Rows(i - 1).Cells(10).Value)
 
+            ' get the distance from the previous location to the current entry location
             Dim Dist As Double = GetDistance(TempL1, TempLo1, TempL, TempLo)
-            DataGridView1.Rows(i).Cells(15).Value = Dist.ToString("##.0") & " nm"
+            DataGridView1.Rows(i).Cells(15).Value = Dist.ToString("#0.0") & " nm"
 
+            ' now calculate the destination location using the previous loc, the distance using prev speed and elapsed time, and true course of prev entry
             Dim TempLoc As System.Device.Location.GeoCoordinate = FindDestLatLong(TempL1, TempLo1, Dist, TempTrue)
             Dim TempL3 As Double = TempLoc.Latitude
-            Dim TempL3NS As String
+            Dim TempL3NS As String = TempcboL
+            Dim TempL3Disp As Double = 0
             If TempL3 < 0 Then
                 TempL3NS = "S"
-                TempL3 = -1 * TempL3
+                TempL3Disp = -1 * TempL3
             Else
                 TempL3NS = "N"
+                TempL3Disp = TempL3
             End If
             Dim TempL3Deg As Integer = Int(TempL3)
             Dim TempL3Min As Decimal = (TempL3 - TempL3Deg) * 60
 
             Dim TempLo3 As Double = TempLoc.Longitude
-            Dim TempLo3EW As String
+            Dim TempLo3EW As String = TempcboLo
             If TempLo3 < 0 Then
                 TempLo3EW = "W"
-                TempLo3 = -1 * TempL3
+                TempLo3 = -1 * TempLo3
             Else
                 TempLo3EW = "E"
             End If
@@ -786,12 +811,19 @@
 
             DataGridView1.Rows(i).Cells(16).Value = "L=" & TempL3Deg.ToString("##0") & Chr(176) & TempL3Min.ToString("#0.0") & "'" & TempL3NS & " " &
                                                     "Lo=" & TempLo3Deg.ToString("##0") & Chr(176) & TempLo3Min.ToString("#0.0") & "'" & TempLo3EW
-
-            Dim CMG As Double = GetHeading(TempL1, TempLo1, TempL3, TempLo3)
-            DataGridView1.Rows(i).Cells(17).Value = CMG.ToString("##0.0")
-
+            ' Calculate the actual course between the previous loc and the current loc 
+            Dim CMG As Double = GetHeading(TempL1, TempLo1, TempL, TempLo)
+            DataGridView1.Rows(i).Cells(17).Value = CMG.ToString("##0.0") & Chr(176)
+            ' Calculate the actual speed using the calculate distance between previous loc and current loc and the elapsed time
             Dim SMG As Double = Calc60DSTSpeed(DT1, DT2, Dist)
-            DataGridView1.Rows(i).Cells(18).Value = SMG.ToString("##0.0")
+            DataGridView1.Rows(i).Cells(18).Value = SMG.ToString("##0.0") & "kn "
+            ' calculate the Direction of Set from current loc to actual computed loc 
+            Dim SetCalc As Double = GetHeading(TempL, TempLo, TempL3, TempLo3)
+            DataGridView1.Rows(i).Cells(19).Value = SetCalc.ToString("##0.0") & Chr(176)
+            ' Calculate Drift distance and speed from current loc to actual computed loc
+            Dim DistDrift As Double = GetDistance(TempL, TempLo, TempL3, TempLo3)
+            Dim DriftSpeed As Double = Calc60DSTSpeed(DT1, DT2, DistDrift)
+            DataGridView1.Rows(i).Cells(20).Value = DriftSpeed.ToString("##0.0") & "kn "
         Next
 
         Exit Sub
@@ -821,7 +853,7 @@
                 Angle = 180 - Angle
             End If
         End If
-        Return Angle
+        Return Angle Mod 360
     End Function
     Private Function DegreesToRadians(ByVal angle As Double) As Double
         Return angle * Math.PI / 180
