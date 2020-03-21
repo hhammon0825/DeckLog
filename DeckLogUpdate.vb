@@ -8,7 +8,7 @@
     Public tablename As String = "Table1"
     Public DataSet1 As DataSet
     Public HdrStr As String() = {"Vessel", "Navigator", "From", "To", "LogType",
-        "ZoneDateTime", "CPsc", "Var", "Dev", "CTrue", "Speed", "PositionLatLong", "Weather", "Remarks",
+        "ZoneDateTime", "CPsc", "Var", "Dev", "CTrue", "Speed", "PositionLatLong", "Weather Notes", "Log Entry Notes",
         "ElapsedTime", "Distance", "Calculated L/Lo", "CMG", "SMG", "Set", "Drift"}
     Public NullStr As String() = {vbNullString, vbNullString, vbNullString, vbNullString, vbNullString,
         vbNullString, vbNullString, vbNullString, vbNullString, vbNullString,
@@ -73,7 +73,7 @@
             DataSet1.Tables(tablename).Columns(i).DefaultValue = ""
         Next
         DataSet1.Tables(tablename).Rows.Add(NullStr)
-        DataSet1.Tables(tablename).Rows.RemoveAt(0)
+        'DataSet1.Tables(tablename).Rows.RemoveAt(0)
         DataGridView1.DataSource = DataSet1.Tables(0).DefaultView
         For i As Integer = 0 To DataGridView1.Columns.Count - 1
             DataGridView1.Columns(i).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
@@ -81,12 +81,13 @@
         DataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True
         DataGridView1.Columns(12).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
         DataGridView1.Columns(12).DefaultCellStyle.WrapMode = DataGridViewTriState.True
-        DataGridView1.Columns(12).Width = 50
-        DataGridView1.Columns(12).MinimumWidth = 50
+        DataGridView1.Columns(12).Width = 60
+        DataGridView1.Columns(12).MinimumWidth = 60
         DataGridView1.Columns(13).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
         DataGridView1.Columns(13).DefaultCellStyle.WrapMode = DataGridViewTriState.True
-        DataGridView1.Columns(13).Width = 50
-        DataGridView1.Columns(13).MinimumWidth = 50
+        DataGridView1.Columns(13).Width = 60
+        DataGridView1.Columns(13).MinimumWidth = 60
+
         SortDataGridonDate()
         DataGridView1.Refresh()
 
@@ -217,6 +218,7 @@
 
                 myStream.Dispose()
                 DataGridView1.DataSource = DataSet1.Tables(0).DefaultView
+                evaluateDB()
                 SortDataGridonDate()
                 DataGridView1.Refresh()
                 FileLoading = False
@@ -438,6 +440,7 @@
                                cboLocType.Text.ToString, DTDateZoneTime.Value.ToString("MM/dd/yyyy HH:mm:ss"), txtCompass.Text.ToString,
                                txtVar.Text.ToString & cboVar.Text, txtDev.Text.ToString & cboDev.Text,
                                txtCTrue.Text.ToString, txtSpeed.Text.ToString, LLo, txtWeather.Text.ToString, txtRemarks.Text.ToString)
+        evaluateDB()
         SortDataGridonDate()
         DataGridView1.Refresh()
         Me.Refresh()
@@ -467,6 +470,7 @@
         DataGridView1.Rows(UpdtRow).Cells(11).Value = LLo
         DataGridView1.Rows(UpdtRow).Cells(12).Value = txtWeather.Text
         DataGridView1.Rows(UpdtRow).Cells(13).Value = txtRemarks.Text
+        evaluateDB()
         SortDataGridonDate()
         DataGridView1.Refresh()
         Me.Refresh()
@@ -475,6 +479,7 @@
 
     Private Sub btnDeleteSight_Click(sender As Object, e As EventArgs) Handles btnDeleteSight.Click
         DataSet1.Tables(tablename).Rows.RemoveAt(UpdtRow)
+        evaluateDB()
         SortDataGridonDate()
         DataGridView1.Refresh()
         Me.Refresh()
@@ -714,10 +719,9 @@
         For i As Integer = 0 To DataGridView1.Columns.Count - 1
             DataGridView1.AutoResizeColumn(i)
         Next
-        If DataGridView1.Rows.Count > 0 Then
-            DataGridView1.Rows(DataGridView1.Rows.Count - 1).Selected = True
-        End If
-
+        ' select first row 
+        DataGridView1.CurrentCell = DataGridView1.Rows(0).Cells(0)
+        DataGridView1.Rows(0).Selected = True
         Exit Sub
     End Sub
     Private Function EditRelationsinDG() As Boolean
@@ -730,7 +734,9 @@
             ErrorMsgBox("Nothing to evaluate - the Data Grid only has one entry")
         End If
         ' for the first data grid row clear out the last 6 cells to make sure nothing displays
-
+        For i As Integer = 14 To 20
+            DataGridView1.Rows(0).Cells(i).Value = ""
+        Next
         ' now pass thru the data grid from the second record to the end evaluate each pair of records and calculating the final route results
         For i As Integer = 1 To DGlimit - 1
             ' evaluate Elapsed time from last entry
@@ -744,68 +750,60 @@
             End If
 
             ' evaluate Calculate destination location - start with location of previous entry 
-            Dim LLo1 As String = DataGridView1.Rows(i - 1).Cells(11).Value
-            Dim LPos1 As Integer = LLo1.IndexOf("=")
-            Dim LDegPos1 As Integer = LLo1.IndexOf(Chr(176))
-            Dim LMinPos1 As Integer = LLo1.IndexOf("'")
-            Dim LoPos1 As Integer = LLo1.IndexOf("=", LPos1 + 1)
-            Dim LoDegPos1 As Integer = LLo1.IndexOf(Chr(176), LDegPos1 + 1)
-            Dim LoMinPos1 As Integer = LLo1.IndexOf("'", LMinPos1 + 1)
-            Dim TempL1 As Double = Convert.ToDouble(LLo1.Substring(LPos1 + 1, (LDegPos1 - 1) - (LPos1 + 1) + 1)) +
-                Convert.ToDouble(LLo1.Substring(LDegPos1 + 1, (LMinPos1 - 1) - (LDegPos1 + 1) + 1) / 60)
-            Dim TempcboL1 As String = LLo1.Substring(LMinPos1 + 1, 1)
-            Dim TempL1Disp As Double = 0
-            If TempcboL1 = "S" Then
-                TempL1Disp = -1 * TempL1
+            Dim GeoLLo1 As Device.Location.GeoCoordinate = ParseLatLong(DataGridView1.Rows(i - 1).Cells(11).Value)
+            Dim TempcboL1 As String = "N"
+            Dim TempL1 As Double = GeoLLo1.Latitude
+            Dim TempL1Disp As Double = GeoLLo1.Latitude
+            If GeoLLo1.Latitude < 0 Then
+                TempcboL1 = "S"
+                TempL1 = -1 * TempL1Disp
             Else
-                TempL1Disp = TempL1
+                TempcboL1 = "N"
+                TempL1 = TempL1Disp
             End If
-            Dim TempLo1 As Double = Convert.ToDouble(LLo1.Substring(LoPos1 + 1, (LoDegPos1 - 1) - (LoPos1 + 1) + 1)) +
-                Convert.ToDouble(LLo1.Substring(LoDegPos1 + 1, (LoMinPos1 - 1) - (LoDegPos1 + 1) + 1) / 60)
-            Dim TempcboLo1 As String = LLo1.Substring(LoMinPos1 + 1, 1)
-            Dim TempLo1Disp As Double = 0
-            If TempcboLo1 = "W" Then
-                TempLo1Disp = -1 * TempLo1
+            Dim TempcboLo1 As String = ""
+            Dim TempLo1Disp As Double = GeoLLo1.Longitude
+            Dim TempLo1 As Double = GeoLLo1.Longitude
+            If GeoLLo1.Longitude < 0 Then
+                TempcboLo1 = "E"
+                TempLo1 = -1 * TempLo1Disp
             Else
-                TempLo1Disp = TempLo1
+                TempcboLo1 = "W"
+                TempLo1 = TempLo1Disp
             End If
 
             ' now calculate the location for the current entry
-            Dim LLo As String = DataGridView1.Rows(i).Cells(11).Value
-            Dim LPos As Integer = LLo.IndexOf("=")
-            Dim LDegPos As Integer = LLo.IndexOf(Chr(176))
-            Dim LMinPos As Integer = LLo.IndexOf("'")
-            Dim LoPos As Integer = LLo.IndexOf("=", LPos + 1)
-            Dim LoDegPos As Integer = LLo.IndexOf(Chr(176), LDegPos + 1)
-            Dim LoMinPos As Integer = LLo.IndexOf("'", LMinPos + 1)
-            Dim TempL As Double = Convert.ToDouble(LLo.Substring(LPos + 1, (LDegPos - 1) - (LPos + 1) + 1)) +
-                Convert.ToDouble(LLo.Substring(LDegPos + 1, (LMinPos - 1) - (LDegPos + 1) + 1) / 60)
-            Dim TempcboL As String = LLo.Substring(LMinPos + 1, 1)
-            Dim TempLDisp As Double = 0
-            If TempcboL = "S" Then
-                TempLDisp = -1 * TempL
+            Dim GeoLLo As Device.Location.GeoCoordinate = ParseLatLong(DataGridView1.Rows(i).Cells(11).Value)
+            Dim TempcboL As String = "N"
+            Dim TempL As Double = GeoLLo.Latitude
+            Dim TempLDisp As Double = GeoLLo.Latitude
+            If GeoLLo.Longitude < 0 Then
+                TempcboL = "S"
+                TempL = -1 * TempLDisp
             Else
-                TempLDisp = TempL
+                TempcboL = "N"
+                TempL = TempL1Disp
             End If
-            Dim TempLo As Double = Convert.ToDouble(LLo.Substring(LoPos + 1, (LoDegPos - 1) - (LoPos + 1) + 1)) +
-                Convert.ToDouble(LLo.Substring(LoDegPos + 1, (LoMinPos - 1) - (LoDegPos + 1) + 1) / 60)
-            Dim TempcboLo As String = LLo.Substring(LoMinPos + 1, 1)
-            Dim TempLoDisp As Double = 0
-            If TempcboLo = "W" Then
-                TempLoDisp = -1 * TempLo
+            Dim TempcboLo As String = ""
+            Dim TempLoDisp As Double = GeoLLo.Longitude
+            Dim TempLo As Double = GeoLLo.Longitude
+            If GeoLLo.Longitude < 0 Then
+                TempcboLo = "E"
+                TempLo = -1 * TempLoDisp
             Else
-                TempLoDisp = TempLo
+                TempcboLo = "W"
+                TempLo = TempLoDisp
             End If
 
             Dim TempTrue As Decimal = Convert.ToDecimal(DataGridView1.Rows(i - 1).Cells(9).Value)
             Dim TempSpeed As Decimal = Convert.ToDecimal(DataGridView1.Rows(i - 1).Cells(10).Value)
 
             ' get the distance from the previous location to the current entry location
-            Dim Dist As Double = GetDistance(TempL1, TempLo1, TempL, TempLo)
+            Dim Dist As Double = GetDistance(TempL1Disp, TempLo1Disp, TempLDisp, TempLoDisp)
             DataGridView1.Rows(i).Cells(15).Value = Dist.ToString("#0.0") & " nm"
 
             ' now calculate the destination location using the previous loc, the distance using prev speed and elapsed time, and true course of prev entry
-            Dim TempLoc As System.Device.Location.GeoCoordinate = FindDestLatLong(TempL1, TempLo1, Dist, TempTrue)
+            Dim TempLoc As System.Device.Location.GeoCoordinate = FindDestLatLong(TempL1Disp, TempLo1Disp, Dist, TempTrue)
             Dim TempL3 As Double = TempLoc.Latitude
             Dim TempL3NS As String = TempcboL
             Dim TempL3Disp As Double = 0
@@ -908,7 +906,37 @@
         evaluateDB()
         Exit Sub
     End Sub
+    Private Function ParseLatLong(ByVal StrIn As String) As System.Device.Location.GeoCoordinate
+        ' evaluate Calculate destination location - start with location of previous entry 
+        Dim LLo1 As String = StrIn  'DataGridView1.Rows(i - 1).Cells(11).Value
+        Dim LPos1 As Integer = LLo1.IndexOf("=")
+        Dim LDegPos1 As Integer = LLo1.IndexOf(Chr(176))
+        Dim LMinPos1 As Integer = LLo1.IndexOf("'")
+        Dim LoPos1 As Integer = LLo1.IndexOf("=", LPos1 + 1)
+        Dim LoDegPos1 As Integer = LLo1.IndexOf(Chr(176), LDegPos1 + 1)
+        Dim LoMinPos1 As Integer = LLo1.IndexOf("'", LMinPos1 + 1)
+        Dim TempL1 As Double = Convert.ToDouble(LLo1.Substring(LPos1 + 1, (LDegPos1 - 1) - (LPos1 + 1) + 1)) +
+            Convert.ToDouble(LLo1.Substring(LDegPos1 + 1, (LMinPos1 - 1) - (LDegPos1 + 1) + 1) / 60)
+        Dim TempcboL1 As String = LLo1.Substring(LMinPos1 + 1, 1)
+        Dim TempL1Disp As Double = 0
+        If TempcboL1 = "S" Then
+            TempL1Disp = -1 * TempL1
+        Else
+            TempL1Disp = TempL1
+        End If
+        Dim TempLo1 As Double = Convert.ToDouble(LLo1.Substring(LoPos1 + 1, (LoDegPos1 - 1) - (LoPos1 + 1) + 1)) +
+            Convert.ToDouble(LLo1.Substring(LoDegPos1 + 1, (LoMinPos1 - 1) - (LoDegPos1 + 1) + 1) / 60)
+        Dim TempcboLo1 As String = LLo1.Substring(LoMinPos1 + 1, 1)
+        Dim TempLo1Disp As Double = 0
+        If TempcboLo1 = "W" Then
+            TempLo1Disp = -1 * TempLo1
+        Else
+            TempLo1Disp = TempLo1
+        End If
 
+        Dim RtnLLo As Device.Location.GeoCoordinate = New Device.Location.GeoCoordinate(TempL1Disp, TempLo1Disp)
+        Return RtnLLo
+    End Function
     'Private Sub btnClearForm_Click(sender As Object, e As EventArgs)
     '    ResetScreenFields()
     '    DataSet1.Tables(tablename).Clear()

@@ -278,7 +278,7 @@ Partial Class DeckLogUpdate
         '
         Me.btnInfoForm.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.btnInfoForm.ForeColor = System.Drawing.Color.Black
-        Me.btnInfoForm.Location = New System.Drawing.Point(1010, 34)
+        Me.btnInfoForm.Location = New System.Drawing.Point(1133, 33)
         Me.btnInfoForm.Name = "btnInfoForm"
         Me.btnInfoForm.Size = New System.Drawing.Size(118, 23)
         Me.btnInfoForm.TabIndex = 7
@@ -337,9 +337,9 @@ Partial Class DeckLogUpdate
         Me.GroupBox1.Controls.Add(Me.lblNavigator)
         Me.GroupBox1.Controls.Add(Me.txtVessel)
         Me.GroupBox1.Controls.Add(Me.lblVessel)
-        Me.GroupBox1.Location = New System.Drawing.Point(13, 62)
+        Me.GroupBox1.Location = New System.Drawing.Point(9, 57)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(1360, 157)
+        Me.GroupBox1.Size = New System.Drawing.Size(1365, 157)
         Me.GroupBox1.TabIndex = 8
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Update Fields"
@@ -347,7 +347,7 @@ Partial Class DeckLogUpdate
         'cboLocType
         '
         Me.cboLocType.FormattingEnabled = True
-        Me.cboLocType.Items.AddRange(New Object() {"DR", "GPS", "Fix", "Weather", "Remarks"})
+        Me.cboLocType.Items.AddRange(New Object() {"DR", "GPS", "Fix", "Plan"})
         Me.cboLocType.Location = New System.Drawing.Point(86, 51)
         Me.cboLocType.Name = "cboLocType"
         Me.cboLocType.Size = New System.Drawing.Size(59, 21)
@@ -904,7 +904,7 @@ Partial Class DeckLogUpdate
         '
         Me.PictureBox1.Image = Global.DeckLog.My.Resources.Resources.ABC_white
         Me.PictureBox1.InitialImage = Global.DeckLog.My.Resources.Resources.ABC_white
-        Me.PictureBox1.Location = New System.Drawing.Point(13, 8)
+        Me.PictureBox1.Location = New System.Drawing.Point(11, 6)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(244, 50)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -1155,12 +1155,13 @@ Partial Class DeckLogUpdate
         '
         Me.btnEval.BackColor = System.Drawing.Color.Blue
         Me.btnEval.ForeColor = System.Drawing.Color.White
-        Me.btnEval.Location = New System.Drawing.Point(1132, 33)
+        Me.btnEval.Location = New System.Drawing.Point(1009, 33)
         Me.btnEval.Name = "btnEval"
         Me.btnEval.Size = New System.Drawing.Size(118, 23)
         Me.btnEval.TabIndex = 11
         Me.btnEval.Text = "Evaluate Deck Log"
         Me.btnEval.UseVisualStyleBackColor = False
+        Me.btnEval.Visible = False
         '
         'DeckLogUpdate
         '
