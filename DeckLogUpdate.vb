@@ -54,6 +54,7 @@
         Public SetDir As Integer
         Public Drift As Decimal
         Public DBRowNum As Integer
+        Public DestLatLongStr As String
         Public DestLDegI As Integer
         Public DestLMinI As Decimal
         Public DestLNS As String
@@ -66,6 +67,7 @@
         Public DestDistance As Decimal
         Public DestSpeed As Decimal
         Public DestEstArrival As String
+        Public DestEstElapsed As String
     End Structure
     Public UpdtRtn As DLUpdate
     Public CurrRow As DLUpdate
@@ -298,10 +300,28 @@
         UpdtRow = DataGridView1.CurrentRow.Index
 
         ' The order of these variable and the integer indexs contained in each MUST match the order of the fields in the data grid
-        ' Cell 0 = Vessel name  Cell 1 = Navigator name  Cell 2 = From location name   Cell 3 = To location name 
-        ' Cell 4 = Zone Date & time String MM/dd/yyyy HH:mm:ss Cell 5 = Compass course string  Cell 6 = Variation string Cell 7 = Deviation string
-        ' Cell 8 = computed True Course string  Cell 9 = Speed string  Cell 10 = Latitude string Cell 11 = Longitude string   Cell 12 = L/Lo loc type 
-        ' Cell 13 = Weather string   Cell 14 = Remarks string
+        ' Cell 0 = Vessel name  
+        ' Cell 1 = Navigator name  
+        ' Cell 2 = From location name   
+        ' Cell 3 = To location name 
+        ' Cell 4 = L/Lo loc type 
+        ' Cell 5 = Zone Date & time String MM/dd/yyyy HH:mm:ss 
+        ' Cell 6 = Compass course string 
+        ' Cell 7 = Variation string 
+        ' Cell 8 = Deviation string
+        ' Cell 9 = Computed True Course string  
+        ' Cell 10 = DR Speed string  
+        ' Cell 11 = Latitude / Longitude string 
+        ' Cell 12 = Weather string   
+        ' Cell 13 = Remarks string
+        ' Cell 14 = Elapsed Time from Lat/Long to Dest Lat/Long
+        ' Cell 15 = Distance in nm from Lat/Long to Dest Lat/Long
+        ' Cell 16 = Calculated Destination Lat/Long
+        ' Cell 17 = Calculated True Course to destination
+        ' Cell 18 = Calculated Speed to make destination
+        ' Cell 19 = Calculated Set between two GPS/Fix locations
+        ' Cell 20 = Calculated Drift between two GPS/Fix locations
+        ' Cell 21 = Eval Based On string (filled in in EvaluatedDG subroutine)
 
         If DataGridView1.Rows(n).Cells(0).Value <> vbNullString Then
             UpdtRtn.Vessel = DataGridView1.Rows(n).Cells(0).Value
@@ -438,10 +458,31 @@
             txtRemarks.Text = vbNullString
         End If
 
+        If UpdtRtn.LogType = "Plan" Then
+            txtDestElapsed.Text = DataGridView1.Rows(n).Cells(14).Value
+            UpdtRtn.DestEstElapsed = DataGridView1.Rows(n).Cells(14).Value
+            txtDestDist.Text = DataGridView1.Rows(n).Cells(15).Value
+            UpdtRtn.DestDistance = Convert.ToDecimal(DataGridView1.Rows(n).Cells(15).Value.ToString.Substring(0, txtDestDist.Text.ToString.Length - 2))
+            UpdtRtn.DestLatLongStr = DataGridView1.Rows(n).Cells(16).Value
+            Dim DestLLo As String = DataGridView1.Rows(n).Cells(16).Value
+            Dim LPos As Integer = DestLLo.IndexOf("=")
+            Dim LDegPos As Integer = DestLLo.IndexOf(Chr(176))
+            Dim LMinPos As Integer = DestLLo.IndexOf("'")
+            Dim LoPos As Integer = DestLLo.IndexOf("=", LPos + 1)
+            Dim LoDegPos As Integer = DestLLo.IndexOf(Chr(176), LDegPos + 1)
+            Dim LoMinPos As Integer = DestLLo.IndexOf("'", LMinPos + 1)
+            txtDestLDeg.Text = DestLLo.Substring(LPos + 1, (LDegPos - 1) - (LPos + 1) + 1)
+            txtDestLMin.Text = DestLLo.Substring(LDegPos + 1, (LMinPos - 1) - (LDegPos + 1) + 1)
+            cboDestL.Text = DestLLo.Substring(LMinPos + 1, 1)
+            txtDestLoDeg.Text = DestLLo.Substring(LoPos + 1, (LoDegPos - 1) - (LoPos + 1) + 1)
+            txtDestLoMin.Text = DestLLo.Substring(LoDegPos + 1, (LoMinPos - 1) - (LoDegPos + 1) + 1)
+            cboDestLo.Text = DestLLo.Substring(LoMinPos + 1, 1)
+            txtDestTrue.Text = DataGridView1.Rows(n).Cells(17).Value
+            UpdtRtn.DestTrueI = Convert.ToInt32(DataGridView1.Rows(n).Cells(17).Value.ToString.Substring(0, txtDestTrue.Text.ToString.Length - 1))
+        End If
         btnUpdateExisting.Visible = True
         btnDeleteSight.Visible = True
         Me.Refresh()
-
         Exit Sub
     End Sub
 
@@ -488,6 +529,12 @@
         If EditUpdtFields() = False Then
             Me.Refresh()
             Exit Sub
+        End If
+        If cboLocType.Text = "Plan" Then
+            If EditPlanFields() = False Then
+                Me.Refresh()
+                Exit Sub
+            End If
         End If
         Dim LLo As String = ""
         LLo = "L=" & UpdtRtn.LDegI.ToString("00") & Chr(176) & UpdtRtn.LMinI.ToString("00.0") &
@@ -827,9 +874,9 @@
             UpdtRtn.DestLoMinI = Convert.ToDecimal(txtDestLoMin.Text)
             UpdtRtn.DestLoEW = cboDestLo.Text
             If UpdtRtn.DestLoEW = "W" Then
-                UpdtRtn.DestLongDecimal = Convert.ToDecimal(UpdtRtn.LoDegI) + UpdtRtn.LoMinI / 60
+                UpdtRtn.DestLongDecimal = Convert.ToDecimal(UpdtRtn.DestLoDegI) + UpdtRtn.DestLoMinI / 60
             Else
-                UpdtRtn.DestLongDecimal = -1 * (Convert.ToDecimal(UpdtRtn.LoDegI) + UpdtRtn.LoMinI / 60)
+                UpdtRtn.DestLongDecimal = -1 * (Convert.ToDecimal(UpdtRtn.DestLoDegI) + UpdtRtn.DestLoMinI / 60)
             End If
             If UpdtRtn.DestLoMinI < 0 Or UpdtRtn.DestLoMinI > 59.9 Then
                 ErrorMsgBox("For Plan Entry, Longitude Minutes must be numeric between 0 and 59.9")
@@ -845,7 +892,7 @@
         txtDestDist.Text = DestDist.ToString("##0.0") & "nm"
         txtDestTrue.Text = GetHeading(UpdtRtn.LatDecimal, UpdtRtn.LongDecimal, UpdtRtn.DestLatDecimal, UpdtRtn.DestLongDecimal).ToString("##0") & Chr(176)
         Dim DestElapsed As TimeSpan = Calc60DSTElapsed(DTDateZoneTime.Value, Convert.ToDouble(txtSpeed.Text), DestDist)
-        txtDestElapsed.Text = DestElapsed.ToString("c")
+        txtDestElapsed.Text = DestElapsed.ToString("d\.hh\:mm\:ss")
         Dim DestEstArrival As DateTime = DTDateZoneTime.Value + DestElapsed
         txtRemarks.Text = "Estimated Arrival Time for Plan Log Entry:" & DestEstArrival.ToString("MM/dd/yyyy HH:mm:ss")
         Return True
@@ -919,9 +966,9 @@
             PrevDR = 0
         End If
         ' for the first data grid row clear out the last 6 cells to make sure nothing displays
-        For i As Integer = 14 To 20
-            DataGridView1.Rows(0).Cells(i).Value = ""
-        Next
+        'For i As Integer = 14 To 20
+        '    DataGridView1.Rows(0).Cells(i).Value = ""
+        'Next
         ' now pass thru the data grid from the second record to the end evaluate each pair of records and calculating the final route results
         For i As Integer = 1 To DGlimit - 1
             If DataGridView1.Rows(i).Cells(4).Value <> "Plan" Then
@@ -949,13 +996,17 @@
                     PrevGPSFIXExists = True
                     PrevGPSFix = i
                     If DataGridView1.Rows(i).Cells(4).Value <> "Plan" Then
-                        EvaluateDBPairs(i, i - 1, False)
-                        DataGridView1.Rows(i).Cells(21).Value = "Prev Log Entry"
-                        PrevDRExists = True
-                        PrevDR = i
+                        If PrevDRExists = True Then
+                            EvaluateDBPairs(i, PrevDR, False)
+                            DataGridView1.Rows(i).Cells(21).Value = "Prev Log Entry"
+                            PrevDR = i
+                        Else
+                            PrevDRExists = True
+                            PrevDR = i
+                        End If
                     End If
                 End If
-                    ElseIf DataGridView1.Rows(i).Cells(4).Value = "Plan" Then
+            ElseIf DataGridView1.Rows(i).Cells(4).Value = "Plan" Then
                 Dim x As Integer = 0 ' do nothing statement just to do something
             ElseIf DataGridView1.Rows(i).Cells(4).Value = "DR" And DataGridView1.Rows(i - 1).Cells(4).Value <> "Plan" Then
                 If PrevDRExists = True Then
@@ -966,9 +1017,9 @@
                     PrevDRExists = True
                     PrevDR = i
                 End If
-            ElseIf DataGridView1.Rows(i).Cells(4).Value = "DR" And DataGridView1.Rows(i - 1).Cells(4).Value = "Plan" Then
-                PrevDRExists = True
-                PrevDR = i
+                'ElseIf DataGridView1.Rows(i).Cells(4).Value = "DR" And DataGridView1.Rows(i - 1).Cells(4).Value = "Plan" Then
+                '    PrevDRExists = True
+                '    PrevDR = i
             End If
         Next
         Exit Sub
@@ -1130,8 +1181,10 @@
         Dim Theta As Double = Course * Math.PI / 180
         Dim R As Double = 3440.1  ' this is the radius of the earth in nautical miles
         Dim d As Double = Dist    ' this is the distance travelled in nautical miles
-        Dim lat2 As Double = Math.Asin(Math.Sin(lat1) * Math.Cos(d / R) + Math.Cos(lat1) * Math.Sin(d / R) * Math.Cos(Theta))
-        Dim lon2 As Double = Lon1 + Math.Atan2((Math.Sin(Theta) * Math.Sin(d / R) * Math.Cos(lat1)), (Math.Cos(d / R) - (Math.Sin(lat1) * Math.Sin(lat2))))
+        Dim DDivR As Double = (d / R) * Math.PI / 180
+
+        Dim lat2 As Double = Math.Asin(Math.Sin(lat1) * Math.Cos(DDivR) + Math.Cos(lat1) * Math.Sin(DDivR) * Math.Cos(Theta))
+        Dim lon2 As Double = Lon1 + Math.Atan2((Math.Sin(Theta) * Math.Sin(DDivR) * Math.Cos(lat1)), (Math.Cos(DDivR) - (Math.Sin(lat1) * Math.Sin(lat2))))
         Dim RtnGC As System.Device.Location.GeoCoordinate = New System.Device.Location.GeoCoordinate(lat2 * 180 / Math.PI, lon2 * 180 / Math.PI)
         Return RtnGC
     End Function

@@ -403,7 +403,7 @@ Partial Class DeckLogUpdate
         Me.Label18.Cursor = System.Windows.Forms.Cursors.Default
         Me.Label18.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label18.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label18.Location = New System.Drawing.Point(863, 14)
+        Me.Label18.Location = New System.Drawing.Point(884, 14)
         Me.Label18.Name = "Label18"
         Me.Label18.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.Label18.Size = New System.Drawing.Size(26, 17)
@@ -413,7 +413,7 @@ Partial Class DeckLogUpdate
         '
         'txtDestElapsed
         '
-        Me.txtDestElapsed.Location = New System.Drawing.Point(1027, 13)
+        Me.txtDestElapsed.Location = New System.Drawing.Point(1054, 13)
         Me.txtDestElapsed.MaxLength = 35
         Me.txtDestElapsed.Name = "txtDestElapsed"
         Me.txtDestElapsed.ReadOnly = True
@@ -424,7 +424,7 @@ Partial Class DeckLogUpdate
         '
         Me.Label17.AutoSize = True
         Me.Label17.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.Location = New System.Drawing.Point(900, 15)
+        Me.Label17.Location = New System.Drawing.Point(927, 15)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(123, 15)
         Me.Label17.TabIndex = 224
@@ -437,7 +437,7 @@ Partial Class DeckLogUpdate
         Me.txtDestDist.MaxLength = 5
         Me.txtDestDist.Name = "txtDestDist"
         Me.txtDestDist.ReadOnly = True
-        Me.txtDestDist.Size = New System.Drawing.Size(30, 20)
+        Me.txtDestDist.Size = New System.Drawing.Size(50, 20)
         Me.txtDestDist.TabIndex = 223
         '
         'Label16
