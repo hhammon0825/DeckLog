@@ -177,6 +177,7 @@
             If MsgBack = MsgBoxResult.Yes Then
                 SaveDataGrid()
             End If
+            IsUpdated = False
         End If
         Me.Close()
         Exit Sub
@@ -190,6 +191,7 @@
             If MsgBack = MsgBoxResult.Yes Then
                 SaveDataGrid()
             End If
+            IsUpdated = False
         End If
         FileLoading = True
         DataSet1.Tables(tablename).Clear()
@@ -1333,5 +1335,22 @@
             DataGridView1.Refresh()
             Me.Refresh()
         End If
+    End Sub
+
+    Private Sub btnStartFresh_Click(sender As Object, e As EventArgs) Handles btnStartFresh.Click
+        If IsUpdated = True Then
+            Dim MsgBack As MsgBoxResult = MsgBox("Data has been updated - Save to File - Yes or No", MsgBoxStyle.YesNo, "Save Updated Data")
+            If MsgBack = MsgBoxResult.Yes Then
+                SaveDataGrid()
+            End If
+            IsUpdated = False
+        End If
+        FileLoading = True
+        DataSet1.Tables(tablename).Clear()
+        ClearPlanFields()
+        ResetScreenFields()
+        Me.Refresh()
+        FileLoading = False
+        Exit Sub
     End Sub
 End Class

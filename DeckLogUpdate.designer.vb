@@ -22,13 +22,13 @@ Partial Class DeckLogUpdate
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.btnExit = New System.Windows.Forms.Button()
         Me.btnExitNoSave = New System.Windows.Forms.Button()
@@ -43,6 +43,8 @@ Partial Class DeckLogUpdate
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.chkHideFirst4Col = New System.Windows.Forms.CheckBox()
         Me.grpbxPlan = New System.Windows.Forms.GroupBox()
+        Me.txtEstArrival = New System.Windows.Forms.TextBox()
+        Me.lblEstArrival = New System.Windows.Forms.Label()
         Me.txtDestElapsed = New System.Windows.Forms.TextBox()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.txtDestDist = New System.Windows.Forms.TextBox()
@@ -143,8 +145,7 @@ Partial Class DeckLogUpdate
         Me.WeatherDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.RemarksDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TimetoDest = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.txtEstArrival = New System.Windows.Forms.TextBox()
-        Me.lblEstArrival = New System.Windows.Forms.Label()
+        Me.btnStartFresh = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.grpbxPlan.SuspendLayout()
@@ -157,58 +158,58 @@ Partial Class DeckLogUpdate
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.AllowUserToResizeColumns = False
         Me.DataGridView1.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle8
         Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.DataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption
         Me.DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.DataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.Yellow
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.InfoText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Gold
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle9.BackColor = System.Drawing.Color.Yellow
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.InfoText
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Gold
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle9
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle3.NullValue = " "
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle10.NullValue = " "
+        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle10
         Me.DataGridView1.Location = New System.Drawing.Point(8, 230)
         Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.Yellow
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.Yellow
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.InfoText
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Blue
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White
-        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle11.BackColor = System.Drawing.Color.Yellow
+        DataGridViewCellStyle11.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle12.BackColor = System.Drawing.Color.Yellow
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.InfoText
+        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.Blue
+        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White
+        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle12
         Me.DataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Yellow
         Me.DataGridView1.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.SystemColors.InfoText
         Me.DataGridView1.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Blue
         Me.DataGridView1.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView1.Size = New System.Drawing.Size(1365, 598)
+        Me.DataGridView1.Size = New System.Drawing.Size(1365, 608)
         Me.DataGridView1.TabIndex = 0
         '
         'btnExit
@@ -375,11 +376,12 @@ Partial Class DeckLogUpdate
         Me.chkHideFirst4Col.Name = "chkHideFirst4Col"
         Me.chkHideFirst4Col.Size = New System.Drawing.Size(163, 43)
         Me.chkHideFirst4Col.TabIndex = 223
-        Me.chkHideFirst4Col.Text = "Hide Vessel, Navigator," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "From, To, Weather Remarks " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Columns"
+        Me.chkHideFirst4Col.Text = "Hide Vessel, Navigator," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "From, To, Weather Remarks " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Columns in DataGrid"
         Me.chkHideFirst4Col.UseVisualStyleBackColor = True
         '
         'grpbxPlan
         '
+        Me.grpbxPlan.BackColor = System.Drawing.Color.Silver
         Me.grpbxPlan.Controls.Add(Me.txtEstArrival)
         Me.grpbxPlan.Controls.Add(Me.lblEstArrival)
         Me.grpbxPlan.Controls.Add(Me.txtDestElapsed)
@@ -400,28 +402,51 @@ Partial Class DeckLogUpdate
         Me.grpbxPlan.Controls.Add(Me.Label11)
         Me.grpbxPlan.Controls.Add(Me.Label12)
         Me.grpbxPlan.Controls.Add(Me.Label13)
-        Me.grpbxPlan.Location = New System.Drawing.Point(87, 127)
+        Me.grpbxPlan.Cursor = System.Windows.Forms.Cursors.Default
+        Me.grpbxPlan.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grpbxPlan.Location = New System.Drawing.Point(24, 125)
+        Me.grpbxPlan.Margin = New System.Windows.Forms.Padding(5)
         Me.grpbxPlan.Name = "grpbxPlan"
-        Me.grpbxPlan.Size = New System.Drawing.Size(1250, 37)
+        Me.grpbxPlan.Size = New System.Drawing.Size(1313, 37)
         Me.grpbxPlan.TabIndex = 222
         Me.grpbxPlan.TabStop = False
         Me.grpbxPlan.Text = "Plan Log Entry Destination Data"
         Me.grpbxPlan.Visible = False
         '
+        'txtEstArrival
+        '
+        Me.txtEstArrival.Location = New System.Drawing.Point(1173, 12)
+        Me.txtEstArrival.MaxLength = 35
+        Me.txtEstArrival.Name = "txtEstArrival"
+        Me.txtEstArrival.ReadOnly = True
+        Me.txtEstArrival.Size = New System.Drawing.Size(130, 22)
+        Me.txtEstArrival.TabIndex = 227
+        '
+        'lblEstArrival
+        '
+        Me.lblEstArrival.AutoSize = True
+        Me.lblEstArrival.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblEstArrival.Location = New System.Drawing.Point(1064, 15)
+        Me.lblEstArrival.Name = "lblEstArrival"
+        Me.lblEstArrival.Size = New System.Drawing.Size(107, 15)
+        Me.lblEstArrival.TabIndex = 226
+        Me.lblEstArrival.Text = "Est Arrival at Dest:"
+        Me.lblEstArrival.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
         'txtDestElapsed
         '
-        Me.txtDestElapsed.Location = New System.Drawing.Point(951, 13)
+        Me.txtDestElapsed.Location = New System.Drawing.Point(969, 13)
         Me.txtDestElapsed.MaxLength = 35
         Me.txtDestElapsed.Name = "txtDestElapsed"
         Me.txtDestElapsed.ReadOnly = True
-        Me.txtDestElapsed.Size = New System.Drawing.Size(89, 20)
+        Me.txtDestElapsed.Size = New System.Drawing.Size(89, 22)
         Me.txtDestElapsed.TabIndex = 225
         '
         'Label17
         '
         Me.Label17.AutoSize = True
         Me.Label17.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.Location = New System.Drawing.Point(873, 15)
+        Me.Label17.Location = New System.Drawing.Point(889, 15)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(78, 15)
         Me.Label17.TabIndex = 224
@@ -430,18 +455,18 @@ Partial Class DeckLogUpdate
         '
         'txtDestDist
         '
-        Me.txtDestDist.Location = New System.Drawing.Point(798, 12)
+        Me.txtDestDist.Location = New System.Drawing.Point(816, 12)
         Me.txtDestDist.MaxLength = 5
         Me.txtDestDist.Name = "txtDestDist"
         Me.txtDestDist.ReadOnly = True
-        Me.txtDestDist.Size = New System.Drawing.Size(70, 20)
+        Me.txtDestDist.Size = New System.Drawing.Size(70, 22)
         Me.txtDestDist.TabIndex = 223
         '
         'Label16
         '
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label16.Location = New System.Drawing.Point(696, 14)
+        Me.Label16.Location = New System.Drawing.Point(714, 14)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(99, 15)
         Me.Label16.TabIndex = 222
@@ -450,18 +475,18 @@ Partial Class DeckLogUpdate
         '
         'txtDestTrue
         '
-        Me.txtDestTrue.Location = New System.Drawing.Point(632, 11)
+        Me.txtDestTrue.Location = New System.Drawing.Point(650, 11)
         Me.txtDestTrue.MaxLength = 3
         Me.txtDestTrue.Name = "txtDestTrue"
         Me.txtDestTrue.ReadOnly = True
-        Me.txtDestTrue.Size = New System.Drawing.Size(60, 20)
+        Me.txtDestTrue.Size = New System.Drawing.Size(60, 22)
         Me.txtDestTrue.TabIndex = 220
         '
         'Label15
         '
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(511, 14)
+        Me.Label15.Location = New System.Drawing.Point(528, 14)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(118, 15)
         Me.Label15.TabIndex = 219
@@ -476,7 +501,7 @@ Partial Class DeckLogUpdate
         Me.cboDestLo.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboDestLo.ForeColor = System.Drawing.SystemColors.WindowText
         Me.cboDestLo.Items.AddRange(New Object() {"W", "E"})
-        Me.cboDestLo.Location = New System.Drawing.Point(467, 9)
+        Me.cboDestLo.Location = New System.Drawing.Point(484, 9)
         Me.cboDestLo.Name = "cboDestLo"
         Me.cboDestLo.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.cboDestLo.Size = New System.Drawing.Size(41, 24)
@@ -490,7 +515,7 @@ Partial Class DeckLogUpdate
         Me.cboDestL.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboDestL.ForeColor = System.Drawing.SystemColors.WindowText
         Me.cboDestL.Items.AddRange(New Object() {"N", "S"})
-        Me.cboDestL.Location = New System.Drawing.Point(234, 9)
+        Me.cboDestL.Location = New System.Drawing.Point(258, 10)
         Me.cboDestL.Name = "cboDestL"
         Me.cboDestL.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.cboDestL.Size = New System.Drawing.Size(41, 24)
@@ -504,7 +529,7 @@ Partial Class DeckLogUpdate
         Me.txtDestLDeg.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDestLDeg.ForeColor = System.Drawing.SystemColors.WindowText
         Me.txtDestLDeg.HideSelection = False
-        Me.txtDestLDeg.Location = New System.Drawing.Point(162, 9)
+        Me.txtDestLDeg.Location = New System.Drawing.Point(186, 11)
         Me.txtDestLDeg.MaxLength = 2
         Me.txtDestLDeg.Name = "txtDestLDeg"
         Me.txtDestLDeg.RightToLeft = System.Windows.Forms.RightToLeft.No
@@ -519,7 +544,7 @@ Partial Class DeckLogUpdate
         Me.txtDestLoMin.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDestLoMin.ForeColor = System.Drawing.SystemColors.WindowText
         Me.txtDestLoMin.HideSelection = False
-        Me.txtDestLoMin.Location = New System.Drawing.Point(423, 10)
+        Me.txtDestLoMin.Location = New System.Drawing.Point(440, 10)
         Me.txtDestLoMin.MaxLength = 4
         Me.txtDestLoMin.Name = "txtDestLoMin"
         Me.txtDestLoMin.RightToLeft = System.Windows.Forms.RightToLeft.No
@@ -534,7 +559,7 @@ Partial Class DeckLogUpdate
         Me.txtDestLoDeg.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDestLoDeg.ForeColor = System.Drawing.SystemColors.WindowText
         Me.txtDestLoDeg.HideSelection = False
-        Me.txtDestLoDeg.Location = New System.Drawing.Point(381, 10)
+        Me.txtDestLoDeg.Location = New System.Drawing.Point(398, 10)
         Me.txtDestLoDeg.MaxLength = 3
         Me.txtDestLoDeg.Name = "txtDestLoDeg"
         Me.txtDestLoDeg.RightToLeft = System.Windows.Forms.RightToLeft.No
@@ -549,7 +574,7 @@ Partial Class DeckLogUpdate
         Me.txtDestLMin.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDestLMin.ForeColor = System.Drawing.SystemColors.WindowText
         Me.txtDestLMin.HideSelection = False
-        Me.txtDestLMin.Location = New System.Drawing.Point(194, 9)
+        Me.txtDestLMin.Location = New System.Drawing.Point(218, 11)
         Me.txtDestLMin.MaxLength = 4
         Me.txtDestLMin.Name = "txtDestLMin"
         Me.txtDestLMin.RightToLeft = System.Windows.Forms.RightToLeft.No
@@ -562,7 +587,7 @@ Partial Class DeckLogUpdate
         Me.Label8.Cursor = System.Windows.Forms.Cursors.Default
         Me.Label8.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label8.Location = New System.Drawing.Point(456, 11)
+        Me.Label8.Location = New System.Drawing.Point(473, 11)
         Me.Label8.Name = "Label8"
         Me.Label8.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.Label8.Size = New System.Drawing.Size(9, 17)
@@ -575,7 +600,7 @@ Partial Class DeckLogUpdate
         Me.Label9.Cursor = System.Windows.Forms.Cursors.Default
         Me.Label9.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label9.Location = New System.Drawing.Point(415, 11)
+        Me.Label9.Location = New System.Drawing.Point(431, 11)
         Me.Label9.Name = "Label9"
         Me.Label9.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.Label9.Size = New System.Drawing.Size(9, 17)
@@ -588,7 +613,7 @@ Partial Class DeckLogUpdate
         Me.Label10.Cursor = System.Windows.Forms.Cursors.Default
         Me.Label10.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label10.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label10.Location = New System.Drawing.Point(285, 12)
+        Me.Label10.Location = New System.Drawing.Point(302, 12)
         Me.Label10.Name = "Label10"
         Me.Label10.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.Label10.Size = New System.Drawing.Size(94, 18)
@@ -602,7 +627,7 @@ Partial Class DeckLogUpdate
         Me.Label11.Cursor = System.Windows.Forms.Cursors.Default
         Me.Label11.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label11.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label11.Location = New System.Drawing.Point(227, 11)
+        Me.Label11.Location = New System.Drawing.Point(251, 13)
         Me.Label11.Name = "Label11"
         Me.Label11.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.Label11.Size = New System.Drawing.Size(9, 17)
@@ -615,7 +640,7 @@ Partial Class DeckLogUpdate
         Me.Label12.Cursor = System.Windows.Forms.Cursors.Default
         Me.Label12.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label12.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label12.Location = New System.Drawing.Point(187, 11)
+        Me.Label12.Location = New System.Drawing.Point(210, 13)
         Me.Label12.Name = "Label12"
         Me.Label12.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.Label12.Size = New System.Drawing.Size(9, 17)
@@ -628,7 +653,7 @@ Partial Class DeckLogUpdate
         Me.Label13.Cursor = System.Windows.Forms.Cursors.Default
         Me.Label13.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label13.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label13.Location = New System.Drawing.Point(82, 12)
+        Me.Label13.Location = New System.Drawing.Point(106, 12)
         Me.Label13.Name = "Label13"
         Me.Label13.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.Label13.Size = New System.Drawing.Size(91, 20)
@@ -742,7 +767,7 @@ Partial Class DeckLogUpdate
         'txtCTrue
         '
         Me.txtCTrue.Enabled = False
-        Me.txtCTrue.Location = New System.Drawing.Point(1140, 54)
+        Me.txtCTrue.Location = New System.Drawing.Point(1141, 54)
         Me.txtCTrue.MaxLength = 3
         Me.txtCTrue.Name = "txtCTrue"
         Me.txtCTrue.Size = New System.Drawing.Size(30, 20)
@@ -762,6 +787,7 @@ Partial Class DeckLogUpdate
         'txtRemarks
         '
         Me.txtRemarks.Location = New System.Drawing.Point(654, 79)
+        Me.txtRemarks.MaxLength = 250
         Me.txtRemarks.Multiline = True
         Me.txtRemarks.Name = "txtRemarks"
         Me.txtRemarks.ScrollBars = System.Windows.Forms.ScrollBars.Both
@@ -781,6 +807,7 @@ Partial Class DeckLogUpdate
         'txtWeather
         '
         Me.txtWeather.Location = New System.Drawing.Point(86, 79)
+        Me.txtWeather.MaxLength = 250
         Me.txtWeather.Multiline = True
         Me.txtWeather.Name = "txtWeather"
         Me.txtWeather.ScrollBars = System.Windows.Forms.ScrollBars.Both
@@ -805,7 +832,7 @@ Partial Class DeckLogUpdate
         Me.cboLo.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboLo.ForeColor = System.Drawing.SystemColors.WindowText
         Me.cboLo.Items.AddRange(New Object() {"W", "E"})
-        Me.cboLo.Location = New System.Drawing.Point(740, 50)
+        Me.cboLo.Location = New System.Drawing.Point(739, 50)
         Me.cboLo.Name = "cboLo"
         Me.cboLo.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.cboLo.Size = New System.Drawing.Size(41, 24)
@@ -819,7 +846,7 @@ Partial Class DeckLogUpdate
         Me.cboL.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboL.ForeColor = System.Drawing.SystemColors.WindowText
         Me.cboL.Items.AddRange(New Object() {"N", "S"})
-        Me.cboL.Location = New System.Drawing.Point(542, 50)
+        Me.cboL.Location = New System.Drawing.Point(544, 50)
         Me.cboL.Name = "cboL"
         Me.cboL.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.cboL.Size = New System.Drawing.Size(41, 24)
@@ -878,7 +905,7 @@ Partial Class DeckLogUpdate
         Me.txtLMin.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtLMin.ForeColor = System.Drawing.SystemColors.WindowText
         Me.txtLMin.HideSelection = False
-        Me.txtLMin.Location = New System.Drawing.Point(502, 50)
+        Me.txtLMin.Location = New System.Drawing.Point(503, 50)
         Me.txtLMin.MaxLength = 4
         Me.txtLMin.Name = "txtLMin"
         Me.txtLMin.RightToLeft = System.Windows.Forms.RightToLeft.No
@@ -891,7 +918,7 @@ Partial Class DeckLogUpdate
         Me.lblLoMin.Cursor = System.Windows.Forms.Cursors.Default
         Me.lblLoMin.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblLoMin.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblLoMin.Location = New System.Drawing.Point(729, 52)
+        Me.lblLoMin.Location = New System.Drawing.Point(729, 53)
         Me.lblLoMin.Name = "lblLoMin"
         Me.lblLoMin.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.lblLoMin.Size = New System.Drawing.Size(9, 17)
@@ -904,7 +931,7 @@ Partial Class DeckLogUpdate
         Me.lblLoDeg.Cursor = System.Windows.Forms.Cursors.Default
         Me.lblLoDeg.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblLoDeg.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblLoDeg.Location = New System.Drawing.Point(688, 52)
+        Me.lblLoDeg.Location = New System.Drawing.Point(687, 53)
         Me.lblLoDeg.Name = "lblLoDeg"
         Me.lblLoDeg.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.lblLoDeg.Size = New System.Drawing.Size(9, 17)
@@ -931,7 +958,7 @@ Partial Class DeckLogUpdate
         Me.lblLMin.Cursor = System.Windows.Forms.Cursors.Default
         Me.lblLMin.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblLMin.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblLMin.Location = New System.Drawing.Point(535, 52)
+        Me.lblLMin.Location = New System.Drawing.Point(536, 52)
         Me.lblLMin.Name = "lblLMin"
         Me.lblLMin.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.lblLMin.Size = New System.Drawing.Size(9, 17)
@@ -945,7 +972,7 @@ Partial Class DeckLogUpdate
         Me.lblLDeg.Enabled = False
         Me.lblLDeg.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblLDeg.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblLDeg.Location = New System.Drawing.Point(495, 52)
+        Me.lblLDeg.Location = New System.Drawing.Point(494, 53)
         Me.lblLDeg.Name = "lblLDeg"
         Me.lblLDeg.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.lblLDeg.Size = New System.Drawing.Size(9, 17)
@@ -972,7 +999,7 @@ Partial Class DeckLogUpdate
         Me.Label3.Cursor = System.Windows.Forms.Cursors.Default
         Me.Label3.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label3.Location = New System.Drawing.Point(1055, 56)
+        Me.Label3.Location = New System.Drawing.Point(1054, 56)
         Me.Label3.Name = "Label3"
         Me.Label3.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.Label3.Size = New System.Drawing.Size(9, 17)
@@ -985,7 +1012,7 @@ Partial Class DeckLogUpdate
         Me.Label2.Cursor = System.Windows.Forms.Cursors.Default
         Me.Label2.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label2.Location = New System.Drawing.Point(948, 56)
+        Me.Label2.Location = New System.Drawing.Point(947, 56)
         Me.Label2.Name = "Label2"
         Me.Label2.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.Label2.Size = New System.Drawing.Size(9, 17)
@@ -996,7 +1023,7 @@ Partial Class DeckLogUpdate
         '
         Me.cboDev.FormattingEnabled = True
         Me.cboDev.Items.AddRange(New Object() {"W", "E"})
-        Me.cboDev.Location = New System.Drawing.Point(1066, 53)
+        Me.cboDev.Location = New System.Drawing.Point(1065, 53)
         Me.cboDev.Name = "cboDev"
         Me.cboDev.Size = New System.Drawing.Size(35, 21)
         Me.cboDev.TabIndex = 178
@@ -1186,11 +1213,11 @@ Partial Class DeckLogUpdate
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(600, 2)
+        Me.Label7.Location = New System.Drawing.Point(450, 2)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(228, 33)
+        Me.Label7.Size = New System.Drawing.Size(509, 33)
         Me.Label7.TabIndex = 9
-        Me.Label7.Text = "Deck Log Form"
+        Me.Label7.Text = "Route Planning and Deck Log Form"
         '
         'PictureBox1
         '
@@ -1303,9 +1330,9 @@ Partial Class DeckLogUpdate
         '
         Me.WeatherDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.WeatherDataGridViewTextBoxColumn.DataPropertyName = "Weather"
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.WeatherDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
+        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.WeatherDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle13
         Me.WeatherDataGridViewTextBoxColumn.HeaderText = "Weather"
         Me.WeatherDataGridViewTextBoxColumn.MinimumWidth = 100
         Me.WeatherDataGridViewTextBoxColumn.Name = "WeatherDataGridViewTextBoxColumn"
@@ -1315,9 +1342,9 @@ Partial Class DeckLogUpdate
         '
         Me.RemarksDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.RemarksDataGridViewTextBoxColumn.DataPropertyName = "Remarks"
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.RemarksDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
+        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.RemarksDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle14
         Me.RemarksDataGridViewTextBoxColumn.HeaderText = "Remarks"
         Me.RemarksDataGridViewTextBoxColumn.MinimumWidth = 100
         Me.RemarksDataGridViewTextBoxColumn.Name = "RemarksDataGridViewTextBoxColumn"
@@ -1443,31 +1470,23 @@ Partial Class DeckLogUpdate
         Me.TimetoDest.ReadOnly = True
         Me.TimetoDest.Width = 98
         '
-        'txtEstArrival
+        'btnStartFresh
         '
-        Me.txtEstArrival.Location = New System.Drawing.Point(1114, 13)
-        Me.txtEstArrival.MaxLength = 35
-        Me.txtEstArrival.Name = "txtEstArrival"
-        Me.txtEstArrival.ReadOnly = True
-        Me.txtEstArrival.Size = New System.Drawing.Size(130, 20)
-        Me.txtEstArrival.TabIndex = 227
-        '
-        'lblEstArrival
-        '
-        Me.lblEstArrival.AutoSize = True
-        Me.lblEstArrival.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblEstArrival.Location = New System.Drawing.Point(1046, 16)
-        Me.lblEstArrival.Name = "lblEstArrival"
-        Me.lblEstArrival.Size = New System.Drawing.Size(66, 15)
-        Me.lblEstArrival.TabIndex = 226
-        Me.lblEstArrival.Text = "Est Arrival:"
-        Me.lblEstArrival.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnStartFresh.BackColor = System.Drawing.Color.Yellow
+        Me.btnStartFresh.ForeColor = System.Drawing.Color.Black
+        Me.btnStartFresh.Location = New System.Drawing.Point(1009, 33)
+        Me.btnStartFresh.Name = "btnStartFresh"
+        Me.btnStartFresh.Size = New System.Drawing.Size(118, 23)
+        Me.btnStartFresh.TabIndex = 11
+        Me.btnStartFresh.Text = "Start New Deck Log"
+        Me.btnStartFresh.UseVisualStyleBackColor = False
         '
         'DeckLogUpdate
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1384, 850)
+        Me.Controls.Add(Me.btnStartFresh)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.GroupBox1)
@@ -1609,4 +1628,5 @@ Partial Class DeckLogUpdate
     Friend WithEvents chkHideFirst4Col As CheckBox
     Friend WithEvents txtEstArrival As TextBox
     Friend WithEvents lblEstArrival As Label
+    Friend WithEvents btnStartFresh As Button
 End Class
