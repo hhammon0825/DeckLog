@@ -5,6 +5,7 @@
     Public InitialLoad As Boolean = False
     Public FileRead As Boolean = False
     Public SortingDG As Boolean = False
+    Public IsUpdated As Boolean = False
     Public SLOpenFName As String = ""
     Public tablename As String = "Table1"
     Public DataSet1 As DataSet
@@ -117,6 +118,7 @@
 
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
         SaveDataGrid()
+        IsUpdated = False
         Me.Close()
     End Sub
     Private Sub SaveDataGrid()
@@ -170,6 +172,12 @@
     End Sub
 
     Private Sub btnExitNoSave_Click(sender As Object, e As EventArgs) Handles btnExitNoSave.Click
+        If IsUpdated = True Then
+            Dim MsgBack As MsgBoxResult = MsgBox("Data has been updated - Save to File - Yes or No", MsgBoxStyle.YesNo, "Save Updated Data")
+            If MsgBack = MsgBoxResult.Yes Then
+                SaveDataGrid()
+            End If
+        End If
         Me.Close()
         Exit Sub
     End Sub
@@ -177,7 +185,12 @@
     Private Sub btnOpenCSV_Click(sender As Object, e As EventArgs) Handles btnOpenCSV.Click
         Dim myStream As System.IO.StreamReader = Nothing
         Dim openFileDialog1 As New OpenFileDialog()
-
+        If IsUpdated = True Then
+            Dim MsgBack As MsgBoxResult = MsgBox("Data has been updated - Save to File - Yes or No", MsgBoxStyle.YesNo, "Save Updated Data")
+            If MsgBack = MsgBoxResult.Yes Then
+                SaveDataGrid()
+            End If
+        End If
         FileLoading = True
         DataSet1.Tables(tablename).Clear()
 
@@ -263,11 +276,8 @@
 
     Private Sub btnSaveFile_Click(sender As Object, e As EventArgs) Handles btnSaveFile.Click
         SaveDataGrid()
+        IsUpdated = False
         Exit Sub
-    End Sub
-
-    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
-
     End Sub
 
     Private Sub btnInfoForm_Click(sender As Object, e As EventArgs) Handles btnInfoForm.Click
@@ -477,6 +487,9 @@
             cboDestLo.Text = DestLLo.Substring(LoMinPos + 1, 1)
             txtDestTrue.Text = DataGridView1.Rows(n).Cells(17).Value
             UpdtRtn.DestTrueI = Convert.ToInt32(DataGridView1.Rows(n).Cells(17).Value.ToString.Substring(0, txtDestTrue.Text.ToString.Length - 1))
+            Dim Pos1 As Integer = txtRemarks.Text.IndexOf(":")
+            Dim Len1 As Integer = txtRemarks.Text.Length - (Pos1 + 1)
+            txtEstArrival.Text = txtRemarks.Text.Substring(Pos1 + 1, Len1)
         End If
         btnUpdateExisting.Visible = True
         btnDeleteSight.Visible = True
@@ -519,7 +532,7 @@
         evaluateDG()
         DataGridView1.Refresh()
         Me.Refresh()
-
+        IsUpdated = True
         Exit Sub
     End Sub
 
@@ -565,16 +578,17 @@
         evaluateDG()
         DataGridView1.Refresh()
         Me.Refresh()
+        IsUpdated = True
         Exit Sub
     End Sub
 
     Private Sub btnDeleteSight_Click(sender As Object, e As EventArgs) Handles btnDeleteSight.Click
         DataSet1.Tables(tablename).Rows.RemoveAt(UpdtRow)
-
         SortDataGridonDate()
         evaluateDG()
         DataGridView1.Refresh()
         Me.Refresh()
+        IsUpdated = True
         Exit Sub
     End Sub
     Private Function EditUpdtFields() As Boolean
@@ -899,9 +913,10 @@
         Else
             txtDestElapsed.Text = DestElapsed.ToString("d\d\y\ hh\:mm\:ss")
         End If
-        txtDestElapsed.Text = DestElapsed.ToString("d\d\y\ hh\:mm\:ss")
+        'txtDestElapsed.Text = DestElapsed.ToString("d\d\y\ hh\:mm\:ss")
         Dim DestEstArrival As DateTime = DTDateZoneTime.Value + DestElapsed
         txtRemarks.Text = "Estimated Arrival Time for Plan Log Entry:" & DestEstArrival.ToString("MM/dd/yyyy HH:mm:ss")
+        txtEstArrival.Text = DestEstArrival.ToString("MM/dd/yyyy HH:mm:ss")
         Return True
     End Function
     Private Sub ResetScreenFields()
@@ -946,7 +961,7 @@
         Next
         ' select last row in data grid
         Dim LastRow As Integer = DataGridView1.Rows.Count - 1
-        DataGridView1.CurrentCell = DataGridView1.Rows(LastRow).Cells(0)
+        DataGridView1.CurrentCell = DataGridView1.Rows(LastRow).Cells(4)
         DataGridView1.Rows(LastRow).Selected = True
         SortingDG = False
         Exit Sub
@@ -1292,8 +1307,31 @@
         txtDestTrue.Clear()
         txtDestDist.Clear()
         txtDestElapsed.Clear()
+        txtEstArrival.Clear()
         txtWeather.Clear()
         txtRemarks.Clear()
         Exit Sub
+    End Sub
+
+    Private Sub chkHideFirst4Col_CheckedChanged(sender As Object, e As EventArgs) Handles chkHideFirst4Col.CheckedChanged
+        If chkHideFirst4Col.Checked = True Then
+            DataGridView1.Columns(0).Visible = False
+            DataGridView1.Columns(1).Visible = False
+            DataGridView1.Columns(2).Visible = False
+            DataGridView1.Columns(3).Visible = False
+            DataGridView1.Columns(12).Visible = False
+            SortDataGridonDate()
+            DataGridView1.Refresh()
+            Me.Refresh()
+        Else
+            DataGridView1.Columns(0).Visible = True
+            DataGridView1.Columns(1).Visible = True
+            DataGridView1.Columns(2).Visible = True
+            DataGridView1.Columns(3).Visible = True
+            DataGridView1.Columns(12).Visible = True
+            SortDataGridonDate()
+            DataGridView1.Refresh()
+            Me.Refresh()
+        End If
     End Sub
 End Class
