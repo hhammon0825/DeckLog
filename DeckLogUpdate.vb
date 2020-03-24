@@ -93,13 +93,10 @@
         For i As Integer = 0 To DataGridView1.Columns.Count - 1
             DataGridView1.Columns(i).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
             DataGridView1.Columns(i).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            DataGridView1.Columns(i).DefaultCellStyle.WrapMode = DataGridViewTriState.True
         Next
         DataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True
-        DataGridView1.Columns(12).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-        DataGridView1.Columns(12).DefaultCellStyle.WrapMode = DataGridViewTriState.True
         DataGridView1.Columns(12).MinimumWidth = 250
-        DataGridView1.Columns(13).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-        DataGridView1.Columns(13).DefaultCellStyle.WrapMode = DataGridViewTriState.True
         DataGridView1.Columns(13).MinimumWidth = 250
 
         txtVar.Text = 0
@@ -288,6 +285,7 @@
         If SortingDG = True Then
             Exit Sub
         End If
+
         Dim n As Integer
         If IsNothing(DataGridView1.CurrentRow.Index) Then 'Or DataGridView1.CurrentRow.Index = vbNull Then
             Exit Sub
@@ -616,8 +614,9 @@
                 ErrorMsgBox("Compass Course must be numeric between 0 and 360")
                 Return False
             End Try
+        End If
 
-            If txtVar.Text = vbNullString Or txtVar.Text = "" Then
+        If txtVar.Text = vbNullString Or txtVar.Text = "" Then
                 txtVar.Text = 0
                 'ErrorMsgBox("Variation must be entered")
                 'Return False
@@ -663,9 +662,9 @@
             If cboDev.Text = "W" Then
                 UpdtRtn.DevI = -UpdtRtn.DevI
             End If
+        If cboLocType.Text <> "Plan" Then
             UpdtRtn.CTrueI = UpdtRtn.CompassI + UpdtRtn.VarI + UpdtRtn.DevI
             txtCTrue.Text = UpdtRtn.CTrueI.ToString("000")
-
         End If
 
         If txtSpeed.Text = vbNullString Or txtSpeed.Text = "" Then
@@ -789,8 +788,8 @@
             Return False
         End If
         Try
-            UpdtRtn.CompassI = Convert.ToInt32(txtCTrue.Text)
-            If UpdtRtn.CompassI < 0 Or UpdtRtn.CompassI > 359 Then
+            UpdtRtn.CTrueI = Convert.ToInt32(txtCTrue.Text)
+            If UpdtRtn.CTrueI < 0 Or UpdtRtn.CTrueI > 359 Then
                 ErrorMsgBox("For Plan Entry,True Course must be numeric between 0 and 360")
                 Return False
             End If
@@ -798,6 +797,9 @@
             ErrorMsgBox("For Plan Entry,True Course must be numeric between 0 and 360")
             Return False
         End Try
+
+        UpdtRtn.CompassI = UpdtRtn.CTrueI + UpdtRtn.VarI + UpdtRtn.DevI
+        txtCompass.Text = UpdtRtn.CompassI.ToString("000")
 
         If txtDestLDeg.Text = vbNullString Or txtDestLDeg.Text = "" Then
             ErrorMsgBox("For Plan Entry, Destination Latitude Degrees must be entered")
@@ -892,7 +894,12 @@
         txtDestDist.Text = DestDist.ToString("##0.0") & "nm"
         txtDestTrue.Text = GetHeading(UpdtRtn.LatDecimal, UpdtRtn.LongDecimal, UpdtRtn.DestLatDecimal, UpdtRtn.DestLongDecimal).ToString("##0") & Chr(176)
         Dim DestElapsed As TimeSpan = Calc60DSTElapsed(DTDateZoneTime.Value, Convert.ToDouble(txtSpeed.Text), DestDist)
-        txtDestElapsed.Text = DestElapsed.ToString("d\.hh\:mm\:ss")
+        If DestElapsed.Days = 0 Then
+            txtDestElapsed.Text = DestElapsed.ToString("hh\:mm\:ss")
+        Else
+            txtDestElapsed.Text = DestElapsed.ToString("d\d\y\ hh\:mm\:ss")
+        End If
+        txtDestElapsed.Text = DestElapsed.ToString("d\d\y\ hh\:mm\:ss")
         Dim DestEstArrival As DateTime = DTDateZoneTime.Value + DestElapsed
         txtRemarks.Text = "Estimated Arrival Time for Plan Log Entry:" & DestEstArrival.ToString("MM/dd/yyyy HH:mm:ss")
         Return True
@@ -937,9 +944,10 @@
         For i As Integer = 0 To DataGridView1.Columns.Count - 1
             DataGridView1.AutoResizeColumn(i)
         Next
-        ' select first row 
-        DataGridView1.CurrentCell = DataGridView1.Rows(0).Cells(0)
-        DataGridView1.Rows(0).Selected = True
+        ' select last row in data grid
+        Dim LastRow As Integer = DataGridView1.Rows.Count - 1
+        DataGridView1.CurrentCell = DataGridView1.Rows(LastRow).Cells(0)
+        DataGridView1.Rows(LastRow).Selected = True
         SortingDG = False
         Exit Sub
     End Sub
@@ -1029,12 +1037,11 @@
         Dim DT1 As DateTime = Convert.ToDateTime(DataGridView1.Rows(PrevRec).Cells(5).Value)
         Dim DT2 As DateTime = Convert.ToDateTime(DataGridView1.Rows(CurrRec).Cells(5).Value)
         Dim TS As TimeSpan = DT2 - DT1
-        DataGridView1.Rows(CurrRec).Cells(14).Value = TS.ToString("c")
-        'If TS.Days = 0 Then
-        '    DataGridView1.Rows(CurrRec).Cells(14).Value = TS.Hours.ToString("00") & "hr " & TS.Minutes.ToString("00") & "min " & TS.Seconds.ToString("00") & "sec "
-        'Else
-        '    DataGridView1.Rows(CurrRec).Cells(14).Value = TS.Days.ToString("#0") & "dy " & TS.Hours.ToString("00") & "hr " & TS.Minutes.ToString("00") & "min " & TS.Seconds.ToString("00") & "sec "
-        'End If
+        If TS.Days = 0 Then
+            DataGridView1.Rows(CurrRec).Cells(14).Value = TS.ToString("hh\:mm\:ss")
+        Else
+            DataGridView1.Rows(CurrRec).Cells(14).Value = TS.ToString("d\d\y\ hh\:mm\:ss")
+        End If
 
         ' evaluate Calculate destination location - start with location of previous entry 
         Dim GeoLLo1 As Device.Location.GeoCoordinate = ParseLatLong(DataGridView1.Rows(PrevRec).Cells(11).Value)
@@ -1179,7 +1186,7 @@
         Dim lat1 As Double = LatIn * Math.PI / 180
         Dim Lon1 As Double = LonIn * Math.PI / 180
         Dim Theta As Double = Course * Math.PI / 180
-        Dim R As Double = 3440.1  ' this is the radius of the earth in nautical miles
+        Dim R As Double = 3443.92  ' this is the radius of the earth in nautical miles
         Dim d As Double = Dist    ' this is the distance travelled in nautical miles
         Dim DDivR As Double = (d / R) * Math.PI / 180
 
@@ -1203,7 +1210,7 @@
         Dim TS As TimeSpan = newDT - DT1
         Return TS
     End Function
-    Private Sub btnEval_Click(sender As Object, e As EventArgs) Handles btnEval.Click
+    Private Sub btnEval_Click(sender As Object, e As EventArgs)
         evaluateDG()
         Exit Sub
     End Sub
@@ -1241,18 +1248,19 @@
 
     Private Sub cboLocType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboLocType.SelectedIndexChanged
         If InitialLoad = True Then Exit Sub
+        If FileLoading = True Then Exit Sub
         If cboLocType.Text = "Plan" Then
             ' make visible plan dest fields and enable 
             grpbxPlan.Visible = True
             txtCompass.Enabled = False
             txtCTrue.Enabled = True
             txtCTrue.Text = 0
-            txtDev.Enabled = False
+            txtDev.Enabled = True
             txtDev.Text = 0
-            cboDev.Enabled = False
+            cboDev.Enabled = True
             cboDev.SelectedIndex = 0
-            txtVar.Enabled = False
-            cboVar.Enabled = False
+            txtVar.Enabled = True
+            cboVar.Enabled = True
             cboVar.SelectedIndex = 0
             txtVar.Text = 0
         Else
@@ -1288,16 +1296,4 @@
         txtRemarks.Clear()
         Exit Sub
     End Sub
-    'Private Sub btnClearForm_Click(sender As Object, e As EventArgs)
-    '    ResetScreenFields()
-    '    DataSet1.Tables(tablename).Clear()
-    '    DataSet1.Tables(tablename).Rows.Add(NullStr)
-    '    DataSet1.Tables(tablename).Rows.RemoveAt(0)
-    '    DataGridView1.DataSource = DataSet1.Tables(0).DefaultView
-    '    SortDataGridonDate()
-    '    DataGridView1.Refresh()
-    '    btnUpdateExisting.Visible = False
-    '    btnDeleteSight.Visible = False
-    '    Exit Sub
-    'End Sub
 End Class
