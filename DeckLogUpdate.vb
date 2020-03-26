@@ -9,6 +9,18 @@
     Public SLOpenFName As String = ""
     Public tablename As String = "Table1"
     Public DataSet1 As DataSet
+
+    ' Print Data Grid variable
+    Private Structure pageDetails
+        Dim columns As Integer
+        Dim rows As Integer
+        Dim startCol As Integer
+        Dim startRow As Integer
+    End Structure
+    Private pages As Dictionary(Of Integer, pageDetails)
+    Dim maxPagesWide As Integer
+    Dim maxPagesTall As Integer
+
     Public HdrStr As String() = {"Vessel", "Navigator", "From", "To", "Log Type",
         "Log DateTime", "Course Psc", "Var", "Dev", "Course True", "Speed", "Position L/Lo", "Weather Notes", "Log Entry Notes",
         "ElapsedTime", "Distance", "Calc Dest", "Calc True", "Calc Speed", "Set", "Drift", "Eval Basis"}
@@ -243,6 +255,7 @@
                     myStream.Close()
                     btnSaveFile.Visible = True
                     btnExit.Visible = True
+                    btnPrintCurrFile.Visible = True
                 End If
 
                 myStream.Dispose()
@@ -263,7 +276,7 @@
         Else
             btnSaveFile.Visible = False
             btnExit.Visible = False
-
+            btnPrintCurrFile.Visible = False
         End If
 
     End Sub
@@ -904,6 +917,8 @@
             ErrorMsgBox("For Plan Entry, Longitude Minutes must be numeric between 0 and 59.9")
             Return False
         End Try
+
+        ' the evaluation of these plan entry fields are done here because the evaluateDB routine works on pairs of entries together. A plan entry has all its data in one entry
         Dim Loc1 As System.Device.Location.GeoCoordinate = New Device.Location.GeoCoordinate(UpdtRtn.LatDecimal, UpdtRtn.LongDecimal)
         Dim Loc2 As System.Device.Location.GeoCoordinate = New Device.Location.GeoCoordinate(UpdtRtn.DestLatDecimal, UpdtRtn.DestLongDecimal)
         Dim DestDist As Double = GetDistance(UpdtRtn.LatDecimal, UpdtRtn.LongDecimal, UpdtRtn.DestLatDecimal, UpdtRtn.DestLongDecimal)
@@ -1169,7 +1184,7 @@
     Private Function GetDistance(ByVal Lat1In As Double, ByVal Long1In As Double, ByVal Lat2In As Double, ByVal Long2In As Double) As Double
         Dim Coord1 As System.Device.Location.GeoCoordinate = New System.Device.Location.GeoCoordinate(Lat1In, Long1In)
         Dim Coord2 As System.Device.Location.GeoCoordinate = New System.Device.Location.GeoCoordinate(Lat2In, Long2In)
-        Return (Coord1.GetDistanceTo(Coord2)) / 1852  ' GetDistanceTo returns distance between geo coords in meters - there are 1852 meters in a nuatical mile
+        Return (Coord1.GetDistanceTo(Coord2)) / 1852.0  ' GetDistanceTo returns distance between geo coords in meters - there are 1852 meters in a nautical mile
     End Function
     Private Function GetHeading(ByVal lat1 As Double, ByVal long1 As Double, ByVal lat2 As Double, ByVal long2 As Double) As Double
 
@@ -1352,5 +1367,158 @@
         Me.Refresh()
         FileLoading = False
         Exit Sub
+    End Sub
+
+    Private Sub btnPrintCurrFile_Click(sender As Object, e As EventArgs) Handles btnPrintCurrFile.Click
+        PrintDialog1.Document = PrintDocument1
+        PrintDialog1.UseEXDialog = True
+        If PrintDialog1.ShowDialog() = DialogResult.OK Then
+            PrintDocument1.DocumentName = "Sight Log: " & SLOpenFName
+            PrintDocument1.Print()
+        End If
+        Exit Sub
+    End Sub
+
+    Private Sub PrintDocument1_BeginPrint(ByVal sender As Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles PrintDocument1.BeginPrint
+        ''this removes the printed page margins
+        PrintDocument1.OriginAtMargins = True
+        PrintDocument1.DefaultPageSettings.Margins = New Drawing.Printing.Margins(0, 0, 0, 0)
+        PrintDocument1.DefaultPageSettings.Landscape = True
+        PrintDocument1.DocumentName = SLOpenFName.ToString
+
+        pages = New Dictionary(Of Integer, pageDetails)
+        ' transpose for landscape printing
+        Dim maxWidth As Integer = CInt(PrintDocument1.DefaultPageSettings.PrintableArea.Height) - 40
+        Dim maxHeight As Integer = CInt(PrintDocument1.DefaultPageSettings.PrintableArea.Width) - 40 + Label1.Height
+
+        Dim pageCounter As Integer = 0
+        pages.Add(pageCounter, New pageDetails)
+
+        Dim columnCounter As Integer = 0
+
+        Dim columnSum As Integer = DataGridView1.RowHeadersWidth
+
+        For c As Integer = 0 To DataGridView1.Columns.Count - 1
+
+            If columnSum + DataGridView1.Columns(c).Width < maxWidth Then
+                columnSum += DataGridView1.Columns(c).Width
+                columnCounter += 1
+            Else
+                pages(pageCounter) = New pageDetails With {.columns = columnCounter, .rows = 0, .startCol = pages(pageCounter).startCol}
+                columnSum = DataGridView1.RowHeadersWidth + DataGridView1.Columns(c).Width
+                columnCounter = 1
+                pageCounter += 1
+                pages.Add(pageCounter, New pageDetails With {.startCol = c})
+            End If
+            If c = DataGridView1.Columns.Count - 1 Then
+                If pages(pageCounter).columns = 0 Then
+                    pages(pageCounter) = New pageDetails With {.columns = columnCounter, .rows = 0, .startCol = pages(pageCounter).startCol}
+                End If
+            End If
+
+        Next
+
+        maxPagesWide = pages.Keys.Max + 1
+
+        pageCounter = 0
+
+        Dim rowCounter As Integer = 0
+
+        Dim rowSum As Integer = DataGridView1.ColumnHeadersHeight
+
+        For r As Integer = 0 To DataGridView1.Rows.Count - 1
+            If rowSum + DataGridView1.Rows(r).Height < maxHeight Then
+                rowSum += DataGridView1.Rows(r).Height
+                rowCounter += 1
+            Else
+                pages(pageCounter) = New pageDetails With {.columns = pages(pageCounter).columns, .rows = rowCounter, .startCol = pages(pageCounter).startCol, .startRow = pages(pageCounter).startRow}
+                For x As Integer = 1 To maxPagesWide - 1
+                    pages(pageCounter + x) = New pageDetails With {.columns = pages(pageCounter + x).columns, .rows = rowCounter, .startCol = pages(pageCounter + x).startCol, .startRow = pages(pageCounter).startRow}
+                Next
+
+                pageCounter += maxPagesWide
+                For x As Integer = 0 To maxPagesWide - 1
+                    pages.Add(pageCounter + x, New pageDetails With {.columns = pages(x).columns, .rows = 0, .startCol = pages(x).startCol, .startRow = r})
+                Next
+
+                rowSum = DataGridView1.ColumnHeadersHeight + DataGridView1.Rows(r).Height
+                rowCounter = 1
+            End If
+            If r = DataGridView1.Rows.Count - 1 Then
+                For x As Integer = 0 To maxPagesWide - 1
+                    If pages(pageCounter + x).rows = 0 Then
+                        pages(pageCounter + x) = New pageDetails With {.columns = pages(pageCounter + x).columns, .rows = rowCounter, .startCol = pages(pageCounter + x).startCol, .startRow = pages(pageCounter + x).startRow}
+                    End If
+                Next
+            End If
+        Next
+
+        maxPagesTall = pages.Count \ maxPagesWide
+
+    End Sub
+    Private Sub PrintDocument1_PrintPage(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintPageEventArgs) Handles PrintDocument1.PrintPage
+        Dim rect As New Rectangle(20, 20, CInt(PrintDocument1.DefaultPageSettings.PrintableArea.Width), Label1.Height)
+        Dim sf As New StringFormat
+        sf.Alignment = StringAlignment.Center
+        sf.LineAlignment = StringAlignment.Center
+
+        e.Graphics.DrawString(Label1.Text, Label1.Font, Brushes.Black, rect, sf)
+
+        sf.Alignment = StringAlignment.Near
+
+        Dim startX As Integer = 50
+        Dim startY As Integer = rect.Bottom
+
+        Static startPage As Integer = 0
+
+        For p As Integer = startPage To pages.Count - 1
+            Dim cell As New Rectangle(startX, startY, DataGridView1.RowHeadersWidth, DataGridView1.ColumnHeadersHeight)
+            e.Graphics.FillRectangle(New SolidBrush(SystemColors.ControlLight), cell)
+            e.Graphics.DrawRectangle(Pens.Black, cell)
+
+            startY += DataGridView1.ColumnHeadersHeight
+
+            For r As Integer = pages(p).startRow To pages(p).startRow + pages(p).rows - 1
+                cell = New Rectangle(startX, startY, DataGridView1.RowHeadersWidth, DataGridView1.Rows(r).Height)
+                e.Graphics.FillRectangle(New SolidBrush(SystemColors.ControlLight), cell)
+                e.Graphics.DrawRectangle(Pens.Black, cell)
+                e.Graphics.DrawString(DataGridView1.Rows(r).HeaderCell.Value, DataGridView1.Font, Brushes.Black, cell, sf)
+                startY += DataGridView1.Rows(r).Height
+            Next
+
+            startX += cell.Width
+            startY = rect.Bottom
+
+            For c As Integer = pages(p).startCol To pages(p).startCol + pages(p).columns - 1
+                cell = New Rectangle(startX, startY, DataGridView1.Columns(c).Width, DataGridView1.ColumnHeadersHeight)
+                e.Graphics.FillRectangle(New SolidBrush(SystemColors.ControlLight), cell)
+                e.Graphics.DrawRectangle(Pens.Black, cell)
+                e.Graphics.DrawString(DataGridView1.Columns(c).HeaderCell.Value, DataGridView1.Font, Brushes.Black, cell, sf)
+                startX += DataGridView1.Columns(c).Width
+            Next
+
+            startY = rect.Bottom + DataGridView1.ColumnHeadersHeight
+
+            For r As Integer = pages(p).startRow To pages(p).startRow + pages(p).rows - 1
+                startX = 50 + DataGridView1.RowHeadersWidth
+                For c As Integer = pages(p).startCol To pages(p).startCol + pages(p).columns - 1
+                    cell = New Rectangle(startX, startY, DataGridView1.Columns(c).Width, DataGridView1.Rows(r).Height)
+                    e.Graphics.DrawRectangle(Pens.Black, cell)
+                    e.Graphics.DrawString(DataGridView1(c, r).Value, DataGridView1.Font, Brushes.Black, cell, sf)
+                    startX += DataGridView1.Columns(c).Width
+                Next
+                startY += DataGridView1.Rows(r).Height
+            Next
+
+            If p <> pages.Count - 1 Then
+                startPage = p + 1
+                e.HasMorePages = True
+                Return
+            Else
+                startPage = 0
+            End If
+
+        Next
+
     End Sub
 End Class

@@ -22,13 +22,13 @@ Partial Class DeckLogUpdate
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.btnExit = New System.Windows.Forms.Button()
         Me.btnExitNoSave = New System.Windows.Forms.Button()
@@ -146,6 +146,9 @@ Partial Class DeckLogUpdate
         Me.RemarksDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TimetoDest = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btnStartFresh = New System.Windows.Forms.Button()
+        Me.btnPrintCurrFile = New System.Windows.Forms.Button()
+        Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
+        Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.grpbxPlan.SuspendLayout()
@@ -158,52 +161,52 @@ Partial Class DeckLogUpdate
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.AllowUserToResizeColumns = False
         Me.DataGridView1.AllowUserToResizeRows = False
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.DataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption
         Me.DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.DataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle9.BackColor = System.Drawing.Color.Yellow
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.InfoText
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Gold
-        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.Yellow
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.InfoText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Gold
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle10.NullValue = " "
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle10
-        Me.DataGridView1.Location = New System.Drawing.Point(8, 230)
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.NullValue = " "
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle3
+        Me.DataGridView1.Location = New System.Drawing.Point(9, 262)
         Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle11.BackColor = System.Drawing.Color.Yellow
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle11
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle12.BackColor = System.Drawing.Color.Yellow
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.InfoText
-        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.Blue
-        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White
-        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.Yellow
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.Yellow
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.InfoText
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Blue
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White
+        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle5
         Me.DataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Yellow
         Me.DataGridView1.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.SystemColors.InfoText
         Me.DataGridView1.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Blue
@@ -216,7 +219,7 @@ Partial Class DeckLogUpdate
         '
         Me.btnExit.BackColor = System.Drawing.Color.Red
         Me.btnExit.ForeColor = System.Drawing.Color.White
-        Me.btnExit.Location = New System.Drawing.Point(1255, 9)
+        Me.btnExit.Location = New System.Drawing.Point(1255, 8)
         Me.btnExit.Name = "btnExit"
         Me.btnExit.Size = New System.Drawing.Size(118, 23)
         Me.btnExit.TabIndex = 1
@@ -269,7 +272,7 @@ Partial Class DeckLogUpdate
         'lblOpenFN
         '
         Me.lblOpenFN.AutoSize = True
-        Me.lblOpenFN.Location = New System.Drawing.Point(261, 40)
+        Me.lblOpenFN.Location = New System.Drawing.Point(261, 63)
         Me.lblOpenFN.Name = "lblOpenFN"
         Me.lblOpenFN.Size = New System.Drawing.Size(58, 13)
         Me.lblOpenFN.TabIndex = 4
@@ -278,7 +281,7 @@ Partial Class DeckLogUpdate
         '
         'txtOpenFN
         '
-        Me.txtOpenFN.Location = New System.Drawing.Point(321, 36)
+        Me.txtOpenFN.Location = New System.Drawing.Point(321, 59)
         Me.txtOpenFN.Name = "txtOpenFN"
         Me.txtOpenFN.ReadOnly = True
         Me.txtOpenFN.Size = New System.Drawing.Size(685, 20)
@@ -301,7 +304,7 @@ Partial Class DeckLogUpdate
         '
         Me.btnInfoForm.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.btnInfoForm.ForeColor = System.Drawing.Color.Black
-        Me.btnInfoForm.Location = New System.Drawing.Point(1133, 33)
+        Me.btnInfoForm.Location = New System.Drawing.Point(1256, 58)
         Me.btnInfoForm.Name = "btnInfoForm"
         Me.btnInfoForm.Size = New System.Drawing.Size(118, 23)
         Me.btnInfoForm.TabIndex = 7
@@ -362,9 +365,9 @@ Partial Class DeckLogUpdate
         Me.GroupBox1.Controls.Add(Me.lblNavigator)
         Me.GroupBox1.Controls.Add(Me.txtVessel)
         Me.GroupBox1.Controls.Add(Me.lblVessel)
-        Me.GroupBox1.Location = New System.Drawing.Point(9, 57)
+        Me.GroupBox1.Location = New System.Drawing.Point(9, 82)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(1365, 167)
+        Me.GroupBox1.Size = New System.Drawing.Size(1365, 174)
         Me.GroupBox1.TabIndex = 8
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Update Fields"
@@ -1213,7 +1216,7 @@ Partial Class DeckLogUpdate
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(450, 2)
+        Me.Label7.Location = New System.Drawing.Point(450, 15)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(509, 33)
         Me.Label7.TabIndex = 9
@@ -1330,9 +1333,9 @@ Partial Class DeckLogUpdate
         '
         Me.WeatherDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.WeatherDataGridViewTextBoxColumn.DataPropertyName = "Weather"
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
-        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.WeatherDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.WeatherDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle6
         Me.WeatherDataGridViewTextBoxColumn.HeaderText = "Weather"
         Me.WeatherDataGridViewTextBoxColumn.MinimumWidth = 100
         Me.WeatherDataGridViewTextBoxColumn.Name = "WeatherDataGridViewTextBoxColumn"
@@ -1342,9 +1345,9 @@ Partial Class DeckLogUpdate
         '
         Me.RemarksDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.RemarksDataGridViewTextBoxColumn.DataPropertyName = "Remarks"
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
-        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.RemarksDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.RemarksDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle7
         Me.RemarksDataGridViewTextBoxColumn.HeaderText = "Remarks"
         Me.RemarksDataGridViewTextBoxColumn.MinimumWidth = 100
         Me.RemarksDataGridViewTextBoxColumn.Name = "RemarksDataGridViewTextBoxColumn"
@@ -1481,11 +1484,31 @@ Partial Class DeckLogUpdate
         Me.btnStartFresh.Text = "Start New Deck Log"
         Me.btnStartFresh.UseVisualStyleBackColor = False
         '
+        'btnPrintCurrFile
+        '
+        Me.btnPrintCurrFile.BackColor = System.Drawing.Color.Blue
+        Me.btnPrintCurrFile.ForeColor = System.Drawing.Color.White
+        Me.btnPrintCurrFile.Location = New System.Drawing.Point(1133, 33)
+        Me.btnPrintCurrFile.Name = "btnPrintCurrFile"
+        Me.btnPrintCurrFile.Size = New System.Drawing.Size(118, 23)
+        Me.btnPrintCurrFile.TabIndex = 12
+        Me.btnPrintCurrFile.Text = "Print Data from Grid"
+        Me.btnPrintCurrFile.UseVisualStyleBackColor = False
+        Me.btnPrintCurrFile.Visible = False
+        '
+        'PrintDocument1
+        '
+        '
+        'PrintDialog1
+        '
+        Me.PrintDialog1.UseEXDialog = True
+        '
         'DeckLogUpdate
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1384, 850)
+        Me.ClientSize = New System.Drawing.Size(1384, 879)
+        Me.Controls.Add(Me.btnPrintCurrFile)
         Me.Controls.Add(Me.btnStartFresh)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Label7)
@@ -1629,4 +1652,7 @@ Partial Class DeckLogUpdate
     Friend WithEvents txtEstArrival As TextBox
     Friend WithEvents lblEstArrival As Label
     Friend WithEvents btnStartFresh As Button
+    Friend WithEvents btnPrintCurrFile As Button
+    Friend WithEvents PrintDocument1 As Printing.PrintDocument
+    Friend WithEvents PrintDialog1 As PrintDialog
 End Class
